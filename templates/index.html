@@ -4,91 +4,90 @@
 
 {% block content %}
 <div class="hero">
-    <h2>欢迎使用 SJT Agent</h2>
-    <p class="hero-subtitle">基于 NEO-PI-R 人格评估框架的情境判断测试生成系统</p>
+    <h2>多模态情境判断测试生成系统</h2>
+    <p class="hero-subtitle">AI驱动的多模态情境化心理测量工具</p>
+</div>
+
+<section class="project-showcase">
+    <div class="showcase-item">
+        <div class="showcase-content">
+            <div class="showcase-text">
+                <h3>项目概述</h3>
+                <p>传统自测问卷受社会期许与情境脱离高影响，难以反映个体在真实情境中的动态人格特征。本系统基于先进的AI技术，提供了情境化路径，为情境判断测验（SJT）的开发提供全流程解决方案。</p>
+                <p class="showcase-highlight">涵盖从场景分析、构念渗透到情境提炼等关键环节，构建了特质解析—情景构建—行为适配的智能化工作流。</p>
+            </div>
+            <div class="showcase-image">
+                <img src="{{ url_for('static', filename='Intro.png') }}" alt="项目引言">
+            </div>
+        </div>
+    </div>
+
+    <div class="showcase-item reverse">
+        <div class="showcase-content">
+            <div class="showcase-image">
+                <img src="{{ url_for('static', filename='research.png') }}" alt="研究内容">
+            </div>
+            <div class="showcase-text">
+                <h3>生成框架</h3>
+                <p>系统整合了场景图网络、自然语言处理与视觉生成三大核心技术，实现了从抽象特质到具体情境的智能映射。</p>
+                <div class="tech-features">
+                    <div class="tech-item">
+                        <span class="tech-label">文字生成</span>
+                        <span class="tech-desc">特质解析 → 情景构建 → 行为适配</span>
+                    </div>
+                    <div class="tech-item">
+                        <span class="tech-label">图片生成</span>
+                        <span class="tech-desc">场景构建 → 视觉渲染 → 对话标注</span>
+                    </div>
+                    <div class="tech-item">
+                        <span class="tech-label">视频生成</span>
+                        <span class="tech-desc">情境编排 → 动态演绎 → 多媒体合成</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="showcase-item">
+        <div class="showcase-content">
+            <div class="showcase-text">
+                <h3>验证结果</h3>
+                <p>通过大规模（N > 300）心理测量学实证研究，验证了本方法生成的多模态SJT在内部一致性、汇聚效度等指标上均达到优异水平。</p>
+                <p class="showcase-highlight">三种模态生成方法的输出测验均拥有优异的心理测量学质量，为下一代智能化心理测评工具奠定了坚实基础。</p>
+            </div>
+            <div class="showcase-image">
+                <img src="{{ url_for('static', filename='results.png') }}" alt="方法验证">
+            </div>
+        </div>
+    </div>
+</section>
+
+<div class="cta-section">
+    <h3>开始使用</h3>
+    <p>选择您需要的生成模式，体验AI驱动的情境判断测试生成</p>
 </div>
 
 <div class="features-grid">
     <div class="feature-card">
         <div class="feature-icon">📝</div>
         <h3>文字题目生成</h3>
-        <p>根据选定的人格特质和参考题目，自动生成高质量的文字情境判断测试题目</p>
-        <a href="/text-sjt" class="btn btn-primary">开始生成</a>
+        <p>基于特质解析与情景构建，自动生成高质量的文字情境判断测试</p>
+        <a href="/text-sjt" class="btn btn-primary">立即开始</a>
     </div>
 
     <div class="feature-card">
         <div class="feature-icon">🖼️</div>
         <h3>图片题目生成</h3>
-        <p>将情境转化为可视化图片，生成包含场景、人物和对话气泡的图片测试题目</p>
-        <a href="/image-sjt" class="btn btn-primary">开始生成</a>
+        <p>通过场景图网络与视觉渲染技术，生成包含人物和场景的图片测试</p>
+        <a href="/image-sjt" class="btn btn-primary">立即开始</a>
     </div>
 
     <div class="feature-card">
         <div class="feature-icon">🎬</div>
         <h3>视频题目生成</h3>
-        <p>创建动态视频情境，通过视频展现更加生动的测试场景和人物互动</p>
-        <a href="/video-sjt" class="btn btn-primary">开始生成</a>
+        <p>利用多媒体AI与情境系统理论，创建动态视频形式的情境测试</p>
+        <a href="/video-sjt" class="btn btn-primary">立即开始</a>
     </div>
 </div>
 
-<div class="info-section">
-    <h3>NEO-PI-R 人格特质维度</h3>
-    <div class="traits-overview">
-        <div class="trait-domain">
-            <h4>神经质 (Neuroticism)</h4>
-            <div class="facets">
-                {% for key, trait in traits.items() if trait.domain == "神经质" %}
-                <span class="facet-tag">{{ trait.facet_name }}</span>
-                {% endfor %}
-            </div>
-        </div>
-
-        <div class="trait-domain">
-            <h4>外向性 (Extraversion)</h4>
-            <div class="facets">
-                {% for key, trait in traits.items() if trait.domain == "外向性" %}
-                <span class="facet-tag">{{ trait.facet_name }}</span>
-                {% endfor %}
-            </div>
-        </div>
-
-        <div class="trait-domain">
-            <h4>开放性 (Openness)</h4>
-            <div class="facets">
-                {% for key, trait in traits.items() if trait.domain == "开放性" %}
-                <span class="facet-tag">{{ trait.facet_name }}</span>
-                {% endfor %}
-            </div>
-        </div>
-
-        <div class="trait-domain">
-            <h4>宜人性 (Agreeableness)</h4>
-            <div class="facets">
-                {% for key, trait in traits.items() if trait.domain == "宜人性" %}
-                <span class="facet-tag">{{ trait.facet_name }}</span>
-                {% endfor %}
-            </div>
-        </div>
-
-        <div class="trait-domain">
-            <h4>尽责性 (Conscientiousness)</h4>
-            <div class="facets">
-                {% for key, trait in traits.items() if trait.domain == "尽责性" %}
-                <span class="facet-tag">{{ trait.facet_name }}</span>
-                {% endfor %}
-            </div>
-        </div>
-    </div>
-</div>
-
-<div class="info-section">
-    <h3>使用说明</h3>
-    <ol class="instructions">
-        <li>选择要测试的人格特质（从 30 个 NEO-PI-R 特质中选择）</li>
-        <li>选择参考题目（每个特质包含多个经典测试题目）</li>
-        <li>配置生成参数（情境主题、目标人群等）</li>
-        <li>选择生成类型（文字、图片或视频）</li>
-        <li>点击生成按钮，系统将自动创建 SJT 题目</li>
-    </ol>
-</div>
 {% endblock %}

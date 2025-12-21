@@ -1,0 +1,14 @@
+version: '3.8'
+
+services:
+  web:
+    build: .
+    ports:
+      - "4399:4399"
+    volumes:
+      - ./outputs:/app/outputs
+      - ./.env:/app/.env
+    environment:
+      - FLASK_ENV=production
+      - PYTHONUNBUFFERED=1
+    restart: unless-stopped

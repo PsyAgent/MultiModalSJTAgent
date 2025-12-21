@@ -1,0 +1,40 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+.venv/
+venv/
+ENV/
+env/
+
+# uv
+.venv/
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Project specific
+outputs/*
+!outputs/.gitkeep
+.env
+*.log
+
+# Model files
+*.onnx
+*.pkl
+*.pth
+
+# Docker
+Dockerfile
+docker-compose.yml
+.dockerignore

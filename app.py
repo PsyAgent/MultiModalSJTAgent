@@ -3,8 +3,6 @@ from pathlib import Path
 from src import DataLoader, TxtAgent, ImgAgent, VidAgent
 from src import ref_viz
 from dotenv import load_dotenv
-import json
-import os
 
 load_dotenv()
 
