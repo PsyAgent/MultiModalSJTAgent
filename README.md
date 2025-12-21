@@ -6,26 +6,13 @@
   <img src="resources/Intro.png" alt="MultiModal SJT Agent Intro" width="900" />
 </p>
 
-## 项目亮点
-
-- 📝 **文本生成**：基于特质解析与情景构建，自动生成高质量文字情境判断测试
-- 🖼️ **图像生成**：通过场景图网络与视觉渲染技术，生成包含人物和场景的图片测试
-- 🎬 **视频生成**：利用多媒体AI与情境系统理论，创建动态视频形式的情境测试
-- 🔬 **科学验证**：基于 NEO-PI-R 维度与 PSJT-Mussel 情境数据，经过大规模心理测量学验证
-- 🚀 **快速部署**：支持 Docker 一键部署，使用 uv 实现极速依赖安装
-
-## 界面与结果
-
 | 研究流程 | 生成结果 |
 | --- | --- |
 | ![Research Flow](resources/research.png) | ![Results](resources/results.png) |
 
 ## 快速开始
 
-### 方式一：Docker Compose（推荐）
-
-最简单的部署方式，开箱即用：
-
+### 方式一：Docker 部署
 ```bash
 # 1. 克隆项目
 git clone https://github.com/PsyAgent/MultiModalSJTAgent.git
@@ -33,29 +20,12 @@ cd MultiModalSJTAgent
 
 # 2. 配置环境变量
 cp .env.example .env
-# 编辑 .env 文件，填入你的 API 密钥
+# 编辑 .env 文件，填入你的 API 密钥，仅支持目前DMXAPI
 
-# 3. 启动服务（使用 uv 快速构建）
-docker-compose up -d
-
-# 4. 查看日志
-docker-compose logs -f
-
-# 5. 停止服务
-docker-compose down
-```
-
-访问：**http://localhost:4399**
-
-> **优势**：Dockerfile 使用 `uv` 进行依赖管理，构建速度比 pip 快 **10-100倍**，支持精确的依赖锁定。
-
-### 方式二：Docker 手动构建
-
-```bash
-# 构建镜像
+# 3. 构建镜像（使用 uv 快速构建）
 docker build -t multimodal-sjt-agent .
 
-# 运行容器
+# 4. 运行容器
 docker run -d \
   -p 4399:4399 \
   -v $(pwd)/outputs:/app/outputs \
@@ -63,15 +33,16 @@ docker run -d \
   --name sjt-agent \
   multimodal-sjt-agent
 
-# 查看日志
+# 5. 查看日志
 docker logs -f sjt-agent
 
-# 停止容器
-docker stop sjt-agent
-docker rm sjt-agent
+# 6. 停止容器
+docker stop sjt-agent && docker rm sjt-agent
 ```
 
-### 方式三：本地开发
+访问：**http://localhost:4399**
+
+### 方式二：本地开发
 
 #### 环境要求
 
@@ -116,13 +87,6 @@ python app.py
 
 访问：**http://localhost:4399**
 
-## 使用流程
-
-1. **选择维度**：在首页选择 NEO-PI-R 人格维度
-2. **选择模式**：文本 / 图像 / 视频
-3. **配置参数**：设置情境主题、目标人群等
-4. **生成测试**：点击生成按钮，自动创建 SJT
-5. **下载结果**：生成结果保存在 `outputs/` 目录
 
 ## API 接口
 
@@ -206,7 +170,6 @@ MultiModalSJTAgent/
 ├── outputs/                    # 生成结果输出目录
 ├── resources/                  # 项目资源文件
 ├── Dockerfile                  # Docker 配置（使用 uv）
-├── docker-compose.yml          # Docker Compose 配置
 ├── .dockerignore              # Docker 忽略文件
 ├── pyproject.toml             # uv 项目配置
 ├── uv.lock                    # uv 依赖锁文件
@@ -266,7 +229,7 @@ export FLASK_ENV=development
 python app.py
 
 # Docker 日志查看
-docker-compose logs -f
+docker logs -f sjt-agent
 
 # 进入容器调试
 docker exec -it sjt-agent bash
@@ -287,9 +250,9 @@ A: Dockerfile 已使用 uv 优化，构建速度比 pip 快 10-100倍。首次�
 A: 所有生成结果保存在 `outputs/` 目录，可通过 `/outputs/<filename>` 访问。
 
 ### Q: 如何更换 API 密钥？
-A: 编辑 `.env` 文件，修改 `OPENAI_API_KEY`，然后重启服务：
+A: 编辑 `.env` 文件，修改 `OPENAI_API_KEY`，然后重启容器：
 ```bash
-docker-compose restart
+docker restart sjt-agent
 ```
 
 ## 性能优化
