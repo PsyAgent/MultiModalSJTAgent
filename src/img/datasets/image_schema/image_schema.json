@@ -1,0 +1,21 @@
+{
+    "cha_schema": {
+        "facial experssion": [],
+        "gesture": [],
+        "eye gaze": [],
+        "speak": []
+    },
+    "sce_schema": {
+        "view": [],
+        "composition": [],
+        "lighting": [],
+        "color Palette": [],
+        "Mood/Atmosphere": [],
+        "Focus": [],
+        "framing": []
+    },
+    "obj_schema": {
+        "Texture": [],
+        "Symbolism": []
+    }
+}

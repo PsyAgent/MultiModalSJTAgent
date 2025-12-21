@@ -1,0 +1,1002 @@
+{
+    "O": {
+        "0": {
+            "situation": "An acquaintance sends you a call for entries for an innovation competition in which creative ideas are sought to promote more sustainability in Germany. How do you behave?",
+            "options": {
+                "A": "The reference to the innovation competition arouses my general interest and I have a short brainstorming session to consider whether I should take part.",
+                "B": "I am happy about the information because I generally enjoy thinking about new ideas and innovations. As far as time is concerned, however, I decide against it because I have other priorities at the moment.",
+                "C": "I will send an email in reply to my acquaintance and thank him/her for the information, but I will tell him/her that I usually have little motivation in such competitions.",
+                "D": "I don't pay much attention to his/her suggestion as my interest in it is rather low and I tell him/her at some point that such a competition is not for me."
+            }
+        },
+        "1": {
+            "situation": "You receive mail from a reputable research institute. Inside the envelope are some puzzles and brain-teasers. The research institute does not pay you any money for the tasks, but asks you to solve the tasks anonymously and send them back. The envelope is already stamped. How do you behave?",
+            "options": {
+                "A": "I am happy about the intellectual challenge and try to solve the brain-teasers.",
+                "B": "I put a lot of effort into thinking and try to solve all tasks. To complete the tasks I sometimes use appropriate aids.",
+                "C": "I do not solve the tasks because I have more important things to do.",
+                "D": "This is much too complicated for me. I don't want to spend my leisure time dealing with that."
+            }
+        },
+        "2": {
+            "situation": "You sit in your GP's waiting room and flip through a magazine. Suddenly, you discover a number puzzle (Sudoku). How do you behave?",
+            "options": {
+                "A": "I start to solve the puzzle and see how far I get.",
+                "B": "I start to solve the puzzle and hope that there are more puzzles in the magazine.",
+                "C": "These puzzles are too complicated for me right now. That's why I keep on flicking through the magazine.",
+                "D": "I continue to flip through the magazine, as I am not interested in number puzzles."
+            }
+        },
+        "3": {
+            "situation": "In your leisure time you read an entertaining book in which a complicated scientific theory is explained abruptly. You quickly realize that the scientific theory is not important for the further plot of the book. How do you behave?\t",
+            "options": {
+                "A": "I read the section with the scientific theory and am happy to be intellectually challenged.",
+                "B": "I try to understand the scientific theory in detail.",
+                "C": "I read the part with the scientific theory, but without trying to understand it.",
+                "D": "I skip the part of the book with the scientific theory."
+            }
+        },
+        "4": {
+            "situation": "In a conversation, your conversation partner uses a Latin word that you have never heard before. You have roughly understood the content of the sentence. How do you behave?",
+            "options": {
+                "A": "I look up the word in a foreign word dictionary at a later time.",
+                "B": "I ask my conversation partner about the meaning of the word.",
+                "C": "I do not bother with this foreign word any further.",
+                "D": "I try to understand the meaning of the word with my previous knowledge."
+            }
+        },
+        "5": {
+            "situation": "You happen to come across a  on television about climate change. One of the talk show guests brings some new, unconventional arguments for the slower expansion of renewable energies. Another talk show guest takes the opposite view. How do you behave?",
+            "options": {
+                "A": "I watch the show, weigh up all the arguments for and against the expansion of renewable energies and then form an opinion.",
+                "B": "I watch the show and am open-minded about new arguments on the subject of renewable energies.",
+                "C": "I already have a clear opinion on this topic. That is why I am less interested in the program.",
+                "D": "I turn off the TV or change the program. Such topics and programs do not interest me."
+            }
+        },
+        "6": {
+            "situation": "You come home after a hard day. There are several programs on television, including a documentary and entertaining movies. How do you behave?",
+            "options": {
+                "A": "I watch the documentary because you can never get enough education.",
+                "B": "I generally use television almost exclusively to watch educational programs.",
+                "C": "I choose one of the movies so that I can finally switch off.",
+                "D": "I only watch the documentary if it is about a topic that interests me and that I like to deal with."
+            }
+        },
+        "7": {
+            "situation": "In a field of knowledge in which you are particularly well versed, there are new scientific findings. These new findings are very theoretical and quite abstract. You take note of these news randomly and briefly. How do you behave?",
+            "options": {
+                "A": "I inform myself comprehensively about the new findings and try to understand them down to the last detail.",
+                "B": "I deal with the new findings and try to integrate them into my previous knowledge.",
+                "C": "I am more interested in practical things and hardly ever deal with the new findings.",
+                "D": "My previous knowledge is extensive enough so that I do not have to deal with the new findings any further."
+            }
+        },
+        "8": {
+            "situation": "You bought a new laptop and want to use a software program that you already know for the first time. Some software features are new to you in this version. How do you behave?",
+            "options": {
+                "A": "I check various sources to find out about the new features.",
+                "B": "I use the software program and try to teach myself the new features by trying them out.",
+                "C": "I use the software program and hardly ever use the new functions.",
+                "D": "I am annoyed that the software program has been updated. I try to continue working with my old software program."
+            }
+        },
+        "9": {
+            "situation": "In a couple of days. There is a lunar eclipse to admire. What do you do?",
+            "options": {
+                "A": "I watch the lunar eclipse and try to understand the astronomical background.",
+                "B": "I don't watch the lunar eclipse, but I find it exciting to learn what causes such a phenomenon.",
+                "C": "I watch the lunar eclipse, but nothing more.",
+                "D": "I don't do anything, because such an astronomical phenomenon doesn't interest me."
+            }
+        },
+        "10": {
+            "situation": "As you walk through the pedestrian zone, you notice a man lecturing on a stage on the topic \"Is man good or bad? You are not under time pressure and find the man likeable at first sight. How do you behave?",
+            "options": {
+                "A": "I try to find out exactly what the man is talking about and listen to his lecture.",
+                "B": "I listen to the lecture for a few minutes and then decide whether to follow the speaker's remarks any further.",
+                "C": "I do not listen to the lecture, because I find such discussions far too abstract and theoretical.",
+                "D": "I keep on walking, because such philosophical questions do not interest me."
+            }
+        },
+        "11": {
+            "situation": "By browsing through the television program you discover a talk show on a philosophical topic. How do you behave?",
+            "options": {
+                "A": "I am interested in such topics and I watch the program.",
+                "B": "I watch the beginning of the program and depending on the topic and the guests, I decide whether to continue watching.",
+                "C": "I only watch the show if I really can't do anything better during the show.",
+                "D": "I do not watch the show at all."
+            }
+        },
+        "12": {
+            "situation": "An acquaintance asks you whether you would like to go with him/her to a natural science museum where a wide variety of subjects are exhibited. The acquaintance adds that he/she will not be angry with you if you cancel. How do you behave?",
+            "options": {
+                "A": "I am happy to accept and look forward to getting to know new things and to thinking about different topics all day long.",
+                "B": "I agree and ask the acquaintance if we can take other people with us to the museum to exchange ideas and have lively discussions.",
+                "C": "I agree, but I don't want to spend the whole day in the museum and therefore I limit myself to some topics in which I already have previous knowledge.\t",
+                "D": "I cancel, because I am not interested in such topics."
+            }
+        },
+        "13": {
+            "situation": "A friend asks you for your opinion on a new scientific discovery that you have not fully pursued. How do you behave?",
+            "options": {
+                "A": "You ask him/her to give you one day of time to deal with the topic in detail and you are curious to have a discussion afterwards.",
+                "B": "You let him/her explain in more detail what the topic is about and you are happy that your friend regularly tells you of new and interesting discoveries.",
+                "C": "You tell your friend that unfortunately you have not heard much about the topic and that you are therefore not very interested.",
+                "D": "You are annoyed because this friend wants to talk constantly about highly intellectual topics."
+            }
+        },
+        "14": {
+            "situation": "It's late March again. In many European countries that means: Daylight saving time begins and the clock is moved forward by one hour. How do you behave?",
+            "options": {
+                "A": "I am interested in the background of the daylight saving time regulation and inform myself about it.",
+                "B": "I follow current discussions about the advantages and disadvantages of summertime with interest.",
+                "C": "I find the clock change annoying and would like to abolish it.\t",
+                "D": "I change the clock and that's it."
+            }
+        },
+        "15": {
+            "situation": "You walk through the pedestrian zone and receive a legitimate free voucher for a museum visit of your choice. How do you behave?",
+            "options": {
+                "A": "I am happy about the voucher and visit a museum of my choice.",
+                "B": "I inform myself in advance about the exhibition offers in different museums and visit the most interesting exhibition.",
+                "C": "I have little time for museum visits and let the voucher expire.",
+                "D": "I am not interested in museums and give the voucher away."
+            }
+        },
+        "16": {
+            "situation": "You receive an invitation to an information event for a debating club. How do you behave?",
+            "options": {
+                "A": "I like to debate and I accept the invitation.\t",
+                "B": "I like debating world political issues with my friends, but not in a club.",
+                "C": "What is discussed there interests me very little.",
+                "D": "Such clubs do not interest me."
+            }
+        },
+        "17": {
+            "situation": "You're attending a game night. Since not all participants can agree on a common game, voting is anonymous. There are several games to choose from. Which game will you choose?",
+            "options": {
+                "A": "A game that I don't know yet and that requires high mental demands.",
+                "B": "A new game for me, which has simple rules and is easy to understand.",
+                "C": "An easy-to-understand game that I already know.",
+                "D": "A game that I know, that is rather difficult to understand."
+            }
+        },
+        "18": {
+            "situation": "Your aunt has given you a new game, which is about combining geometric figures according to number, color, filling and shape. The game requires high concentration and your friend refuses to play it with you. How do you behave?",
+            "options": {
+                "A": "I do everything I can to convince him/her that it is a great game and you only need some practice to quickly discover the combinations.",
+                "B": "I am sad that my buddy does not like the game, but accept his/her decision.",
+                "C": "I'm relieved that he/she doesn't like the game either and that it's too exhausting for him/her.",
+                "D": "I discuss with him/her that we both prefer other activities. We both agree that it's incredible how this game can be fun for some people."
+            }
+        },
+        "19": {
+            "situation": "An acquaintance of yours points out that there is an exciting university lecture series this semester. You can attend the lectures as a listener without having to take an exam. The lectures are about a subject area in which you have a solid previous knowledge and are relatively well versed. How do you behave?",
+            "options": {
+                "A": "I take part in the lecture series.\t",
+                "B": "I watch the first lecture and decide afterwards if I want to continue attending the lecture series.",
+                "C": "I prefer to do things practically and therefore I do not attend the lecture series.",
+                "D": "I do not take part in the lecture series, because I already know a lot about this topic."
+            }
+        },
+        "20": {
+            "situation": "You take a lot of new books/audio books with you for your beach holiday on an island, because you have heard that there is not much on the small island except beach and palm trees. When you arrive there you realize that there are some alternative activities to do. How do you behave?",
+            "options": {
+                "A": "I have been looking forward to getting new intellectual impulses on current topics for a long time and I read or listen to everything I took with me as planned.",
+                "B": "The other activities sound entertaining, but would be more like a pastime, so I prefer to engage in something meaningful like my new books/audio books.",
+                "C": "As soon as I realize that there are other things to pass the time with, I prefer to do that on holiday rather than dealing with difficult literature.",
+                "D": "I feel ambivalent because I have decided to really expand my general knowledge this time, but I just can't bring myself to do so."
+            }
+        },
+        "21": {
+            "situation": "As a loyalty bonus, you receive a free magazine subscription from a company and can choose one of the following magazine categories. Which type of magazine do you choose?",
+            "options": {
+                "A": "A science/culture magazine.",
+                "B": "A news/business magazine.",
+                "C": "A magazine/boulevard magazine.",
+                "D": "A sports/nature/computer magazine."
+            }
+        }
+    },
+    "C": {
+        "0": {
+            "situation": "You watch TV in the evening and you are very tired. Just as you are about to turn off the TV, you realize that one of your favorite shows has just started. Tomorrow you have a long working day ahead of you and have to get up early. How do you behave?",
+            "options": {
+                "A": "I turn off the TV right now and go to sleep.",
+                "B": "I take a moment to think about it and with a heavy heart I don't watch the show because I have to be fit tomorrow.",
+                "C": "I watch the first few minutes of the show and then decide whether to switch off.",
+                "D": "Ich schaue die Sendung komplett an, auch wenn ich morgen m\u00fcde sein sollte.I watch the whole show, even if I should be tired tomorrow."
+            }
+        },
+        "1": {
+            "situation": "You have exactly two days left to complete an important professional project. How much time you need to complete the project is difficult to estimate. It is beautiful weather and a friend asks you if you would like to meet with him/her in the afternoon. How do you behave?",
+            "options": {
+                "A": "I cancel the meeting with my friend and concentrate fully on completing the project.",
+                "B": "I finish the project first and if there is any time left, I contact the friend.",
+                "C": "The friend has priority and I postpone the project completion until the next day.",
+                "D": "I meet with the friend and plan to complete the project in the evening."
+            }
+        },
+        "2": {
+            "situation": "You come back from vacation. When your eyes fall on a huge pile of private mail at home, you hardly know where to start. What do you do?",
+            "options": {
+                "A": "I immediately start working off that pile of mail.",
+                "B": "I look at the mail all the way through, but I always take a few short breaks in between.",
+                "C": "I open a few letters, but most of the mail I read later.",
+                "D": "I leave the whole pile of mail and take care of it in the next few days."
+            }
+        },
+        "3": {
+            "situation": "You have decided to do a complete spring cleaning of your entire apartment today. However, the weather is temptingly nice, so you would rather go for a bike ride outside.  How do you behave?",
+            "options": {
+                "A": "According to the motto \"First the work, then the pleasure!\" I follow my plan and bring the annoying spring cleaning behind me.",
+                "B": "I try to do the spring cleaning as quickly as possible so that there is still time afterwards to enjoy at least the last rays of sunshine.",
+                "C": "I am looking for arguments why it makes more sense to enjoy the sun now and postpone the spring cleaning to another day.",
+                "D": "Without a guilty conscience I do what I feel like doing in this moment and enjoy the moment. The spring-cleaning can also wait."
+            }
+        },
+        "4": {
+            "situation": "In your household there are some tasks to be done. Most things are not enjoyable for you. For the completion of these tasks you have scheduled two to three hours. How do you behave?",
+            "options": {
+                "A": "I do all my duties at once, without taking a break.",
+                "B": "I complete all the tasks, but I take short breaks in between to do myself some good.",
+                "C": "I complete some of the tasks and postpone the rest indefinitely.",
+                "D": "I start with the first tasks and see how far I get."
+            }
+        },
+        "5": {
+            "situation": "You've arranged to go out with old friends tonight for a week. Shortly before you want to go home from work, an important order arrives, which should best be processed today. How do you behave?",
+            "options": {
+                "A": "I'm canceling the meeting. I couldn't really relax if I didn't get this job done today.",
+                "B": "I'm going to stay in the office for a few more hours and then I'll catch up with them.",
+                "C": "The job can wait until tomorrow. I'm off duty now.",
+                "D": "I'm going to give the job to a colleague and go partying with my friends."
+            }
+        },
+        "6": {
+            "situation": "You have eaten deliciously in the evening, feel pleasantly full and a little tired. Unfortunately, the dishwasher is broken and you have to wash everything by hand. How do you behave?",
+            "options": {
+                "A": "I wash everything by hand.",
+                "B": "After a short break, I will rinse everything.\t",
+                "C": "I leave the dirty dishes and wash them the next day.",
+                "D": "I soak some things and wash the rest tomorrow."
+            }
+        },
+        "7": {
+            "situation": "You have to prepare a presentation at short notice for an important meeting the next day. It's early evening and you are thinking about how to proceed. How do you behave?",
+            "options": {
+                "A": "I stay in the office longer and finish the presentation.",
+                "B": "After a short break, I start working on the presentation right away so that I can finish it quickly and enjoy the rest of the evening.",
+                "C": "I relax in front of the TV after a long day at work. After all, I will still have enough time to prepare the presentation later.",
+                "D": "I enjoy the evening and improvise in the meeting."
+            }
+        },
+        "8": {
+            "situation": "Lent is coming and you want to give up sweets. A friend invites you to a caf\u00e9 and orders cakes for both of you. How do you behave?",
+            "options": {
+                "A": "I explain to my friend that I'm fasting and order something else.",
+                "B": "You let your friend have your piece of cake.",
+                "C": "I break my good intentions and plan on it for next year.",
+                "D": "I take it. Once doesn't count."
+            }
+        },
+        "9": {
+            "situation": "You have the opportunity to receive financial support for your ongoing training for particularly good sporting achievements. In order to perform as well as possible, you need to train consistently. How do you behave?",
+            "options": {
+                "A": "I train consistently and try to prepare myself in the best possible way.",
+                "B": "I train every free minute and put leisure activities on the back burner.",
+                "C": "My free time is more important to me. I renounce the offer.",
+                "D": "I prefer to take out a loan or do not finance the training through my sporting achievements."
+            }
+        },
+        "10": {
+            "situation": "You're determined to study for your next exam this afternoon. As of this morning, your cell phone stopped working. There are three days left before the exam and you have mastered the exam material to some extent. How do you behave?",
+            "options": {
+                "A": "I'm going to study for my exam this afternoon. I don't need the phone to study anyway.",
+                "B": "I'm going to study for my exam this afternoon. I won't use my mobile again until I've taken the exam.",
+                "C": "With bad luck like this, I don't feel like doing anything.  I'm definitely not going to study this afternoon. ",
+                "D": "I'll first try to find a solution for my mobile phone and if there is still time, I'll study for the exam."
+            }
+        },
+        "11": {
+            "situation": "You decided to go on a diet from today onwards. When you open the fridge, you see the rest of the tiramisu from the day before. How do you behave?",
+            "options": {
+                "A": "I throw the tiramisu away to avoid temptation.",
+                "B": "I eat just a spoonful and then I plan the rest into my diet.",
+                "C": "I eat the tiramisu and then start my diet.",
+                "D": "I reconsider the diet, as I don't like to let food go to waste, and postpone my weight loss plans until the next day."
+            }
+        },
+        "12": {
+            "situation": "You're working on a presentation that you're giving tomorrow and you're almost to the point of being satisfied. The finishing touches are still missing for the optimal presentation when your friends ring the doorbell and want to pick you up for dinner. How do you behave?",
+            "options": {
+                "A": "I cancel and finish my presentation, because I want to achieve an optimal result.",
+                "B": "I finish the presentation and will try to catch up with them later.",
+                "C": "I drop everything, because I can do the rest tonight or tomorrow morning.",
+                "D": "I go with them, because I can do the presentation just as it is now."
+            }
+        },
+        "13": {
+            "situation": "You are asked to write a sophisticated written work, which will take several weeks to complete. You are free to divide your working hours as you wish, but the work must be completed in four weeks at the latest. How do you behave?",
+            "options": {
+                "A": "I reserve a certain time slot every day of the week for several weeks, during which I specifically and exclusively take care of the work.",
+                "B": "I specifically reserve a week in which I only deal with the work.",
+                "C": "I do something from time to time, but I want to be flexible and therefore do not have rigid working hours.",
+                "D": "I devote myself to work when I am creative and have good ideas."
+            }
+        },
+        "14": {
+            "situation": "You receive a complicated letter from your tax office in which you are advised to fill out a multi-page document about yourself and your assets. Initially you wanted to enjoy the beautiful weather outside. How do you behave?",
+            "options": {
+                "A": "I immediately fill out the document completely.",
+                "B": "I take the document outside and fill it out in the sun.",
+                "C": "I put the document aside and devote myself to writing it later.",
+                "D": "I start to fill out the document, but if it takes too long, I will stop working on it."
+            }
+        },
+        "15": {
+            "situation": "For a long time now, you have been planning to read a book with good reviews in your spare time, which is relatively thick. After about a quarter of the book, you realize, disappointed, that the book is quite boring and difficult to read. How do you behave?",
+            "options": {
+                "A": "I definitely finish reading the book.",
+                "B": "I read at least half of the book and then decide whether I will finish it.",
+                "C": "I don't finish the book and sell it.",
+                "D": "I put the book aside and do not finish it."
+            }
+        },
+        "16": {
+            "situation": "You're already in bed. Suddenly it occurs to you that you forgot to water your houseplants today. How do you behave?",
+            "options": {
+                "A": "I get up and water the plants.",
+                "B": "I get up, water the plants and do some other little things.",
+                "C": "Only when I'm not going to sleep for a long time will I get up and water the plants.",
+                "D": "I stay in bed and water the plants tomorrow."
+            }
+        },
+        "17": {
+            "situation": "You have a day off, but you have to take the bulky waste out in front of the house by 2 pm. Currently, you lie on the couch and listen to music. How do you behave?",
+            "options": {
+                "A": "I get up immediately and take out the bulky waste.",
+                "B": "I listen to my favourite song to the end and then I take the bulky waste out..",
+                "C": "I'm hoping that somebody else in the house will clean up the garbage.",
+                "D": "I will remove the bulky waste sometime during the day."
+            }
+        },
+        "18": {
+            "situation": "Your health insurance company asks you in a letter to send them personal documents for a new health card as soon as possible. In 20 minutes, a good friend wants to pick you up to go out. How do you behave?",
+            "options": {
+                "A": "I immediately collect the documents, get everything ready and leave my friend waiting for a few minutes.",
+                "B": "I finish everything until my friend comes. The rest I do later.",
+                "C": "I am not responding to the letter at all. If it is important, my health insurance will contact me again.",
+                "D": "I put the letter aside and take care of it later."
+            }
+        },
+        "19": {
+            "situation": "You have signed up for a sporting event and have set up a strict training plan. However, a friend spontaneously invites you to a breakfast, which is in your training time. How do you behave?",
+            "options": {
+                "A": "I tell my friend that I can't make it because I have to practice first.",
+                "B": "I come to the invited breakfast and catch up on my training session in the evening, even if this is not optimal.",
+                "C": "I agree immediately and am relieved that I can take a break from training.",
+                "D": "I have a guilty conscience not to stick to my training plan, but then I let myself be convinced quite easily, because I don't want to miss breakfast."
+            }
+        },
+        "20": {
+            "situation": "An electrical device in your household is broken and you have been trying to repair it for 20 minutes. However, you are not making much progress. On TV, a program starts that you would like to watch. How do you behave?",
+            "options": {
+                "A": "I try to fix the device until it is ok again, even if I miss the TV show completely.",
+                "B": "I place the faulty device in such a position that I can watch the TV show, but direct the main attention to fixing the device.",
+                "C": "I watch the TV show and take care of the repair later.",
+                "D": "I watch the TV show and have the device repaired by someone who knows more about it than I do."
+            }
+        },
+        "21": {
+            "situation": "You're in a restaurant with a friend and you've had a good meal. Actually you are already full, but dessert is free today due to a special offer. How do you behave?",
+            "options": {
+                "A": "I skip dessert.",
+                "B": "I just try a little bit of dessert and give the rest to my friend.",
+                "C": "I order a slightly smaller dessert portion.",
+                "D": "I have the dessert."
+            }
+        }
+    },
+    "E": {
+        "0": {
+            "situation": "Your company lets you decide whether you want to take part in an individual or group training course at the next staff training. The training courses are identical in content and last the same length of time. How do you behave?",
+            "options": {
+                "A": "I take part in the group training and would like to meet new colleagues from other departments.",
+                "B": "I take part in the group training and would like to be in a group with colleagues with whom I get along well.",
+                "C": "I take part in the individual training.",
+                "D": "I would like to acquire the content of the further training alone and independently."
+            }
+        },
+        "1": {
+            "situation": "You want to watch a match of your national team at the World Cup. The game in the stadium has been sold out for a long time. But there are several other ways to watch the game. How do you behave?",
+            "options": {
+                "A": "I go to a public viewing event.",
+                "B": "I watch the game in a pub.",
+                "C": "I watch the game with some friends or family at home.",
+                "D": "I watch the game alone in front of the TV."
+            }
+        },
+        "2": {
+            "situation": "The turn of the year is approaching and the planning for the New Year's Eve celebration is in full swing. How do you behave?",
+            "options": {
+                "A": "Since I like to celebrate in large groups, I try to spend New Year's Eve with as many friends as possible.",
+                "B": "I ask about the biggest New Year's Eve party in the area and go there.",
+                "C": "New Year's Eve is a family celebration for me and I celebrate together with my family.",
+                "D": "The whole year I had a lot on my plate. Therefore I want to spend the turn of the year alone and in peace."
+            }
+        },
+        "3": {
+            "situation": "You are invited to a casual private party and know only a few guests. How do you behave?",
+            "options": {
+                "A": "I try to talk to as many guests as possible, at least briefly.",
+                "B": "In the first place I talk to people I don't know in order to get into conversation with them.",
+                "C": "I will leave the party soon, because I feel uncomfortable in the presence of so many people.",
+                "D": "I mainly try to talk to the few people I know."
+            }
+        },
+        "4": {
+            "situation": "You want to do some sports later. A good friend suggests to accompany you, but he/she would like to bring some people you do not know yet. How do you behave?",
+            "options": {
+                "A": "I tell him/her yes, but meet with him/her first.",
+                "B": "I like the idea and look forward to the joint activity.",
+                "C": "I suggest an alternative program for only two persons to my friend.",
+                "D": "I prefer to do sports alone, so I cancel politely."
+            }
+        },
+        "5": {
+            "situation": "You are invited to an advanced training seminar, which is paid by your company and counts as working time.  However, you are free to decide whether you prefer to stay at your workplace as usual and follow the content via a \"webinar\" or whether you want to go to the seminar with the others. The seminar participants come from all over Germany and work in similar areas as you do. How do you behave?",
+            "options": {
+                "A": "I definitely go to the seminar because it is certainly interesting to meet new colleagues from other departments and to exchange ideas.",
+                "B": "I immediately write an email in the online forum to get in contact with the seminar participants and I can't wait to be at the seminar.",
+                "C": "I am happy about the option to follow the seminar online and save myself the trip to the seminar.",
+                "D": "I am mainly interested in the content of the seminar, so I prefer to stay at my workplace in peace. "
+            }
+        },
+        "6": {
+            "situation": "You have to move to another city due to your professional situationation and are looking for a new apartment. How do you behave?",
+            "options": {
+                "A": "I would like to live in the middle of the city because I like to have many people around me.",
+                "B": "I would prefer to move into a shared flat.",
+                "C": "I am looking for a flat just for myself.",
+                "D": "I prefer a flat in a quiet neighbourhood."
+            }
+        },
+        "7": {
+            "situation": "You're taking on a new job. Your boss gives you a free hand in choosing your workplace. How do you behave?",
+            "options": {
+                "A": "I prefer an open-plan office.",
+                "B": "I'd like to work in a larger room with 5-10 colleagues.",
+                "C": "At the most, I would like to share my office with one colleague.",
+                "D": "I prefer my own room where I can work undisturbed."
+            }
+        },
+        "8": {
+            "situation": "After a long and tiring day at work, you finally have a day off. How do you behave?",
+            "options": {
+                "A": "I will meet up with some friends.",
+                "B": "I'll go out and do something else.",
+                "C": "I will stay at home and enjoy the time with my partner or family.",
+                "D": "I want to be on my own."
+            }
+        },
+        "9": {
+            "situation": "You attend a funeral where you know very few people personally. After the funeral, some mourners go together for a spontaneous funeral coffee, others go straight home. What do you do?",
+            "options": {
+                "A": "I join the company and enjoy being part of the community.",
+                "B": "I take part in the funeral coffee and ask other people if they would like to come along.",
+                "C": "I talk to some mourners at the cemetery, but I don't go to the funeral coffee.",
+                "D": "I go straight home."
+            }
+        },
+        "10": {
+            "situation": "You're sick, you've got the flu, you're staying home. You're not doing too well, but you're not contagious anymore. What do you do?",
+            "options": {
+                "A": "I call many dear people from my circle of friends.",
+                "B": "I invite other people to my house.",
+                "C": "I want to be left alone and do things on my own.",
+                "D": "I want to spend some time with my family, but otherwise I want to be alone."
+            }
+        },
+        "11": {
+            "situation": "You've saved some money and now you finally want to go on holiday.  After some time of research you will find two offers that interest you and cost about the same. How do you behave?",
+            "options": {
+                "A": "I choose the offer in the tourist paradise.  There is a better chance to meet new people.",
+                "B": "I feel comfortable in lively holiday resorts. So I travel to the busier destination.",
+                "C": "On holiday I prefer to stay independent and spontaneous. Therefore I prefer the lonelier holiday destination.",
+                "D": "Too many people on holiday spoil my fun, so I choose the quieter alternative."
+            }
+        },
+        "12": {
+            "situation": "You're going to meet a friend. Shortly before you want to meet, your friend asks you if he/she can bring other friends you don't know. How many there will be in the end, he or she cannot say. How do you behave?",
+            "options": {
+                "A": "I tell him/her that he/she is welcome to bring the friends.",
+                "B": "I tell him/her that he/she should bring the friends and I am happy to have even more people.",
+                "C": "I am not enthusiastic about his suggestion, but out of pure politeness I do not say anything against it.",
+                "D": "I tell my friend that I only want to meet him/her."
+            }
+        },
+        "13": {
+            "situation": "Your next birthday is coming up. How do you want to celebrate it?",
+            "options": {
+                "A": "I'm inviting family, friends and old acquaintances over and I'm going to have a blast.",
+                "B": "I'm going to have a big party and invite lots of guests.",
+                "C": "I celebrate my birthday in a small circle.",
+                "D": "I do not celebrate my birthday at all."
+            }
+        },
+        "14": {
+            "situation": "You're hungry and want your favorite food. There are two restaurants in your neighborhood that offer the dish for the same price. One of the restaurants has been in the restaurant guide for some time and is always well frequented, while the other is more of an insider tip with few but loyal regular customers. How do you behave?",
+            "options": {
+                "A": "A busy environment is exactly to my taste, so I go to the guided restaurant.",
+                "B": "Among the many guests of the guided restaurant there could be acquaintances and a good conversation for dinner is always welcome.",
+                "C": "I prefer a quiet atmosphere at dinner. Therefore I prefer the unknown restaurant.",
+                "D": "Among the few regular guests I feel comfortable and it is not too loud."
+            }
+        },
+        "15": {
+            "situation": "You have a day off: You spent the morning alone to complete a few tasks undisturbed. Now you have everything done and free time. What do you do?",
+            "options": {
+                "A": "I meet with friends. The more friends I see, the better.",
+                "B": "I attend an event where I am among many people.",
+                "C": "I try to spend the time undisturbed with my family.",
+                "D": "I enjoy having time for myself for once and spend the day alone."
+            }
+        },
+        "16": {
+            "situation": "You plan your next vacation. You have the option of four different accommodations, all with the same costs. Which accommodation do you choose?",
+            "options": {
+                "A": "A club hotel.",
+                "B": "A lively holiday resort.",
+                "C": "A secluded vacation apartment.",
+                "D": "A peaceful hotel in the countryside."
+            }
+        },
+        "17": {
+            "situation": "You're taking a train across Germany for a long weekend. The train is full and there are only a few seats available. What do you do?",
+            "options": {
+                "A": "I choose the free seat at a table of four to get into conversation with other people there.",
+                "B": "The best conversations on the train are in the bistro. I go there right after the departure.",
+                "C": "I want to be alone and look for a quiet place.",
+                "D": "I look for a place where I feel undisturbed."
+            }
+        },
+        "18": {
+            "situation": "You are on vacation and would like to go on a trip. There are several options. How do you behave?",
+            "options": {
+                "A": "I join a tour group.",
+                "B": "I join a travel group in the beginning and later split from the group.",
+                "C": "I explore the area alone with a guide.",
+                "D": "I explore the area alone."
+            }
+        },
+        "19": {
+            "situation": "You're planning your next vacation. With whom would you most like to travel?",
+            "options": {
+                "A": "I'm joining a group.",
+                "B": "I ask a few friends and suggest that they can invite additional people I don't know yet.",
+                "C": "I travel alone and enjoy the time for myself.",
+                "D": "I would like to go away with my partner or my family."
+            }
+        },
+        "20": {
+            "situation": "You're on the train looking for a seat. You can't find a seat, but unexpectedly you discover a free seat in a carriage with a lively primary school class. How do you behave?",
+            "options": {
+                "A": "I sit down with the primary school class and am happy to have children around me.",
+                "B": "I sit down with the primary school class and talk to the children.",
+                "C": "I keep walking through the train hoping to find another seat.",
+                "D": "I sit down with the primary school class, but change seats as soon as there is a free seat in another car."
+            }
+        },
+        "21": {
+            "situation": "It's Friday afternoon. You're about to get off work and figure out how you want to spend the evening. How do you behave?",
+            "options": {
+                "A": "I'm going out and I'm looking forward to meeting new people.",
+                "B": "I'm inviting some friends over to my place.",
+                "C": "I'd like to read a book.",
+                "D": "I'd like to have some time to myself."
+            }
+        }
+    },
+    "A": {
+        "0": {
+            "situation": "You are sitting on your hotel balcony on a mild summer evening and want to enjoy the evening silence. But since a few minutes someone has been mowing the lawn on the opposite property. How do you behave?",
+            "options": {
+                "A": "I try not to draw my attention to the noise and remain sitting on the balcony.",
+                "B": "I go back to my hotel room and close the balcony door.",
+                "C": "I complain about the noise at the front desk.",
+                "D": "I scream from the balcony that the lawn mowing should be stopped."
+            }
+        },
+        "1": {
+            "situation": "Your company has vacation planning to do. On your desired date, two other colleagues with whom you get along well also want to go on vacation. However, your employer has clearly indicated that only one person can take holidays during this period. How do you behave?",
+            "options": {
+                "A": "I let one of my colleagues go first.",
+                "B": "One of my colleagues should take the vacation. But I let myself be assured that the next time I am allowed to take a vacation on my desired date.",
+                "C": "I'll fight for my preferred date. If no agreement can be reached, I ask my superiors to make a decision.",
+                "D": "I push through my desired date, even if I annoy my esteemed colleagues."
+            }
+        },
+        "2": {
+            "situation": "You argue with your partner about a detail in a film you watched together. You are absolutely sure that your partner is wrong and you are right. How do you behave?",
+            "options": {
+                "A": "I try to convince him/her that I am right because I like to be right in discussions.",
+                "B": "I am annoyed that he/she doesn't believe me and I stick to my opinion, even if it means that I have to accept an argument.",
+                "C": "I give in relatively quickly because such discussions are not so important to me.",
+                "D": "Before we argue, I prefer to agree with him/her, although I know I am right."
+            }
+        },
+        "3": {
+            "situation": "You have made an appointment to visit with a friend who lives far away. You won't agree on who's coming to whom. How do you behave?",
+            "options": {
+                "A": "To avoid arguments I agree with him/her and visit her.",
+                "B": "I give in and go to him/her, on the condition that next time he/she comes to see me.",
+                "C": "I try to convince her that it's cheaper if he/she comes to me.",
+                "D": "I insist that he/she comes to me and I also accept an argument."
+            }
+        },
+        "4": {
+            "situation": "You drive in the left lane of the highway in the traffic flow. Behind you, an aggressive tailgater is driving very close. Now he/she has already used the headlight flasher. How do you behave?",
+            "options": {
+                "A": "I immediately change lanes and make way for the pushy driver.",
+                "B": "I change lanes as soon as there is a bigger gap and let the tailgater pass.",
+                "C": "I deliberately slow down to provoke the tailgater.",
+                "D": "I continue to drive as before."
+            }
+        },
+        "5": {
+            "situation": "You would like to go on holiday with your partner, but the two of you disagree about the destination. How do you behave?",
+            "options": {
+                "A": "I try to work out pros and cons of the two destinations and find a compromise.\t",
+                "B": "I agree with my partner's suggestion, hoping to be able to choose the destination on the next holiday.",
+                "C": "I stand up for my proposal and try to convince my partner.",
+                "D": "I also put up with arguments in order to achieve my goal."
+            }
+        },
+        "6": {
+            "situation": "You bought an expensive pair of trousers in a fashion store and were assured that the trousers were not excluded from exchange. At home you find out that the trousers do not fit you so well after all. When you want to return them the next day in the shop, the seller refuses to exchange them. How do you behave?",
+            "options": {
+                "A": "I reluctantly accept the seller's decision.",
+                "B": "I accept the decision of the seller, but I will not buy anything more in this shop in the near future.",
+                "C": "I insist on adequate compensation, e.g. in the form of a voucher.",
+                "D": "I take legal action against the seller and the shop."
+            }
+        },
+        "7": {
+            "situation": "You've had a hard day and you're very tired. When you want to go to sleep, you notice that your neighbor is having a party and it is very loud. How do you behave?",
+            "options": {
+                "A": "I go to bed and try to sleep.",
+                "B": "I stay up a little longer and go to bed when it is quieter.",
+                "C": "I complain to the neighbor about disturbing the night's rest and call the police if necessary.",
+                "D": "I complain to the neighbor about the disturbance of the night's rest and ask him/her to be quieter."
+            }
+        },
+        "8": {
+            "situation": "The family Christmas planning is due. Last year, you were largely responsive to your family's wishes, and this year your family has different ideas than you. How do you behave?",
+            "options": {
+                "A": "I put my wishes last and spend Christmas according to my family's ideas.",
+                "B": "I propose a compromise.",
+                "C": "I am not ready to make any more concessions and I will tell my family about it.",
+                "D": "This year I will assert my opinion, even if there should be arguments about it."
+            }
+        },
+        "9": {
+            "situation": "In an argument with your partner, he/she brings an unfair, hurtful argument. You realize that the fight is about to escalate. How do you behave?",
+            "options": {
+                "A": "To avoid escalation, I apologize and approach my partner.",
+                "B": "I try to bring up another subject to avoid the argument.",
+                "C": "I'm bringing up a counter-argument because I don't want to leave it like this.",
+                "D": "I loudly leave the room and show my anger."
+            }
+        },
+        "10": {
+            "situation": "You get to know a colleague who is new to the company and the region. The colleague asks you if you would like to meet him/her in the evening, as he/she does not yet feel at home and hardly knows any people. However, you don't like the colleague and you don't like his dogged nature. How do you behave?",
+            "options": {
+                "A": "I agree to meet with him. Maybe he/she is more relaxed in private.",
+                "B": "I'll invite him/her to a meeting with my friends.",
+                "C": "I tell him that I am very busy the next few weeks and therefore have no time for a private meeting.",
+                "D": "I tell him that I am not interested in meeting him/her privately."
+            }
+        },
+        "11": {
+            "situation": "In your teamwork each member has worked out a solution proposal.  During the discussion that follows, you notice that your colleague's idea has not been fully thought through. Nevertheless, he/she suggests it as the final solution. How do you behave?",
+            "options": {
+                "A": "Despite the weaknesses of the proposed solution, I agree with it in order not to influence the mood negatively.",
+                "B": "I kindly inform the team partner about the shortcomings of his/her proposal, but nevertheless accept it.",
+                "C": "I bring in my own proposal as a counter-idea and argue clearly why my proposal is more suitable.",
+                "D": "I clearly point out the weaknesses of the team member's idea and present the proposal as useless."
+            }
+        },
+        "12": {
+            "situation": "You work in an office and regularly deal with clients. A customer comes to you with a complaint, and you quickly realize that it is his or her own fault. How do you behave?",
+            "options": {
+                "A": "I help the client and offer to be available for further questions.",
+                "B": "I politely explain to the customer how to solve the problem.",
+                "C": "I inform the customer about his/her misconduct.",
+                "D": "I inform the customer that this is not within my area of responsibility."
+            }
+        },
+        "13": {
+            "situation": "You've been waiting weeks for an appointment with an attending physician. Now you've been sitting in the waiting room for an hour. When you are finally called, your doctor tells you that he/she has a maximum of ten minutes for you. How do you behave?",
+            "options": {
+                "A": "I try to describe my concern as quickly as possible and I understand the short treatment time.",
+                "B": "In order not to waste valuable time, I agree.",
+                "C": "I explain to my doctor that I have not only been waiting for the appointment for weeks but also for an hour in the practice. I expect my doctor to take enough time for me now.\t",
+                "D": "I complain and expect an apology from my doctor. I stay in the consulting room until I have been treated to my complete satisfaction."
+            }
+        },
+        "14": {
+            "situation": "You got change back when you went shopping and have already put this in your wallet. Shortly afterwards you realize that you have received far too little change. How do you behave?",
+            "options": {
+                "A": "I am annoyed that I did not count the money right away, but I do not take any further steps.",
+                "B": "I politely ask the cashier if he/she has noticed the mistake and accept his/her answer.",
+                "C": "I go back to the cashier and ask for the missing change. If the cashier does not give change even after some discussion, I give in and leave.",
+                "D": "I go back to the cashier and ask for the missing change. If the cashier still does not give change after some discussion, I will ask for the change from his/her superior."
+            }
+        },
+        "15": {
+            "situation": "You had a little fight with a friend. You feel right about that, but your tone and your choice of words were probably not quite appropriate. How do you behave?",
+            "options": {
+                "A": "I'm trying to have a conversation with my friend, and I apologize.",
+                "B": "I'm gonna let this whole thing blow over and forget about my anger towards my friend.",
+                "C": "I'm trying to make my point again in another conversation without apologizing.\t",
+                "D": "I wait for my friend to take the first step towards me."
+            }
+        },
+        "16": {
+            "situation": "You had a new handyman business for some repairs in the house. Everything was done to your satisfaction, but the bill is too high in your opinion. How do you behave?",
+            "options": {
+                "A": "I'll pay the bill, even if it seems too high. In the end, everything was done satisfactorily.",
+                "B": "I politely ask the craftsman's company for the exact reasons for the high bill and if in doubt I pay it.",
+                "C": "I complain to the craftsman's company. If my complaint is not successful, I pay the bill, but do not do business with them in the future.",
+                "D": "Under no circumstances will I pay the full bill and if necessary I will take legal action."
+            }
+        },
+        "17": {
+            "situation": "You've been looking for a parking spot for ten minutes. Finally you discover a free parking lot, but while you drive into the parking space from one side, another car from the opposite direction drives into the gap. Both you and the other car are halfway into the parking space. How do you behave?\t",
+            "options": {
+                "A": "I drive away and look for another parking space.",
+                "B": "I have a brief discussion with the other driver. But if the other driver is stubborn enough to turn himself in, I will find another parking space.",
+                "C": "I stay half in the parking space and insist on my right.",
+                "D": "I remain standing until the other driver leaves and looks for a new parking place."
+            }
+        },
+        "18": {
+            "situation": "You're watching TV with some friends. You do not like the current show at all, but the majority of your friends are for it. How do you behave?",
+            "options": {
+                "A": "I bow to the majority and watch the disliked show without complaint.",
+                "B": "I watch the show, but express my dissatisfaction.",
+                "C": "I wait a few minutes and then make a new effort to win my friends over to something else.",
+                "D": "I do not watch the show and do something else."
+            }
+        },
+        "19": {
+            "situation": "You have accumulated several hours of overtime in the last few weeks and you are supposed to use up some of it today. Your supervisor asks you if you can stay two hours longer today, even though he/she knows that you have a private appointment right away. How do you behave?",
+            "options": {
+                "A": "I stay two hours longer and cancel the private appointment.",
+                "B": "I stay one hour longer and try to move the private appointment back.",
+                "C": "I do not stay any longer and leave a few minutes earlier than originally agreed to show my supervisor that I do not approve of such actions.",
+                "D": "I do not stay one minute longer and take the private appointment."
+            }
+        },
+        "20": {
+            "situation": "You have an appointment at your bank. In your opinion, your bank advisor has made you a bad offer that you are not at all satisfied with. How do you behave?",
+            "options": {
+                "A": "I accept the offer, after all the bank advisor has always given me good advice up to now.",
+                "B": "I accept the offer but express my displeasure.",
+                "C": "I insist on a conversation with the superior of my bank advisor to complain about the unfair offer.",
+                "D": "I reject the offer and threaten to change banks."
+            }
+        },
+        "21": {
+            "situation": "You want to buy a car. You have already discussed all contractual details with your car seller. When you want to sign the sales contract, you learn that your car salesman has left the car dealership at short notice. The new car salesman takes a position that is outside the existing contract offer and makes you a worse offer. How do you behave?",
+            "options": {
+                "A": "I accept the worse offer.",
+                "B": "I contact the former seller and try to find a mutually acceptable solution.",
+                "C": "I reject the offer, but if a new, significantly better offer came up, I would be willing to talk.",
+                "D": "I do not buy a car at this car dealership anymore."
+            }
+        }
+    },
+    "N": {
+        "0": {
+            "situation": "You are sitting in the middle of a crowded movie theater. Shortly after the film has started, you realize that you made a mistake in the cinema and ended up in the wrong film. How do you behave?/ What do you do?",
+            "options": {
+                "A": "I don't change the cinema hall, because it's unpleasant for me if half a row has to stand up during the film.",
+                "B": "I remain seated throughout the film, because I'm embarrassed if everyone else sees that I leave during the performance.",
+                "C": "I get up and go to the other cinema hall.",
+                "D": "I watch the beginning of the film and then decide whether to change the cinema hall."
+            }
+        },
+        "1": {
+            "situation": "You're on the tram with a friend. At one stop, an attractive woman gets on. As she passes you, your friend whistles after her.\u00a0\u00a0The woman turns irritated and looks at you. How do you behave?",
+            "options": {
+                "A": "I embarrassingly look to the side and avoid eye contact.",
+                "B": "I embarrassingly look to the side and later tell my friend that I found his action quite stupid.",
+                "C": "I compliment her.",
+                "D": "I laugh and point my finger at my friend."
+            }
+        },
+        "2": {
+            "situation": "You give a presentation to the colleagues in your department. As you speak, you notice that two of your colleagues suddenly start laughing and whispering to each other. How do you behave?",
+            "options": {
+                "A": "I think about whether I said something funny and look down at myself to see if my clothes are impeccable.",
+                "B": "I let myself be put off and have to look at my notes.",
+                "C": "I proceed with my presentation.",
+                "D": "I pause briefly to ask whether something is not clear or understandable to my colleagues."
+            }
+        },
+        "3": {
+            "situation": "On your birthday you are invited by some friends to a well-attended restaurant. As you sit together at the table, your friends suddenly loudly chant \"Happy Birthday\" and all the guests start looking at you. Then a waiter asks you if the staff of the restaurant can sing a little birthday serenade for you? How do you behave?",
+            "options": {
+                "A": "I reject the proposal because I am a little uncomfortable with the whole thing.",
+                "B": "I reject the proposal and ask my friends to refrain from such actions in the future where I am put so publicly in the spotlight.",
+                "C": "I accept the proposal and I am pleased about it.",
+                "D": "I accept the proposal and after the serenade I ask for an encore."
+            }
+        },
+        "4": {
+            "situation": "Shortly after sending a private email with holiday pictures, you realize that you sent the email to the wrong address. By mistake, your bank advisor is the email recipient. The next day, you happen to meet your bank advisor across the street. How do you behave?",
+            "options": {
+                "A": "I turn around so my banker can't recognize me.",
+                "B": "I keep walking and pretend not to see my bank advisor.",
+                "C": "I greet him/her and jokingly ask if he liked my holiday pictures. Afterwards I enlighten him/her about the situationation.",
+                "D": "I talk to my bank advisor and explain the situationation to him/her."
+            }
+        },
+        "5": {
+            "situation": "Your company's Christmas party is a very merry one. Over the course of the evening, your supervisor mimics most of his employees. When he/she parodies you, there is a lot of laughter. How do you behave?",
+            "options": {
+                "A": "I am shocked and hurt by the behaviour of my supervisor and the laughter of my colleagues.",
+                "B": "I will not let myself be treated like this. I'll stay away from the next Christmas party.",
+                "C": "I laugh along and don't care about it.",
+                "D": "I imitate my supervisor and consider the whole thing a fun game."
+            }
+        },
+        "6": {
+            "situation": "At a party you see a friend you haven't seen for a long time. You approach him/her from behind and greet him/her warmly, touching her shoulder. The person turns around and you realize that it is a stranger. How do you behave?",
+            "options": {
+                "A": "I briefly mumble something to myself and make a quick getaway.",
+                "B": "I am embarrassed and avoid the person the whole night.",
+                "C": "I apologize politely and clear up the misunderstanding.",
+                "D": "I smile and invite the person for a drink as an apology."
+            }
+        },
+        "7": {
+            "situation": "You are invited to a friend's wedding and are chosen to take part in a pantomime game. How do you behave?",
+            "options": {
+                "A": "I openly admit that I would rather watch and leave the pantomime performance to someone else.",
+                "B": "I get over myself to take part in the first pantomime, but I only do it for the sake of my girlfriend/boyfriend.",
+                "C": "I am easily persuaded to do so, as I usually enjoy such tasks.",
+                "D": "I get up and walk towards the stage where the pantomime performance takes place."
+            }
+        },
+        "8": {
+            "situation": "You're sitting in a movie theater watching a movie. The cinema hall is completely quiet, there is an incredibly exciting scene. At this very moment a mobile phone rings. You know immediately that this can only be your mobile phone. How do you behave?",
+            "options": {
+                "A": "The situationation is terribly embarrassing for me and I switch off the phone as soon as possible.",
+                "B": "I try to switch off the mobile phone inconspicuously, even if it should ring a little longer in this case.",
+                "C": "I pick up the phone and quietly tell the caller that I can't talk to him/her at the moment.",
+                "D": "I don't care about the cell phone ringing anymore and watch the exciting film scene."
+            }
+        },
+        "9": {
+            "situation": "You are invited to a party and hardly know any of the guests. When you enter the party location, a voice over the loudspeakers announces that the guest of honor of the evening is now arriving. At the same time a spotlight is turned on, so that you are standing in the middle of the spotlight. The conversations of the other guests fade into silence. How do you behave?",
+            "options": {
+                "A": "I try to escape the spotlight as quickly as possible and withdraw into a corner.",
+                "B": "I briefly explain that there must be a mix-up with the guest of honor and quickly step out of the spotlight.",
+                "C": "I welcome the guests with a little speech.",
+                "D": "I stay in the spotlight and enjoy the attention I receive."
+            }
+        },
+        "10": {
+            "situation": "You are standing in a long queue together with a friend whom you happened to meet, and the two of you are chatting. In spite of all the people there is a spooky silence. All of a sudden your friend has to burp loudly. How do you behave?",
+            "options": {
+                "A": "I say goodbye quickly and leave the place.",
+                "B": "I look away ashamed and would like to leave the place, but I do not do so.",
+                "C": "I pretend that nothing has happened and continue talking to him/her.",
+                "D": "To ease the unpleasant situationation I make a perky saying so that all people hear it."
+            }
+        },
+        "11": {
+            "situation": "You are standing in the queue at a pharmacy and want to buy a pack of condoms. Just before you get there, the door opens and your supervisor comes in. How do you behave?",
+            "options": {
+                "A": "I turn around so that my supervisor does not see me and pretend that I do not know him/her.",
+                "B": "I put the pack of condoms away discreetly and greet him/her afterwards.",
+                "C": "I stay in the queue and have no problem with my supervisor seeing me with a pack of condoms.",
+                "D": "I greet my supervisor and show him/her the condom pack in a clearly visible position."
+            }
+        },
+        "12": {
+            "situation": "You are invited to a birthday party and sit at a table with other birthday guests, most of whom you do not know. A birthday guest tells you that the host would be very happy about a little spontaneous birthday speech from you. How do you behave?",
+            "options": {
+                "A": "I'll explain to the birthday boy/girl\u00a0\u00a0that I hate to give a speech.",
+                "B": "I reject the proposal directly and do not give a birthday speech, because I do not like to speak in front of so many people.",
+                "C": "I assure once again with the host and then give a short birthday speech.",
+                "D": "At the next opportunity I give a birthday speech enthusiastically."
+            }
+        },
+        "13": {
+            "situation": "You get into a semi-full elevator in a department store. You want to get off on the 6th floor, but when the door opens, you're only on the 3rd floor. But nobody gets in or out. You realize that you probably pressed the wrong button and ended up on the wrong floor. How do you behave?",
+            "options": {
+                "A": "I quickly get out of the elevator, wait a short moment behind the elevator and take the next elevator to the 6th floor.",
+                "B": "I get out of the elevator quickly and take the stairs to the sixth floor.",
+                "C": "I apologize to the other passengers, stay in the elevator and press the button for the 6th floor.",
+                "D": "I say nothing at all, press the 6th floor button and keep riding the elevator."
+            }
+        },
+        "14": {
+            "situation": "You're sitting in a caf\u00e9 with friends. Your friends tell embarrassing stories about themselves loudly and shamelessly and laugh so loud that the other guests look at you. How do you behave?",
+            "options": {
+                "A": "I feel ashamed and try to avoid the looks of the other guests.",
+                "B": "I ask my friends to be quieter, as everyone is already looking at us, which is terribly unpleasant for me.",
+                "C": "I laugh along. After all, these are funny stories.",
+                "D": "I don't care if others are looking. I listen to the stories."
+            }
+        },
+        "15": {
+            "situation": "You're sitting on a crowded city bus. Suddenly a heavily drunk man screams, so that all passengers can hear it several times: \u201eCheater!\" and points at you with his finger. How do you behave?",
+            "options": {
+                "A": "I get off at the next stop.",
+                "B": "I get up and find another seat.",
+                "C": "I do not react at all to the man's accusations and keep riding the bus.",
+                "D": "I laugh at the comments, make a pointed remark and keep riding the bus."
+            }
+        },
+        "16": {
+            "situation": "You enter an elevator with which you want to go up several floors. As soon as the doors have closed, you notice a wild and loudly smooching couple. There is nobody in the elevator except you and the couple. How do you react?",
+            "options": {
+                "A": "I get off on the next floor to escape the embarrassing situationation.",
+                "B": "I feel uncomfortable with the situationation and I avoid eye contact.",
+                "C": "I am happy for the lovers.",
+                "D": "I am amused by the funny situationation."
+            }
+        },
+        "17": {
+            "situation": "You are taking part in a festive business dinner and have accidentally knocked over the red wine glass of the person sitting next to you. Even before you can apologize, your seat neighbor angrily shouts: \"How can you be so stupid\", so that everyone at the table hears it. How do you behave?",
+            "options": {
+                "A": "I apologize and try to leave the business dinner at the earliest opportunity.",
+                "B": "I apologize and try to change seats at the earliest opportunity.",
+                "C": "I apologize and try to make up for the situationation with a joke.",
+                "D": "I apologize and say that everyone makes mistakes."
+            }
+        },
+        "18": {
+            "situation": "You go into a caf\u00e9 and slip badly on the doorstep. When you are lying on the floor, some people in the caf\u00e9 laugh at you. How do you behave?",
+            "options": {
+                "A": "I leave the caf\u00e9 and go somewhere else.",
+                "B": "I stay at the caf\u00e9, but take a seat on the first floor. I hope nobody there saw me slip.",
+                "C": "I laugh at myself and sit down in the caf\u00e9.",
+                "D": "I sit down in the caf\u00e9 without a word."
+            }
+        },
+        "19": {
+            "situation": "You are invited to a wedding and sit at a table with guests whom you mostly do not know. One of the guests asks you, so that everyone else at the table can hear, if you are the guest who is always late. How do you behave?",
+            "options": {
+                "A": "I do not say anything, but I am annoyed by the comment.",
+                "B": "I explain to everyone else that this is not true.",
+                "C": "I start to laugh and make a funny remark about this guest.",
+                "D": "I take the remark as a little gag and don't care about it."
+            }
+        },
+        "20": {
+            "situation": "It's April 1st. It's your first time at a certain doctor's office and you're sitting in a crowded waiting room. When the doctor enters the waiting room and calls you out, he/she makes a sarcastic joke. All the patients around you have to laugh heartily, but you do not understand why. How do you behave?",
+            "options": {
+                "A": "I'm embarrassed because I didn't get that joke at all.",
+                "B": "I'm angry at the doctor for embarrassing me in front of other people.",
+                "C": "I'm glad I ended up at a doctor with a sense of humor.",
+                "D": "I think that joke is an April Fool's joke and think little of it."
+            }
+        },
+        "21": {
+            "situation": "You will participate in a public lecture with about a hundred listeners. You find the speaker's lecture interesting and have a burning question. How do you behave?",
+            "options": {
+                "A": "I do not ask the question because I do not like to speak in front of so many strangers.",
+                "B": "I ask the question at most after the lecture, if I should be alone with the speaker.",
+                "C": "I ask the question as soon as I notice that other people also want to ask something.",
+                "D": "I ask the question as soon as the speaker pauses for a short sentence."
+            }
+        }
+    }
+}

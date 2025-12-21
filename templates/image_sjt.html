@@ -1,0 +1,321 @@
+{% extends "base.html" %}
+
+{% block title %}图片题目生成 - SJT Agent{% endblock %}
+
+{% block content %}
+<div class="page-header">
+    <h2>🖼️ 图片题目生成</h2>
+    <p>将情境转化为可视化图片，生成包含场景、人物和对话的图片测试题目</p>
+    <p class="info-note">注意：此页面仅显示在 PSJT-Mussel 数据集中有可用情境的特质</p>
+</div>
+
+<div class="generation-container">
+    <div class="form-section">
+        <h3>选择特质和题目</h3>
+
+        <div class="form-group">
+            <label for="trait-select">选择人格特质:</label>
+            <select id="trait-select" class="form-control">
+                <option value="">-- 请选择特质 --</option>
+                {% for key, trait in traits.items() %}
+                <option value="{{ key }}" data-domain="{{ trait.domain }}">
+                    {{ key }}: {{ trait.facet_name }} ({{ trait.domain }})
+                </option>
+                {% endfor %}
+            </select>
+        </div>
+
+        <div class="form-group">
+            <label>特质描述:</label>
+            <div id="trait-description" class="info-box">
+                请先选择一个特质
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label for="situation-select">选择情境题目:</label>
+            <select id="situation-select" class="form-control" disabled>
+                <option value="">-- 先选择特质 --</option>
+            </select>
+            <small class="form-text">从PSJT-Mussel数据集中选择已有的情境</small>
+        </div>
+
+        <div class="form-group">
+            <label>情境内容:</label>
+            <div id="situation-content" class="info-box">
+                请先选择情境题目
+            </div>
+        </div>
+
+        <h3>生成参数</h3>
+
+        <div class="form-group">
+            <label for="ref-character">参考角色:</label>
+            <select id="ref-character" class="form-control">
+                <option value="male">男性</option>
+                <option value="female">女性</option>
+            </select>
+        </div>
+
+        <div class="form-group">
+            <label for="run-bubble">生成对话气泡:</label>
+            <input type="checkbox" id="run-bubble" checked>
+            <small class="form-text">是否在图片中添加对话气泡</small>
+        </div>
+
+        <button id="generate-btn" class="btn btn-primary btn-large">
+            生成图片题目
+        </button>
+
+        <div class="warning-box">
+            <strong>⚠️ 注意:</strong> 图片生成可能需要较长时间，请确保网络连接稳定并耐心等待。
+        </div>
+    </div>
+
+    <div class="result-section">
+        <h3>
+            <span>生成结果</span>
+            <button id="clear-result-btn" class="clear-result-btn" style="display: none;">清除结果</button>
+        </h3>
+        <div id="loading" class="loading" style="display: none;">
+            <div class="spinner"></div>
+            <p>正在生成中，请稍候...</p>
+            <p class="small-text">图片生成可能需要较长时间，请耐心等待</p>
+        </div>
+        <div id="error-message" class="error-message" style="display: none;"></div>
+        <div id="result-content" class="result-box">
+            点击生成按钮开始生成图片题目
+        </div>
+    </div>
+</div>
+
+{% endblock %}
+
+{% block extra_js %}
+<script>
+    const traits = {{ traits|tojson }};
+
+    document.addEventListener('DOMContentLoaded', function() {
+        const traitSelect = document.getElementById('trait-select');
+        const situationSelect = document.getElementById('situation-select');
+        const traitDescription = document.getElementById('trait-description');
+        const situationContent = document.getElementById('situation-content');
+        const generateBtn = document.getElementById('generate-btn');
+        const loading = document.getElementById('loading');
+        const errorMessage = document.getElementById('error-message');
+        const resultContent = document.getElementById('result-content');
+        const clearResultBtn = document.getElementById('clear-result-btn');
+
+        let currentSituations = {};
+
+        // Clear result button handler
+        clearResultBtn.addEventListener('click', function() {
+            resultContent.textContent = '点击生成按钮开始生成图片题目';
+            errorMessage.style.display = 'none';
+            clearResultBtn.style.display = 'none';
+        });
+
+        // When trait is selected
+        traitSelect.addEventListener('change', async function() {
+            const traitId = this.value;
+
+            if (!traitId) {
+                traitDescription.textContent = '请先选择一个特质';
+                situationSelect.disabled = true;
+                situationSelect.innerHTML = '<option value="">-- 先选择特质 --</option>';
+                situationContent.textContent = '请先选择情境题目';
+                generateBtn.disabled = true;
+                return;
+            }
+
+            // Show trait description
+            const trait = traits[traitId];
+            traitDescription.innerHTML = `
+                <p><strong>特质名称:</strong> ${trait.facet_name}</p>
+                <p><strong>所属维度:</strong> ${trait.domain}</p>
+                <p><strong>描述:</strong> ${trait.description}</p>
+                <p><strong>高分特征:</strong> ${trait.high_score}</p>
+                <p><strong>低分特征:</strong> ${trait.low_score}</p>
+            `;
+
+            // Load situations
+            try {
+                const response = await fetch(`/api/situations/${traitId}`);
+                const data = await response.json();
+
+                if (data.available && data.situations) {
+                    currentSituations = data.situations;
+                    situationSelect.innerHTML = '<option value="">-- 请选择情境 --</option>';
+
+                    for (const [sitId, sitData] of Object.entries(data.situations)) {
+                        const option = document.createElement('option');
+                        option.value = sitId;
+                        const preview = sitData.situation ? sitData.situation.substring(0, 40) :
+                                      sitData.stem ? sitData.stem.substring(0, 40) :
+                                      sitData.scenario ? sitData.scenario.substring(0, 40) : '无预览';
+                        option.textContent = `情境 ${sitId}: ${preview}...`;
+                        situationSelect.appendChild(option);
+                    }
+
+                    situationSelect.disabled = false;
+                    situationContent.innerHTML = '<p class="info-text">请从上方下拉菜单选择一个情境题目</p>';
+                } else {
+                    // This should not happen since we filter traits on the backend
+                    situationSelect.innerHTML = '<option value="">加载失败</option>';
+                    situationContent.innerHTML = `<p class="error-message">无法加载情境数据</p>`;
+                }
+            } catch (error) {
+                console.error('Error loading situations:', error);
+                situationSelect.innerHTML = '<option value="">加载情境失败</option>';
+                situationContent.innerHTML = `<p class="error-message">加载情境失败: ${error.message}</p>`;
+            }
+        });
+
+        // When situation is selected
+        situationSelect.addEventListener('change', function() {
+            const sitId = this.value;
+
+            if (!sitId) {
+                situationContent.textContent = '请选择情境题目';
+                generateBtn.disabled = true;
+                return;
+            }
+
+            const situation = currentSituations[sitId];
+            let contentHTML = `<p><strong>情境 ${sitId}</strong></p>`;
+
+            // Display situation content
+            if (situation.situation) {
+                contentHTML += `<p><strong>情境描述:</strong></p><p class="situation-text">${situation.situation}</p>`;
+            }
+            if (situation.stem) {
+                contentHTML += `<p><strong>题干:</strong></p><p class="situation-text">${situation.stem}</p>`;
+            }
+            if (situation.scenario) {
+                contentHTML += `<p><strong>场景:</strong></p><p class="situation-text">${situation.scenario}</p>`;
+            }
+
+            // Display options if available
+            if (situation.options) {
+                contentHTML += `<p><strong>选项:</strong></p><ul>`;
+                const options = Array.isArray(situation.options) ? situation.options : Object.values(situation.options);
+                options.forEach((opt, idx) => {
+                    const optText = typeof opt === 'object' ? (opt.text || opt.content || JSON.stringify(opt)) : opt;
+                    contentHTML += `<li>${String.fromCharCode(65 + idx)}. ${optText}</li>`;
+                });
+                contentHTML += `</ul>`;
+            }
+
+            situationContent.innerHTML = contentHTML;
+            generateBtn.disabled = false;
+        });
+
+        // Generate button click
+        generateBtn.addEventListener('click', async function() {
+            const traitId = traitSelect.value;
+            const sitId = situationSelect.value;
+            const refCharacter = document.getElementById('ref-character').value;
+            const runBubble = document.getElementById('run-bubble').checked;
+
+            if (!traitId) {
+                alert('请先选择特质');
+                return;
+            }
+
+            if (!sitId) {
+                alert('请选择情境题目');
+                return;
+            }
+
+            // Show loading
+            loading.style.display = 'block';
+            errorMessage.style.display = 'none';
+            resultContent.textContent = '生成中...';
+            generateBtn.disabled = true;
+
+            try {
+                const response = await fetch('/api/generate/image', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({
+                        trait_id: traitId,
+                        item_id: sitId,
+                        ref_character: refCharacter,
+                        run_bubble: runBubble
+                    })
+                });
+
+                const data = await response.json();
+
+                if (data.success) {
+                    // Display result
+                    let resultHTML = `
+                        <div class="success-message">✓ 生成成功!</div>
+                        <p><strong>输出文件前缀:</strong> ${data.output_file}</p>
+                        <p><strong>输出目录:</strong> ./outputs/</p>
+                    `;
+
+                    // Display generated images
+                    if (data.has_images && data.image_files && data.image_files.length > 0) {
+                        resultHTML += `
+                            <div class="media-gallery">
+                                <h4>生成的图片:</h4>
+                        `;
+
+                        data.image_files.forEach((filename, index) => {
+                            resultHTML += `
+                                <div class="media-item">
+                                    <p class="media-label">图片 ${index + 1}: ${filename}</p>
+                                    <img src="/outputs/${filename}"
+                                         alt="生成的图片 ${index + 1}"
+                                         class="generated-image"
+                                         onclick="window.open('/outputs/${filename}', '_blank')">
+                                    <p class="media-hint">点击图片在新窗口中查看大图</p>
+                                </div>
+                            `;
+                        });
+
+                        resultHTML += `</div>`;
+                    } else {
+                        resultHTML += `
+                            <div class="warning-box">
+                                <p>⚠️ 未找到生成的图片文件</p>
+                                <p>图片可能仍在生成中，请稍后查看 outputs 目录</p>
+                            </div>
+                        `;
+                    }
+
+                    resultHTML += `
+                        <div class="result-info">
+                            <p>详细信息文件:</p>
+                            <ul>
+                                <li>${data.output_file}_details.json</li>
+                            </ul>
+                        </div>
+                        <details>
+                            <summary>查看详细JSON数据</summary>
+                            <pre>${JSON.stringify(data.result, null, 2)}</pre>
+                        </details>
+                    `;
+
+                    resultContent.innerHTML = resultHTML;
+                    clearResultBtn.style.display = 'inline-block';
+                } else {
+                    throw new Error(data.error || '生成失败');
+                }
+            } catch (error) {
+                console.error('Error:', error);
+                errorMessage.textContent = `生成失败: ${error.message}`;
+                errorMessage.style.display = 'block';
+                resultContent.textContent = '生成失败，请查看错误信息';
+                clearResultBtn.style.display = 'inline-block';
+            } finally {
+                loading.style.display = 'none';
+                generateBtn.disabled = false;
+            }
+        });
+    });
+</script>
+{% endblock %}

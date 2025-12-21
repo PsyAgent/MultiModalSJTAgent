@@ -1,0 +1,662 @@
+{
+  "N1": {
+    "domain": "Neuroticism",
+    "facet_name": "Anxiety",
+    "items": {
+      "1": {
+        "item": "为很多事情感到担心",
+        "scoring": "+"
+      },
+      "31": {
+        "item": "担心会发生最糟糕的情况",
+        "scoring": "+"
+      },
+      "61": {
+        "item": "对很多事情感到害怕",
+        "scoring": "+"
+      },
+      "91": {
+        "item": "我很容易觉得压力大",
+        "scoring": "+"
+      }
+    }
+  },
+  "E1": {
+    "domain": "Extraversion",
+    "facet_name": "Friendliness",
+    "items": {
+      "2": {
+        "item": "很容易交到朋友",
+        "scoring": "+"
+      },
+      "32": {
+        "item": "和其他人待在一起时，我觉得很自在",
+        "scoring": "+"
+      },
+      "62": {
+        "item": "避免和他人接触",
+        "scoring": "-"
+      },
+      "92": {
+        "item": "和他人保持距离",
+        "scoring": "-"
+      }
+    }
+  },
+  "O1": {
+    "domain": "Openness",
+    "facet_name": "Imagination",
+    "items": {
+      "3": {
+        "item": "有丰富的想象力",
+        "scoring": "+"
+      },
+      "33": {
+        "item": "喜欢天马行空地幻想",
+        "scoring": "+"
+      },
+      "63": {
+        "item": "喜欢做白日梦",
+        "scoring": "+"
+      },
+      "93": {
+        "item": "喜欢陷入沉思",
+        "scoring": "+"
+      }
+    }
+  },
+  "A1": {
+    "domain": "Agreeableness",
+    "facet_name": "Trust",
+    "items": {
+      "4": {
+        "item": "信任其他人",
+        "scoring": "+"
+      },
+      "34": {
+        "item": "相信他人的出发点是好的",
+        "scoring": "+"
+      },
+      "64": {
+        "item": "相信他人说的话",
+        "scoring": "+"
+      },
+      "94": {
+        "item": "不相信别人",
+        "scoring": "-"
+      }
+    }
+  },
+  "C1": {
+    "domain": "Conscientiousness",
+    "facet_name": "Self-Efficacy",
+    "items": {
+      "5": {
+        "item": "能成功完成任务",
+        "scoring": "+"
+      },
+      "35": {
+        "item": "在自己所从事的领域出类拔萃",
+        "scoring": "+"
+      },
+      "65": {
+        "item": "能轻松完成任务",
+        "scoring": "+"
+      },
+      "95": {
+        "item": "知道如何完成任务",
+        "scoring": "+"
+      }
+    }
+  },
+  "N2": {
+    "domain": "Neuroticism",
+    "facet_name": "Anger",
+    "items": {
+      "6": {
+        "item": "很容易生气",
+        "scoring": "+"
+      },
+      "36": {
+        "item": "容易被激怒",
+        "scoring": "+"
+      },
+      "66": {
+        "item": "发脾气",
+        "scoring": "+"
+      },
+      "96": {
+        "item": "不会轻易被惹恼",
+        "scoring": "-"
+      }
+    }
+  },
+  "E2": {
+    "domain": "Extraversion",
+    "facet_name": "Gregariousness",
+    "items": {
+      "7": {
+        "item": "喜欢参加大型聚会",
+        "scoring": "+"
+      },
+      "37": {
+        "item": "在聚会上，我会和很多不同的人交谈",
+        "scoring": "+"
+      },
+      "67": {
+        "item": "更喜欢一个人独处",
+        "scoring": "-"
+      },
+      "97": {
+        "item": "避开人多的地方",
+        "scoring": "-"
+      }
+    }
+  },
+  "O2": {
+    "domain": "Openness",
+    "facet_name": "Artistic Interests",
+    "items": {
+      "8": {
+        "item": "认为艺术是很重要的",
+        "scoring": "+"
+      },
+      "38": {
+        "item": "我能发现别人看不到的美",
+        "scoring": "+"
+      },
+      "68": {
+        "item": "不喜欢诗歌",
+        "scoring": "-"
+      },
+      "98": {
+        "item": "不喜欢去美术馆",
+        "scoring": "-"
+      }
+    }
+  },
+  "A2": {
+    "domain": "Agreeableness",
+    "facet_name": "Morality",
+    "items": {
+      "9": {
+        "item": "会利用他人来达成自己的目的",
+        "scoring": "-"
+      },
+      "39": {
+        "item": "为了领先别人，我会采用作弊的方式",
+        "scoring": "-"
+      },
+      "69": {
+        "item": "占别人的便宜",
+        "scoring": "-"
+      },
+      "99": {
+        "item": "给别人使坏",
+        "scoring": "-"
+      }
+    }
+  },
+  "C2": {
+    "domain": "Conscientiousness",
+    "facet_name": "Orderliness",
+    "items": {
+      "10": {
+        "item": "喜欢整洁",
+        "scoring": "+"
+      },
+      "40": {
+        "item": "经常忘记把东西放回原处",
+        "scoring": "-"
+      },
+      "70": {
+        "item": "我的房间很乱",
+        "scoring": "-"
+      },
+      "100": {
+        "item": "我的东西放得到处都是",
+        "scoring": "-"
+      }
+    }
+  },
+  "N3": {
+    "domain": "Neuroticism",
+    "facet_name": "Depression",
+    "items": {
+      "11": {
+        "item": "时常感到忧郁",
+        "scoring": "+"
+      },
+      "41": {
+        "item": "不喜欢自己",
+        "scoring": "+"
+      },
+      "71": {
+        "item": "经常情绪低落",
+        "scoring": "+"
+      },
+      "101": {
+        "item": "对自己感到满意",
+        "scoring": "-"
+      }
+    }
+  },
+  "E3": {
+    "domain": "Extraversion",
+    "facet_name": "Assertiveness",
+    "items": {
+      "12": {
+        "item": "承担责任",
+        "scoring": "+"
+      },
+      "42": {
+        "item": "我会尝试去领导他人",
+        "scoring": "+"
+      },
+      "72": {
+        "item": "掌控局面",
+        "scoring": "+"
+      },
+      "102": {
+        "item": "等着别人来带头",
+        "scoring": "-"
+      }
+    }
+  },
+  "O3": {
+    "domain": "Openness",
+    "facet_name": "Emotionality",
+    "items": {
+      "13": {
+        "item": "能强烈感受到自己的情绪",
+        "scoring": "+"
+      },
+      "43": {
+        "item": "能感受到他人的情绪",
+        "scoring": "+"
+      },
+      "73": {
+        "item": "很少察觉到自己的情绪反应",
+        "scoring": "-"
+      },
+      "103": {
+        "item": "不理解那些情绪化的人",
+        "scoring": "-"
+      }
+    }
+  },
+  "A3": {
+    "domain": "Agreeableness",
+    "facet_name": "Altruism",
+    "items": {
+      "14": {
+        "item": "乐于帮助他人",
+        "scoring": "+"
+      },
+      "44": {
+        "item": "关心他人",
+        "scoring": "+"
+      },
+      "74": {
+        "item": "对他人的感受漠不关心",
+        "scoring": "-"
+      },
+      "104": {
+        "item": "不愿为他人花费时间",
+        "scoring": "-"
+      }
+    }
+  },
+  "C3": {
+    "domain": "Conscientiousness",
+    "facet_name": "Dutifulness",
+    "items": {
+      "15": {
+        "item": "信守承诺",
+        "scoring": "+"
+      },
+      "45": {
+        "item": "我会实话实说",
+        "scoring": "+"
+      },
+      "75": {
+        "item": "破坏规则",
+        "scoring": "-"
+      },
+      "105": {
+        "item": "违背自己的承诺",
+        "scoring": "-"
+      }
+    }
+  },
+  "N4": {
+    "domain": "Neuroticism",
+    "facet_name": "Self-Consciousness",
+    "items": {
+      "16": {
+        "item": "感觉自己很难接近别人",
+        "scoring": "+"
+      },
+      "46": {
+        "item": "害怕引起他人的注意",
+        "scoring": "+"
+      },
+      "76": {
+        "item": "只有和朋友在一起的时候我才会感到自在",
+        "scoring": "+"
+      },
+      "106": {
+        "item": "不会被复杂的社交情境所困扰",
+        "scoring": "-"
+      }
+    }
+  },
+  "E4": {
+    "domain": "Extraversion",
+    "facet_name": "Activity Level",
+    "items": {
+      "17": {
+        "item": "总是很忙碌",
+        "scoring": "+"
+      },
+      "47": {
+        "item": "总是在奔波",
+        "scoring": "+"
+      },
+      "77": {
+        "item": "我的闲暇时间非常充实",
+        "scoring": "+"
+      },
+      "107": {
+        "item": "喜欢慢慢来",
+        "scoring": "-"
+      }
+    }
+  },
+  "O4": {
+    "domain": "Openness",
+    "facet_name": "Adventurousness",
+    "items": {
+      "18": {
+        "item": "相比墨守成规，我更喜欢有变化。",
+        "scoring": "+"
+      },
+      "48": {
+        "item": "我更喜欢做自己熟悉的事情",
+        "scoring": "-"
+      },
+      "78": {
+        "item": "不喜欢改变",
+        "scoring": "-"
+      },
+      "108": {
+        "item": "我喜欢传统的方式",
+        "scoring": "-"
+      }
+    }
+  },
+  "A4": {
+    "domain": "Agreeableness",
+    "facet_name": "Cooperation",
+    "items": {
+      "19": {
+        "item": "喜欢和别人比试",
+        "scoring": "-"
+      },
+      "49": {
+        "item": "会冲人大喊大叫",
+        "scoring": "-"
+      },
+      "79": {
+        "item": "侮辱他人",
+        "scoring": "-"
+      },
+      "109": {
+        "item": "报复别人",
+        "scoring": "-"
+      }
+    }
+  },
+  "C4": {
+    "domain": "Conscientiousness",
+    "facet_name": "Achievement-Striving",
+    "items": {
+      "20": {
+        "item": "工作努力",
+        "scoring": "+"
+      },
+      "50": {
+        "item": "我会超出预期地完成任务或工作",
+        "scoring": "+"
+      },
+      "80": {
+        "item": "在工作或学习上，我不会多做，过得去就行",
+        "scoring": "-"
+      },
+      "110": {
+        "item": "对工作或学业不怎么投入时间和精力",
+        "scoring": "-"
+      }
+    }
+  },
+  "N5": {
+    "domain": "Neuroticism",
+    "facet_name": "Immoderation",
+    "items": {
+      "21": {
+        "item": "大吃大喝寻欢作乐",
+        "scoring": "+"
+      },
+      "51": {
+        "item": "很少过度放纵自己",
+        "scoring": "-"
+      },
+      "81": {
+        "item": "能轻松抵御诱惑",
+        "scoring": "-"
+      },
+      "111": {
+        "item": "可以控制自己的欲望",
+        "scoring": "-"
+      }
+    }
+  },
+  "E5": {
+    "domain": "Extraversion",
+    "facet_name": "Excitement-Seeking",
+    "items": {
+      "22": {
+        "item": "喜欢追求刺激",
+        "scoring": "+"
+      },
+      "52": {
+        "item": "喜欢冒险",
+        "scoring": "+"
+      },
+      "82": {
+        "item": "喜欢不计后果地行事",
+        "scoring": "+"
+      },
+      "112": {
+        "item": "我的行为狂放不羁",
+        "scoring": "+"
+      }
+    }
+  },
+  "O5": {
+    "domain": "Openness",
+    "facet_name": "Intellect",
+    "items": {
+      "23": {
+        "item": "喜欢阅读有挑战性的材料",
+        "scoring": "+"
+      },
+      "53": {
+        "item": "会避免参与关于哲学的讨论",
+        "scoring": "-"
+      },
+      "83": {
+        "item": "理解抽象概念对我来说有些困难",
+        "scoring": "-"
+      },
+      "113": {
+        "item": "对理论性的讨论不感兴趣",
+        "scoring": "-"
+      }
+    }
+  },
+  "A5": {
+    "domain": "Agreeableness",
+    "facet_name": "Modesty",
+    "items": {
+      "24": {
+        "item": "相信自己比别人更好",
+        "scoring": "-"
+      },
+      "54": {
+        "item": "觉得自己很了不起",
+        "scoring": "-"
+      },
+      "84": {
+        "item": "对自己的评价很高",
+        "scoring": "-"
+      },
+      "114": {
+        "item": "吹嘘自己的美德",
+        "scoring": "-"
+      }
+    }
+  },
+  "C5": {
+    "domain": "Conscientiousness",
+    "facet_name": "Self-Discipline",
+    "items": {
+      "25": {
+        "item": "我总是有所准备",
+        "scoring": "+"
+      },
+      "55": {
+        "item": "能执行自己制定的计划",
+        "scoring": "+"
+      },
+      "85": {
+        "item": "浪费时间",
+        "scoring": "-"
+      },
+      "115": {
+        "item": "拖很久才开始做一件事",
+        "scoring": "-"
+      }
+    }
+  },
+  "N6": {
+    "domain": "Neuroticism",
+    "facet_name": "Vulnerability",
+    "items": {
+      "26": {
+        "item": "容易慌张",
+        "scoring": "+"
+      },
+      "56": {
+        "item": "感到被各种事情压得喘不过气来",
+        "scoring": "+"
+      },
+      "86": {
+        "item": "感觉自己处理事情力不从心",
+        "scoring": "+"
+      },
+      "116": {
+        "item": "在压力下能保持冷静",
+        "scoring": "-"
+      }
+    }
+  },
+  "E6": {
+    "domain": "Extraversion",
+    "facet_name": "Cheerfulness",
+    "items": {
+      "27": {
+        "item": "我的快乐会感染周围的人",
+        "scoring": "+"
+      },
+      "57": {
+        "item": "我的生活很快乐",
+        "scoring": "+"
+      },
+      "87": {
+        "item": "热爱生活",
+        "scoring": "+"
+      },
+      "117": {
+        "item": "看到生活中好的一面",
+        "scoring": "+"
+      }
+    }
+  },
+  "O6": {
+    "domain": "Openness",
+    "facet_name": "Liberalism",
+    "items": {
+      "28": {
+        "item": "认为自己在政治方面非常自由开放",
+        "scoring": "+"
+      },
+      "58": {
+        "item": "相信没有绝对的对错之分",
+        "scoring": "+"
+      },
+      "88": {
+        "item": "我在政治上比较保守",
+        "scoring": "-"
+      },
+      "118": {
+        "item": "认为我们应该严惩犯罪",
+        "scoring": "-"
+      }
+    }
+  },
+  "A6": {
+    "domain": "Agreeableness",
+    "facet_name": "Sympathy",
+    "items": {
+      "29": {
+        "item": "同情流浪汉",
+        "scoring": "+"
+      },
+      "59": {
+        "item": "我同情那些处境不如自己的人",
+        "scoring": "+"
+      },
+      "89": {
+        "item": "对别人遇到的麻烦事不感兴趣",
+        "scoring": "-"
+      },
+      "119": {
+        "item": "我尽量不去想那些需要帮助的人",
+        "scoring": "-"
+      }
+    }
+  },
+  "C6": {
+    "domain": "Conscientiousness",
+    "facet_name": "Cautiousness",
+    "items": {
+      "30": {
+        "item": "会不经过思考就开始行动",
+        "scoring": "-"
+      },
+      "60": {
+        "item": "会做出草率的决定",
+        "scoring": "-"
+      },
+      "90": {
+        "item": "仓促行事",
+        "scoring": "-"
+      },
+      "120": {
+        "item": "做事不经过思考",
+        "scoring": "-"
+      }
+    }
+  }
+}

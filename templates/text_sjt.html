@@ -1,0 +1,281 @@
+{% extends "base.html" %}
+
+{% block title %}文字题目生成 - SJT Agent{% endblock %}
+
+{% block content %}
+<div class="page-header">
+    <h2>📝 文字题目生成</h2>
+    <p>基于选定的人格特质和参考题目生成文字情境判断测试</p>
+</div>
+
+<div class="generation-container">
+    <div class="form-section">
+        <h3>选择特质和题目</h3>
+
+        <div class="form-group">
+            <label for="trait-select">选择人格特质:</label>
+            <select id="trait-select" class="form-control">
+                <option value="">-- 请选择特质 --</option>
+                {% for key, trait in traits.items() %}
+                <option value="{{ key }}" data-domain="{{ trait.domain }}">
+                    {{ key }}: {{ trait.facet_name }} ({{ trait.domain }})
+                </option>
+                {% endfor %}
+            </select>
+        </div>
+
+        <div class="form-group">
+            <label>特质描述:</label>
+            <div id="trait-description" class="info-box">
+                请先选择一个特质
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label for="item-select">选择参考题目:</label>
+            <select id="item-select" class="form-control" disabled>
+                <option value="">-- 先选择特质 --</option>
+            </select>
+        </div>
+
+        <div class="form-group">
+            <label>题目内容:</label>
+            <div id="item-content" class="info-box">
+                请先选择题目
+            </div>
+        </div>
+
+        <h3>生成参数</h3>
+
+        <div class="form-group">
+            <label for="situation-theme">情境主题:</label>
+            <input type="text" id="situation-theme" class="form-control" value="大学生活" placeholder="例如: 大学生活、职场环境">
+        </div>
+
+        <div class="form-group">
+            <label for="target-population">目标人群:</label>
+            <input type="text" id="target-population" class="form-control" value="中国大学生" placeholder="例如: 中国大学生、企业员工">
+        </div>
+
+        <div class="form-group">
+            <label for="n-items">生成题目数量:</label>
+            <input type="number" id="n-items" class="form-control" value="1" min="1" max="5">
+        </div>
+
+        <button id="generate-btn" class="btn btn-primary btn-large" disabled>
+            生成文字题目
+        </button>
+    </div>
+
+    <div class="result-section">
+        <h3>
+            <span>生成结果</span>
+            <button id="clear-result-btn" class="clear-result-btn" style="display: none;">清除结果</button>
+        </h3>
+        <div id="loading" class="loading" style="display: none;">
+            <div class="spinner"></div>
+            <p>正在生成中，请稍候...</p>
+        </div>
+        <div id="error-message" class="error-message" style="display: none;"></div>
+        <div id="result-content" class="result-box">
+            点击生成按钮开始生成题目
+        </div>
+    </div>
+</div>
+
+{% endblock %}
+
+{% block extra_js %}
+<script>
+    const traits = {{ traits|tojson }};
+
+    document.addEventListener('DOMContentLoaded', function() {
+        const traitSelect = document.getElementById('trait-select');
+        const itemSelect = document.getElementById('item-select');
+        const traitDescription = document.getElementById('trait-description');
+        const itemContent = document.getElementById('item-content');
+        const generateBtn = document.getElementById('generate-btn');
+        const loading = document.getElementById('loading');
+        const errorMessage = document.getElementById('error-message');
+        const resultContent = document.getElementById('result-content');
+        const clearResultBtn = document.getElementById('clear-result-btn');
+
+        // Clear result button handler
+        clearResultBtn.addEventListener('click', function() {
+            resultContent.textContent = '点击生成按钮开始生成题目';
+            errorMessage.style.display = 'none';
+            clearResultBtn.style.display = 'none';
+        });
+
+        // When trait is selected
+        traitSelect.addEventListener('change', async function() {
+            const traitId = this.value;
+
+            if (!traitId) {
+                traitDescription.textContent = '请先选择一个特质';
+                itemSelect.disabled = true;
+                itemSelect.innerHTML = '<option value="">-- 先选择特质 --</option>';
+                generateBtn.disabled = true;
+                return;
+            }
+
+            // Show trait description
+            const trait = traits[traitId];
+            traitDescription.innerHTML = `
+                <p><strong>特质名称:</strong> ${trait.facet_name}</p>
+                <p><strong>所属维度:</strong> ${trait.domain}</p>
+                <p><strong>描述:</strong> ${trait.description}</p>
+                <p><strong>高分特征:</strong> ${trait.high_score}</p>
+                <p><strong>低分特征:</strong> ${trait.low_score}</p>
+            `;
+
+            // Load items
+            try {
+                const response = await fetch(`/api/items/${traitId}`);
+                const items = await response.json();
+
+                itemSelect.innerHTML = '<option value="">-- 请选择题目 --</option>';
+                for (const [itemId, itemData] of Object.entries(items)) {
+                    const option = document.createElement('option');
+                    option.value = itemId;
+                    option.textContent = `题目 ${itemId}: ${itemData.item.substring(0, 30)}...`;
+                    itemSelect.appendChild(option);
+                }
+
+                itemSelect.disabled = false;
+            } catch (error) {
+                console.error('Error loading items:', error);
+                itemSelect.innerHTML = '<option value="">加载题目失败</option>';
+            }
+        });
+
+        // When item is selected
+        itemSelect.addEventListener('change', async function() {
+            const itemId = this.value;
+            const traitId = traitSelect.value;
+
+            if (!itemId) {
+                itemContent.textContent = '请先选择题目';
+                generateBtn.disabled = true;
+                return;
+            }
+
+            try {
+                const response = await fetch(`/api/items/${traitId}`);
+                const items = await response.json();
+                const item = items[itemId];
+
+                itemContent.innerHTML = `
+                    <p><strong>题目内容:</strong> ${item.item}</p>
+                    <p><strong>计分方式:</strong> ${item.scoring}</p>
+                `;
+
+                generateBtn.disabled = false;
+            } catch (error) {
+                console.error('Error loading item:', error);
+                itemContent.textContent = '加载题目内容失败';
+            }
+        });
+
+        // Generate button click
+        generateBtn.addEventListener('click', async function() {
+            const traitId = traitSelect.value;
+            const itemId = itemSelect.value;
+            const situationTheme = document.getElementById('situation-theme').value;
+            const targetPopulation = document.getElementById('target-population').value;
+            const nItems = parseInt(document.getElementById('n-items').value);
+
+            if (!traitId || !itemId) {
+                alert('请先选择特质和题目');
+                return;
+            }
+
+            // Show loading
+            loading.style.display = 'block';
+            errorMessage.style.display = 'none';
+            resultContent.textContent = '生成中...';
+            generateBtn.disabled = true;
+
+            try {
+                const response = await fetch('/api/generate/text', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({
+                        trait_id: traitId,
+                        item_id: itemId,
+                        situation_theme: situationTheme,
+                        target_population: targetPopulation,
+                        n_items: nItems
+                    })
+                });
+
+                const data = await response.json();
+
+                console.log('API Response:', data);
+
+                if (data.success) {
+                    // Check if result is an array
+                    let resultItems = data.result;
+                    if (!Array.isArray(resultItems)) {
+                        console.log('Result is not an array, type:', typeof resultItems);
+                        // Try to handle different data structures
+                        if (typeof resultItems === 'object' && resultItems !== null) {
+                            // If it's an object, try to extract items
+                            if (resultItems.items && Array.isArray(resultItems.items)) {
+                                resultItems = resultItems.items;
+                            } else {
+                                // Convert single object to array
+                                resultItems = [resultItems];
+                            }
+                        } else {
+                            resultItems = [];
+                        }
+                    }
+
+                    // Display result
+                    let resultHTML = `
+                        <div class="success-message">✓ 生成成功!</div>
+                        <p><strong>输出文件:</strong> ${data.output_file}</p>
+                    `;
+
+                    if (resultItems.length > 0) {
+                        resultHTML += `<div class="result-items">
+                            ${resultItems.map((item, index) => `
+                                <div class="result-item">
+                                    <h4>题目 ${index + 1}</h4>
+                                    <p><strong>情境:</strong> ${item.situation || item.stem || item.scenario || '无'}</p>
+                                    ${item.options ? `
+                                        <p><strong>选项:</strong></p>
+                                        <ul>
+                                            ${(Array.isArray(item.options) ? item.options : Object.values(item.options)).map(opt => `<li>${typeof opt === 'object' ? opt.text || opt.content || JSON.stringify(opt) : opt}</li>`).join('')}
+                                        </ul>
+                                    ` : '<p><strong>选项:</strong> 无选项</p>'}
+                                </div>
+                            `).join('')}
+                        </div>`;
+                    } else {
+                        resultHTML += '<p class="warning-box">生成结果为空</p>';
+                    }
+
+                    resultHTML += `<pre>${JSON.stringify(data.result, null, 2)}</pre>`;
+                    resultContent.innerHTML = resultHTML;
+                    clearResultBtn.style.display = 'inline-block';
+                } else {
+                    throw new Error(data.error || '生成失败');
+                }
+            } catch (error) {
+                console.error('Error:', error);
+                errorMessage.textContent = `生成失败: ${error.message}`;
+                errorMessage.style.display = 'block';
+                resultContent.textContent = '生成失败，请查看错误信息';
+                clearResultBtn.style.display = 'inline-block';
+            } finally {
+                loading.style.display = 'none';
+                generateBtn.disabled = false;
+            }
+        });
+    });
+</script>
+{% endblock %}

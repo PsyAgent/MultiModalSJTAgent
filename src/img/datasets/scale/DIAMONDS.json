@@ -1,0 +1,43 @@
+{
+    "Instructions": "Please evaluate the extent to which the following statements apply to your current situation from 1 (not at all) to 7 (very much).",
+    "Duty": [
+      "I must complete a task.",
+      "I need to have a task-oriented mindset.",
+      "I must fulfill my (own) responsibilities."
+    ],
+    "Intellect": [
+      "This situation contains intellectual stimulation.",
+      "This situation provides the opportunity to showcase intellectual ability.",
+      "Information must be processed with deep thought."
+    ],
+    "Adversity": [
+      "I will be criticized.",
+      "I will be blamed for something.",
+      "I will be threatened by something or someone."
+    ],
+    "Mating": [
+      "A potential sexual or romantic partner is present.",
+      "Physical attractiveness is important.",
+      "This situation is full of sexual innuendos."
+    ],
+    "pOsitivity": [
+      "This situation is pleasant.",
+      "This situation appears playful.",
+      "This situation is full of joy and relaxation."
+    ],
+    "Negativity": [
+      "This situation may trigger stress.",
+      "This situation may cause tension.",
+      "This situation may lead to a feeling of frustration."
+    ],
+    "Deception": [
+      "It is possible to deceive others.",
+      "Someone in the situation may act dishonestly.",
+      "It is possible to be dishonest with others."
+    ],
+    "Sociality": [
+      "Close interpersonal relationships are important, or might develop.",
+      "Others will send many communication signals.",
+      "Communicating with others is important or welcome."
+    ]
+  }

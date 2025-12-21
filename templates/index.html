@@ -1,0 +1,94 @@
+{% extends "base.html" %}
+
+{% block title %}首页 - SJT Agent{% endblock %}
+
+{% block content %}
+<div class="hero">
+    <h2>欢迎使用 SJT Agent</h2>
+    <p class="hero-subtitle">基于 NEO-PI-R 人格评估框架的情境判断测试生成系统</p>
+</div>
+
+<div class="features-grid">
+    <div class="feature-card">
+        <div class="feature-icon">📝</div>
+        <h3>文字题目生成</h3>
+        <p>根据选定的人格特质和参考题目，自动生成高质量的文字情境判断测试题目</p>
+        <a href="/text-sjt" class="btn btn-primary">开始生成</a>
+    </div>
+
+    <div class="feature-card">
+        <div class="feature-icon">🖼️</div>
+        <h3>图片题目生成</h3>
+        <p>将情境转化为可视化图片，生成包含场景、人物和对话气泡的图片测试题目</p>
+        <a href="/image-sjt" class="btn btn-primary">开始生成</a>
+    </div>
+
+    <div class="feature-card">
+        <div class="feature-icon">🎬</div>
+        <h3>视频题目生成</h3>
+        <p>创建动态视频情境，通过视频展现更加生动的测试场景和人物互动</p>
+        <a href="/video-sjt" class="btn btn-primary">开始生成</a>
+    </div>
+</div>
+
+<div class="info-section">
+    <h3>NEO-PI-R 人格特质维度</h3>
+    <div class="traits-overview">
+        <div class="trait-domain">
+            <h4>神经质 (Neuroticism)</h4>
+            <div class="facets">
+                {% for key, trait in traits.items() if trait.domain == "神经质" %}
+                <span class="facet-tag">{{ trait.facet_name }}</span>
+                {% endfor %}
+            </div>
+        </div>
+
+        <div class="trait-domain">
+            <h4>外向性 (Extraversion)</h4>
+            <div class="facets">
+                {% for key, trait in traits.items() if trait.domain == "外向性" %}
+                <span class="facet-tag">{{ trait.facet_name }}</span>
+                {% endfor %}
+            </div>
+        </div>
+
+        <div class="trait-domain">
+            <h4>开放性 (Openness)</h4>
+            <div class="facets">
+                {% for key, trait in traits.items() if trait.domain == "开放性" %}
+                <span class="facet-tag">{{ trait.facet_name }}</span>
+                {% endfor %}
+            </div>
+        </div>
+
+        <div class="trait-domain">
+            <h4>宜人性 (Agreeableness)</h4>
+            <div class="facets">
+                {% for key, trait in traits.items() if trait.domain == "宜人性" %}
+                <span class="facet-tag">{{ trait.facet_name }}</span>
+                {% endfor %}
+            </div>
+        </div>
+
+        <div class="trait-domain">
+            <h4>尽责性 (Conscientiousness)</h4>
+            <div class="facets">
+                {% for key, trait in traits.items() if trait.domain == "尽责性" %}
+                <span class="facet-tag">{{ trait.facet_name }}</span>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="info-section">
+    <h3>使用说明</h3>
+    <ol class="instructions">
+        <li>选择要测试的人格特质（从 30 个 NEO-PI-R 特质中选择）</li>
+        <li>选择参考题目（每个特质包含多个经典测试题目）</li>
+        <li>配置生成参数（情境主题、目标人群等）</li>
+        <li>选择生成类型（文字、图片或视频）</li>
+        <li>点击生成按钮，系统将自动创建 SJT 题目</li>
+    </ol>
+</div>
+{% endblock %}

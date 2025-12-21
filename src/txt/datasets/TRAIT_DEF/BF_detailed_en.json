@@ -1,0 +1,212 @@
+{
+  "N1": {
+    "facet_name": "Worry",
+    "domain": "Neuroticism",
+    "description": "Worry (N1) is characterized by a chronic tendency to feel nervous, fearful, and tense.",
+    "high_score": "High scorers are generally anxious and easily stressed; they often struggle with frequent fears or free-floating anxiety.",
+    "low_score": "Low scorers are calm and relaxed, rarely experiencing persistent worry or tension."
+  },
+  "N2": {
+    "facet_name": "Anger",
+    "domain": "Neuroticism",
+    "description": "Anger (N2) represents the tendency to experience feelings of anger, frustration, and bitterness readily.",
+    "high_score": "High scorers have a low threshold for frustration and are quick to feel anger or irritation, especially if they are also low in Agreeableness.",
+    "low_score": "Low scorers are easygoing and slow to anger, rarely experiencing strong bouts of anger even under stress."
+  },
+  "N3": {
+    "facet_name": "Discouragement",
+    "domain": "Neuroticism",
+    "description": "Discouragement (N3) — also known as Depression — measures the tendency to experience feelings of guilt, sadness, hopelessness, and loneliness.",
+    "high_score": "High scorers often feel depressed or discouraged; they are prone to guilt, low mood, and a sense of hopelessness or dejection.",
+    "low_score": "Low scorers rarely experience such pervasive sadness or depression (though they are not necessarily cheerful, as cheerfulness relates more to Extraversion)."
+  },
+  "N4": {
+    "facet_name": "Self-consciousness",
+    "domain": "Neuroticism",
+    "description": "Self-consciousness (N4) reflects proneness to feelings of shame and embarrassment in social situations.",
+    "high_score": "High scorers are easily embarrassed and very sensitive to ridicule or criticism; they often feel shy or inferior around others.",
+    "low_score": "Low scorers are more confident and less easily embarrassed, being relatively undisturbed by awkward social situations."
+  },
+  "N5": {
+    "facet_name": "Impulsivity",
+    "domain": "Neuroticism",
+    "description": "Impulsivity (N5) in NEO-PI-R refers specifically to difficulty resisting urges and cravings for immediate gratification.",
+    "high_score": "High scorers feel strong desires and cravings that they struggle to resist, often giving in to impulses (sometimes with later regret).",
+    "low_score": "Low scorers find it easier to resist temptations and delay gratification, showing high self-control and tolerance for frustration."
+  },
+  "N6": {
+    "facet_name": "Vulnerability",
+    "domain": "Neuroticism",
+    "description": "Vulnerability (N6) describes how easily one becomes overwhelmed by stress and pressure.",
+    "high_score": "High scorers feel incapable of handling stress and tend to panic or become helpless when facing crises or emergencies.",
+    "low_score": "Low scorers remain composed and confident under stress, feeling able to handle difficult situations without getting overwhelmed."
+  },
+  "E1": {
+    "facet_name": "Warmth",
+    "domain": "Extraversion",
+    "description": "Warmth (E1) indicates an affectionate, friendly interpersonal style and genuine liking for others.",
+    "high_score": "High scorers are warmly affectionate and easily form close, intimate relationships; they truly enjoy others’ company and openly express positive feelings toward people.",
+    "low_score": "Low scorers are more reserved and formal with others; while not necessarily cold, they maintain a certain distance and do not easily engage in hearty, outgoing friendliness."
+  },
+  "E2": {
+    "facet_name": "Gregariousness",
+    "domain": "Extraversion",
+    "description": "Gregariousness (E2) reflects a preference for other people’s company and enjoyment of social gatherings and crowds.",
+    "high_score": "High scorers are highly sociable, thriving in large groups and lively social situations — the more people and excitement, the better.",
+    "low_score": "Low scorers are solitary and independent, often avoiding social events; they tend to feel uncomfortable in crowds and may actively shun excessive social stimulation."
+  },
+  "E3": {
+    "facet_name": "Assertiveness",
+    "domain": "Extraversion",
+    "description": "Assertiveness (E3) reflects the tendency to take charge, speak up, and lead in group situations.",
+    "high_score": "High scorers are dominant, forceful, and often assume leadership roles; they speak confidently and may naturally direct group activities.",
+    "low_score": "Low scorers are unassertive and prefer to let others lead; they tend to stay in the background and are reluctant to speak up or take charge in groups."
+  },
+  "E4": {
+    "facet_name": "Activity",
+    "domain": "Extraversion",
+    "description": "Activity (E4) measures a person’s pace of living and need to stay busy, indicating a fast-paced and energetic lifestyle.",
+    "high_score": "High scorers lead fast-paced, vigorous lives; they are energetic, always busy, and often in a hurry to accomplish more in less time.",
+    "low_score": "Low scorers are more relaxed and unhurried; they move at a leisurely pace and are comfortable taking time for rest and reflection, rather than constant activity."
+  },
+  "E5": {
+    "facet_name": "Excitement-seeking",
+    "domain": "Extraversion",
+    "description": "Excitement-seeking (E5) captures the desire for thrills, stimulation, and novel experiences.",
+    "high_score": "High scorers crave excitement and sensory stimulation; they seek out adventure, love bright and noisy environments, and enjoy the adrenaline rush from risky or novel experiences.",
+    "low_score": "Low scorers have little need for exhilarating experiences; they prefer familiar, calm, and quiet settings that high excitement-seekers might find boring."
+  },
+  "E6": {
+    "facet_name": "Positive Emotions",
+    "domain": "Extraversion",
+    "description": "Positive Emotions (E6) reflects the tendency to frequently experience joy, enthusiasm, and optimism.",
+    "high_score": "High scorers feel joyous and excited much of the time; they laugh easily, are upbeat and optimistic, and generally have a cheerful disposition.",
+    "low_score": "Low scorers are less exuberant and emotionally expressive; they are not necessarily sad, but they rarely experience or display the high-spirited joy that characterizes high scorers on this facet."
+  },
+  "O1": {
+    "facet_name": "Fantasy",
+    "domain": "Openness",
+    "description": "Fantasy (O1) reflects the richness of one’s imagination and the tendency to indulge in a vivid fantasy life.",
+    "high_score": "High scorers have a very active imagination and spend a great deal of time fantasizing and daydreaming; they create an interesting inner world and see imagination as contributing to a creative life.",
+    "low_score": "Low scorers are more practical and grounded; they focus on the here-and-now and keep their minds on current tasks rather than indulging in daydreams."
+  },
+  "O2": {
+    "facet_name": "Aesthetics",
+    "domain": "Openness",
+    "description": "Aesthetics (O2) indicates one’s appreciation for art and beauty, including music, poetry, and visual art.",
+    "high_score": "High scorers have a deep appreciation for beauty in art and nature; they are often moved by music and poetry and tend to immerse themselves in artistic or cultural experiences.",
+    "low_score": "Low scorers are relatively insensitive to art and beauty; they have little interest in artistic works or aesthetic pleasures, often finding them unengaging."
+  },
+  "O3": {
+    "facet_name": "Feelings",
+    "domain": "Openness",
+    "description": "Feelings (O3) reflects openness to one’s own emotions and the value placed on emotional experience as a part of life.",
+    "high_score": "High scorers experience emotions intensely and are very attuned to their own feelings; they have rich emotional lives and feel happiness and sadness more deeply than others.",
+    "low_score": "Low scorers have a more blunted emotional life and often consider emotional reactions unimportant; they do not experience strong emotional highs or lows and may appear unemotional or detached."
+  },
+  "O4": {
+    "facet_name": "Actions",
+    "domain": "Openness",
+    "description": "Actions (O4) represents openness to new experiences on a practical level – the willingness to try new activities, visit new places, and break out of routines.",
+    "high_score": "High scorers love novelty and change; they are eager to try different hobbies, travel to new destinations, and experiment with new ways of doing things rather than stick to habitual routines.",
+    "low_score": "Low scorers prefer familiarity and routine over change; they find comfort in the tried-and-true and may resist new experiences or unconventional ways of doing things."
+  },
+  "O5": {
+    "facet_name": "Ideas",
+    "domain": "Openness",
+    "description": "Ideas (O5) reflects intellectual curiosity and open-mindedness – an interest in ideas for their own sake and a willingness to consider novel or unconventional concepts.",
+    "high_score": "High scorers are very curious and enjoy exploring abstract or complex ideas; they engage in philosophical discussions and problem-solving puzzles purely for intellectual stimulation.",
+    "low_score": "Low scorers have less interest in theoretical or abstract ideas; even if intelligent, they tend to focus on practical or familiar topics and show little curiosity about new concepts outside their expertise."
+  },
+  "O6": {
+    "facet_name": "Values",
+    "domain": "Openness",
+    "description": "Values (O6) involves openness to re-examining one’s own values and traditions, including social, political, and religious beliefs.",
+    "high_score": "High scorers are willing to question authority and traditional values; they are ready to explore alternative value systems and may embrace unconventional or progressive ideas in place of accepted norms.",
+    "low_score": "Low scorers tend to accept conventional norms and authority; they uphold traditional values and are generally conservative, showing little interest in challenging or changing prevailing social conventions."
+  },
+  "A1": {
+    "facet_name": "Trust",
+    "domain": "Agreeableness",
+    "description": "Trust (A1) reflects the belief that others are generally honest, fair, and well-intentioned, as opposed to seeing others as selfish or deceptive.",
+    "high_score": "High scorers assume the best of people; they believe others are trustworthy and sincere, and they give people the benefit of the doubt.",
+    "low_score": "Low scorers are suspicious of others’ motives; they are cynical and skeptical, often expecting that people will take advantage or lie if given the chance."
+  },
+  "A2": {
+    "facet_name": "Straightforwardness",
+    "domain": "Agreeableness",
+    "description": "Straightforwardness (A2) is the tendency to be frank, sincere, and candid in dealings with others, versus being crafty or manipulative.",
+    "high_score": "High scorers are honest and sincere in what they say; they prefer to speak plainly and directly, and they refrain from manipulating or deceiving others.",
+    "low_score": "Low scorers are willing to use flattery, craftiness, or deception when it suits them; they may stretch the truth or hide their real feelings, considering such tactics necessary in social interactions."
+  },
+  "A3": {
+    "facet_name": "Altruism",
+    "domain": "Agreeableness",
+    "description": "Altruism (A3) measures the active concern for others’ welfare and the willingness to help people in need.",
+    "high_score": "High scorers feel compassion for others and readily assist those in need; they find helping others rewarding and will go out of their way to be kind and generous.",
+    "low_score": "Low scorers are more focused on themselves and are less inclined to offer help; they can be seen as self-centered or indifferent, often preferring others handle their own problems without intervention."
+  },
+  "A4": {
+    "facet_name": "Compliance",
+    "domain": "Agreeableness",
+    "description": "Compliance (A4) pertains to how one handles interpersonal conflict – whether one defers to others and avoids confrontation versus being aggressive and headstrong.",
+    "high_score": "High scorers tend to defer in conflicts and avoid aggression; they are inclined to cooperate, forgive easily, and ‘forgive and forget’ after disagreements, often giving in for the sake of peace.",
+    "low_score": "Low scorers confront conflict directly; they are willing to argue and can be aggressive or stubborn, with little hesitation to express anger or compete rather than accommodate."
+  },
+  "A5": {
+    "facet_name": "Modesty",
+    "domain": "Agreeableness",
+    "description": "Modesty (A5) describes the tendency to be humble and unassuming, as opposed to believing one is superior to others.",
+    "high_score": "High scorers are modest and self-effacing; they do not like to brag and generally underestimate or understate their own achievements.",
+    "low_score": "Low scorers believe they are superior or more important than others and are not afraid to say so; they may come across as arrogant or conceited due to their lack of humility."
+  },
+  "A6": {
+    "facet_name": "Tender-Mindedness",
+    "domain": "Agreeableness",
+    "description": "Tender-Mindedness (A6) reflects sympathy and concern for others, i.e. how easily one is moved by others’ needs versus being hardheaded or unsentimental.",
+    "high_score": "High scorers are very empathetic and compassionate; they are easily moved by others’ troubles and prioritize kindness and humanitarian concern in decision-making.",
+    "low_score": "Low scorers are more hard-hearted and unsentimental; they pride themselves on making logical, objective decisions and are less swayed by emotional appeals or others’ suffering."
+  },
+  "C1": {
+    "facet_name": "Competence",
+    "domain": "Conscientiousness",
+    "description": "Competence (C1) is the sense of being capable, sensible, and effective in life – essentially, one’s belief in their own efficacy and competence.",
+    "high_score": "High scorers feel well-prepared to handle life’s challenges; they are confident in their ability to deal with tasks and problems and often view themselves as effective and competent.",
+    "low_score": "Low scorers have doubts about their abilities and often feel unprepared or ineffective; they may perceive themselves as inept and lack confidence in handling everyday responsibilities."
+  },
+  "C2": {
+    "facet_name": "Order",
+    "domain": "Conscientiousness",
+    "description": "Order (C2) reflects a preference for neatness, organization, and structure in one’s personal habits and surroundings.",
+    "high_score": "High scorers are very organized and tidy; they keep their belongings in order, maintain schedules and lists, and feel uncomfortable when things are out of place.",
+    "low_score": "Low scorers are disorganized and untidy; they have difficulty keeping track of things or maintaining structure, often living in clutter or chaos due to their lack of orderliness."
+  },
+  "C3": {
+    "facet_name": "Dutifulness",
+    "domain": "Conscientiousness",
+    "description": "Dutifulness (C3) involves adherence to moral principles and a strong sense of duty or obligation in meeting one’s responsibilities.",
+    "high_score": "High scorers strictly adhere to their ethical principles and fulfill their obligations conscientiously; they feel strongly about keeping their word and doing what they believe is right.",
+    "low_score": "Low scorers are more casual about rules and responsibilities; they may shirk commitments or be unreliable about honoring their promises, taking a more lax view of duties and principles."
+  },
+  "C4": {
+    "facet_name": "Achievement Striving",
+    "domain": "Conscientiousness",
+    "description": "Achievement Striving (C4) reflects the level of ambition and the drive to accomplish high goals through hard work and perseverance.",
+    "high_score": "High scorers are ambitious and driven to succeed; they set lofty goals, work diligently, and have a strong sense of purpose that can even lead them to become workaholics in pursuit of achievement.",
+    "low_score": "Low scorers lack ambition and often appear aimless or lazy; they are content with minimal accomplishments and show little drive to pursue goals or excel beyond the basics."
+  },
+  "C5": {
+    "facet_name": "Self-Discipline",
+    "domain": "Conscientiousness",
+    "description": "Self-Discipline (C5) is the ability to begin tasks and carry them through to completion, despite boredom or distractions, without giving in to procrastination.",
+    "high_score": "High scorers can motivate themselves to get tasks done even when they don’t feel like it; they resist procrastination, stay focused, and complete projects in a timely manner.",
+    "low_score": "Low scorers have difficulty motivating themselves; they procrastinate, get distracted easily, and often fail to finish tasks once started due to lack of persistence."
+  },
+  "C6": {
+    "facet_name": "Deliberation",
+    "domain": "Conscientiousness",
+    "description": "Deliberation (C6) refers to the tendency to think carefully before acting or speaking, considering potential consequences beforehand.",
+    "high_score": "High scorers are very cautious and deliberate in decision-making; they take their time to weigh options and rarely act on impulse or without planning.",
+    "low_score": "Low scorers are impulsive and often act or speak without much forethought; they tend to make snap decisions or say whatever comes to mind, though this spontaneity can be useful in urgent situations."
+  }
+}

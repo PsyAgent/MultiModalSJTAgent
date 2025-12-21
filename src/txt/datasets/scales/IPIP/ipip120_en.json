@@ -1,0 +1,662 @@
+{
+  "N1": {
+    "domain": "Neuroticism",
+    "facet_name": "Anxiety",
+    "items": {
+      "1": {
+        "item": "Worry about things.",
+        "scoring": "+"
+      },
+      "31": {
+        "item": "Fear for the worst.",
+        "scoring": "+"
+      },
+      "61": {
+        "item": "Am afraid of many things.",
+        "scoring": "+"
+      },
+      "91": {
+        "item": "Get stressed out easily.",
+        "scoring": "+"
+      }
+    }
+  },
+  "E1": {
+    "domain": "Extraversion",
+    "facet_name": "Friendliness",
+    "items": {
+      "2": {
+        "item": "Make friends easily.",
+        "scoring": "+"
+      },
+      "32": {
+        "item": "Feel comfortable around people.",
+        "scoring": "+"
+      },
+      "62": {
+        "item": "Avoid contacts with others.",
+        "scoring": "-"
+      },
+      "92": {
+        "item": "Keep others at a distance.",
+        "scoring": "-"
+      }
+    }
+  },
+  "O1": {
+    "domain": "Openness",
+    "facet_name": "Imagination",
+    "items": {
+      "3": {
+        "item": "Have a vivid imagination.",
+        "scoring": "+"
+      },
+      "33": {
+        "item": "Enjoy wild flights of fantasy.",
+        "scoring": "+"
+      },
+      "63": {
+        "item": "Love to daydream.",
+        "scoring": "+"
+      },
+      "93": {
+        "item": "Like to get lost in thought.",
+        "scoring": "+"
+      }
+    }
+  },
+  "A1": {
+    "domain": "Agreeableness",
+    "facet_name": "Trust",
+    "items": {
+      "4": {
+        "item": "Trust others.",
+        "scoring": "+"
+      },
+      "34": {
+        "item": "Believe that others have good intentions.",
+        "scoring": "+"
+      },
+      "64": {
+        "item": "Trust what people say.",
+        "scoring": "+"
+      },
+      "94": {
+        "item": "Distrust people.",
+        "scoring": "-"
+      }
+    }
+  },
+  "C1": {
+    "domain": "Conscientiousness",
+    "facet_name": "Self-Efficacy",
+    "items": {
+      "5": {
+        "item": "Complete tasks successfully.",
+        "scoring": "+"
+      },
+      "35": {
+        "item": "Excel in what I do.",
+        "scoring": "+"
+      },
+      "65": {
+        "item": "Handle tasks smoothly.",
+        "scoring": "+"
+      },
+      "95": {
+        "item": "Know how to get things done.",
+        "scoring": "+"
+      }
+    }
+  },
+  "N2": {
+    "domain": "Neuroticism",
+    "facet_name": "Anger",
+    "items": {
+      "6": {
+        "item": "Get angry easily.",
+        "scoring": "+"
+      },
+      "36": {
+        "item": "Get irritated easily.",
+        "scoring": "+"
+      },
+      "66": {
+        "item": "Lose my temper.",
+        "scoring": "+"
+      },
+      "96": {
+        "item": "Am not easily annoyed.",
+        "scoring": "-"
+      }
+    }
+  },
+  "E2": {
+    "domain": "Extraversion",
+    "facet_name": "Gregariousness",
+    "items": {
+      "7": {
+        "item": "Love large parties.",
+        "scoring": "+"
+      },
+      "37": {
+        "item": "Talk to a lot of different people at parties.",
+        "scoring": "+"
+      },
+      "67": {
+        "item": "Prefer to be alone.",
+        "scoring": "-"
+      },
+      "97": {
+        "item": "Avoid crowds.",
+        "scoring": "-"
+      }
+    }
+  },
+  "O2": {
+    "domain": "Openness",
+    "facet_name": "Artistic Interests",
+    "items": {
+      "8": {
+        "item": "Believe in the importance of art.",
+        "scoring": "+"
+      },
+      "38": {
+        "item": "See beauty in things that others might not notice.",
+        "scoring": "+"
+      },
+      "68": {
+        "item": "Do not like poetry.",
+        "scoring": "-"
+      },
+      "98": {
+        "item": "Do not enjoy going to art museums.",
+        "scoring": "-"
+      }
+    }
+  },
+  "A2": {
+    "domain": "Agreeableness",
+    "facet_name": "Morality",
+    "items": {
+      "9": {
+        "item": "Use others for my own ends.",
+        "scoring": "-"
+      },
+      "39": {
+        "item": "Cheat to get ahead.",
+        "scoring": "-"
+      },
+      "69": {
+        "item": "Take advantage of others.",
+        "scoring": "-"
+      },
+      "99": {
+        "item": "Obstruct others' plans.",
+        "scoring": "-"
+      }
+    }
+  },
+  "C2": {
+    "domain": "Conscientiousness",
+    "facet_name": "Orderliness",
+    "items": {
+      "10": {
+        "item": "Like to tidy up.",
+        "scoring": "+"
+      },
+      "40": {
+        "item": "Often forget to put things back in their proper place.",
+        "scoring": "-"
+      },
+      "70": {
+        "item": "Leave a mess in my room.",
+        "scoring": "-"
+      },
+      "100": {
+        "item": "Leave my belongings around.",
+        "scoring": "-"
+      }
+    }
+  },
+  "N3": {
+    "domain": "Neuroticism",
+    "facet_name": "Depression",
+    "items": {
+      "11": {
+        "item": "Often feel blue.",
+        "scoring": "+"
+      },
+      "41": {
+        "item": "Dislike myself.",
+        "scoring": "+"
+      },
+      "71": {
+        "item": "Am often down in the dumps.",
+        "scoring": "+"
+      },
+      "101": {
+        "item": "Feel comfortable with myself.",
+        "scoring": "-"
+      }
+    }
+  },
+  "E3": {
+    "domain": "Extraversion",
+    "facet_name": "Assertiveness",
+    "items": {
+      "12": {
+        "item": "Take charge.",
+        "scoring": "+"
+      },
+      "42": {
+        "item": "Try to lead others.",
+        "scoring": "+"
+      },
+      "72": {
+        "item": "Take control of things.",
+        "scoring": "+"
+      },
+      "102": {
+        "item": "Wait for others to lead the way.",
+        "scoring": "-"
+      }
+    }
+  },
+  "O3": {
+    "domain": "Openness",
+    "facet_name": "Emotionality",
+    "items": {
+      "13": {
+        "item": "Experience my emotions intensely.",
+        "scoring": "+"
+      },
+      "43": {
+        "item": "Feel others' emotions.",
+        "scoring": "+"
+      },
+      "73": {
+        "item": "Rarely notice my emotional reactions.",
+        "scoring": "-"
+      },
+      "103": {
+        "item": "Don't understand people who get emotional.",
+        "scoring": "-"
+      }
+    }
+  },
+  "A3": {
+    "domain": "Agreeableness",
+    "facet_name": "Altruism",
+    "items": {
+      "14": {
+        "item": "Love to help others.",
+        "scoring": "+"
+      },
+      "44": {
+        "item": "Am concerned about others.",
+        "scoring": "+"
+      },
+      "74": {
+        "item": "Am indifferent to the feelings of others.",
+        "scoring": "-"
+      },
+      "104": {
+        "item": "Take no time for others.",
+        "scoring": "-"
+      }
+    }
+  },
+  "C3": {
+    "domain": "Conscientiousness",
+    "facet_name": "Dutifulness",
+    "items": {
+      "15": {
+        "item": "Keep my promises.",
+        "scoring": "+"
+      },
+      "45": {
+        "item": "Tell the truth.",
+        "scoring": "+"
+      },
+      "75": {
+        "item": "Break rules.",
+        "scoring": "-"
+      },
+      "105": {
+        "item": "Break my promises.",
+        "scoring": "-"
+      }
+    }
+  },
+  "N4": {
+    "domain": "Neuroticism",
+    "facet_name": "Self-Consciousness",
+    "items": {
+      "16": {
+        "item": "Find it difficult to approach others.",
+        "scoring": "+"
+      },
+      "46": {
+        "item": "Am afraid to draw attention to myself.",
+        "scoring": "+"
+      },
+      "76": {
+        "item": "Only feel comfortable with friends.",
+        "scoring": "+"
+      },
+      "106": {
+        "item": "Am not bothered by difficult social situations.",
+        "scoring": "-"
+      }
+    }
+  },
+  "E4": {
+    "domain": "Extraversion",
+    "facet_name": "Activity Level",
+    "items": {
+      "17": {
+        "item": "Am always busy.",
+        "scoring": "+"
+      },
+      "47": {
+        "item": "Am always on the go.",
+        "scoring": "+"
+      },
+      "77": {
+        "item": "Do a lot in my spare time.",
+        "scoring": "+"
+      },
+      "107": {
+        "item": "Like to take it easy.",
+        "scoring": "-"
+      }
+    }
+  },
+  "O4": {
+    "domain": "Openness",
+    "facet_name": "Adventurousness",
+    "items": {
+      "18": {
+        "item": "Prefer variety to routine.",
+        "scoring": "+"
+      },
+      "48": {
+        "item": "Prefer to stick with things that I know.",
+        "scoring": "-"
+      },
+      "78": {
+        "item": "Dislike changes.",
+        "scoring": "-"
+      },
+      "108": {
+        "item": "Am attached to conventional ways.",
+        "scoring": "-"
+      }
+    }
+  },
+  "A4": {
+    "domain": "Agreeableness",
+    "facet_name": "Cooperation",
+    "items": {
+      "19": {
+        "item": "Love a good fight.",
+        "scoring": "-"
+      },
+      "49": {
+        "item": "Yell at people.",
+        "scoring": "-"
+      },
+      "79": {
+        "item": "Insult people.",
+        "scoring": "-"
+      },
+      "109": {
+        "item": "Get back at others.",
+        "scoring": "-"
+      }
+    }
+  },
+  "C4": {
+    "domain": "Conscientiousness",
+    "facet_name": "Achievement-Striving",
+    "items": {
+      "20": {
+        "item": "Work hard.",
+        "scoring": "+"
+      },
+      "50": {
+        "item": "Do more than what's expected of me.",
+        "scoring": "+"
+      },
+      "80": {
+        "item": "Do just enough work to get by.",
+        "scoring": "-"
+      },
+      "110": {
+        "item": "Put little time and effort into my work.",
+        "scoring": "-"
+      }
+    }
+  },
+  "N5": {
+    "domain": "Neuroticism",
+    "facet_name": "Immoderation",
+    "items": {
+      "21": {
+        "item": "Go on binges.",
+        "scoring": "+"
+      },
+      "51": {
+        "item": "Rarely overindulge.",
+        "scoring": "-"
+      },
+      "81": {
+        "item": "Easily resist temptations.",
+        "scoring": "-"
+      },
+      "111": {
+        "item": "Am able to control my cravings.",
+        "scoring": "-"
+      }
+    }
+  },
+  "E5": {
+    "domain": "Extraversion",
+    "facet_name": "Excitement-Seeking",
+    "items": {
+      "22": {
+        "item": "Love excitement.",
+        "scoring": "+"
+      },
+      "52": {
+        "item": "Seek adventure.",
+        "scoring": "+"
+      },
+      "82": {
+        "item": "Enjoy being reckless.",
+        "scoring": "+"
+      },
+      "112": {
+        "item": "Act wild and crazy.",
+        "scoring": "+"
+      }
+    }
+  },
+  "O5": {
+    "domain": "Openness",
+    "facet_name": "Intellect",
+    "items": {
+      "23": {
+        "item": "Love to read challenging material.",
+        "scoring": "+"
+      },
+      "53": {
+        "item": "Avoid philosophical discussions.",
+        "scoring": "-"
+      },
+      "83": {
+        "item": "Have difficulty understanding abstract ideas.",
+        "scoring": "-"
+      },
+      "113": {
+        "item": "Am not interested in theoretical discussions.",
+        "scoring": "-"
+      }
+    }
+  },
+  "A5": {
+    "domain": "Agreeableness",
+    "facet_name": "Modesty",
+    "items": {
+      "24": {
+        "item": "Believe that I am better than others.",
+        "scoring": "-"
+      },
+      "54": {
+        "item": "Think highly of myself.",
+        "scoring": "-"
+      },
+      "84": {
+        "item": "Have a high opinion of myself.",
+        "scoring": "-"
+      },
+      "114": {
+        "item": "Boast about my virtues.",
+        "scoring": "-"
+      }
+    }
+  },
+  "C5": {
+    "domain": "Conscientiousness",
+    "facet_name": "Self-Discipline",
+    "items": {
+      "25": {
+        "item": "Am always prepared.",
+        "scoring": "+"
+      },
+      "55": {
+        "item": "Carry out my plans.",
+        "scoring": "+"
+      },
+      "85": {
+        "item": "Waste my time.",
+        "scoring": "-"
+      },
+      "115": {
+        "item": "Have difficulty starting tasks.",
+        "scoring": "-"
+      }
+    }
+  },
+  "N6": {
+    "domain": "Neuroticism",
+    "facet_name": "Vulnerability",
+    "items": {
+      "26": {
+        "item": "Panic easily.",
+        "scoring": "+"
+      },
+      "56": {
+        "item": "Become overwhelmed by events.",
+        "scoring": "+"
+      },
+      "86": {
+        "item": "Feel that I'm unable to deal with things.",
+        "scoring": "+"
+      },
+      "116": {
+        "item": "Remain calm under pressure.",
+        "scoring": "-"
+      }
+    }
+  },
+  "E6": {
+    "domain": "Extraversion",
+    "facet_name": "Cheerfulness",
+    "items": {
+      "27": {
+        "item": "Radiate joy.",
+        "scoring": "+"
+      },
+      "57": {
+        "item": "Have a lot of fun.",
+        "scoring": "+"
+      },
+      "87": {
+        "item": "Love life.",
+        "scoring": "+"
+      },
+      "117": {
+        "item": "Look at the bright side of life.",
+        "scoring": "+"
+      }
+    }
+  },
+  "O6": {
+    "domain": "Openness",
+    "facet_name": "Liberalism",
+    "items": {
+      "28": {
+        "item": "View myself as predominantly liberal politically.",
+        "scoring": "+"
+      },
+      "58": {
+        "item": "Believe that there is no absolute right or wrong.",
+        "scoring": "+"
+      },
+      "88": {
+        "item": "View myself as predominantly conservative politically.",
+        "scoring": "-"
+      },
+      "118": {
+        "item": "Believe that we should be tough on crime.",
+        "scoring": "-"
+      }
+    }
+  },
+  "A6": {
+    "domain": "Agreeableness",
+    "facet_name": "Sympathy",
+    "items": {
+      "29": {
+        "item": "Sympathize with the homeless.",
+        "scoring": "+"
+      },
+      "59": {
+        "item": "Feel sympathy for those who are worse off than myself.",
+        "scoring": "+"
+      },
+      "89": {
+        "item": "Am not interested in other people's problems.",
+        "scoring": "-"
+      },
+      "119": {
+        "item": "Try not to think about the needy.",
+        "scoring": "-"
+      }
+    }
+  },
+  "C6": {
+    "domain": "Conscientiousness",
+    "facet_name": "Cautiousness",
+    "items": {
+      "30": {
+        "item": "Jump into things without thinking.",
+        "scoring": "-"
+      },
+      "60": {
+        "item": "Make rash decisions.",
+        "scoring": "-"
+      },
+      "90": {
+        "item": "Rush into things.",
+        "scoring": "-"
+      },
+      "120": {
+        "item": "Act without thinking.",
+        "scoring": "-"
+      }
+    }
+  }
+}

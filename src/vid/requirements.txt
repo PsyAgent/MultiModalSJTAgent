@@ -1,0 +1,8 @@
+python-dotenv>=1.0.1
+openai>=1.40.0
+requests>=2.32.3
+moviepy==1.0.3
+langchain-openai>=0.2.0
+langgraph>=0.2.24
+langgraph-swarm>=0.0.7
+langchain-core>=0.3.0

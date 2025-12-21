@@ -1,0 +1,47 @@
+{
+    "view": [
+        "wide shot",
+        "close-up",
+        "medium shot"
+    ],
+    "composition": [
+        "Rule of Thirds",
+        "Symmetrical (Centered)",
+        "Leading Lines",
+        "Frame within a Frame",
+        "Negative Space"
+    ],
+    "lighting": [
+    "High-Key Lighting",
+    "Low-Key Lighting",
+    "Soft Lighting",
+    "Hard Lighting",
+    "Backlighting (Silhouette)"
+    ],
+    "color Palette": [
+        "Warm Colors",
+        "Cool Colors",
+        "Monochromatic",
+        "Complementary Colors",
+        "Vibrant (High Saturation)",
+        "Muted (Desaturated)"
+    ],
+    "Mood/Atmosphere": [
+        "Tense / Suspenseful",
+        "Somber / Melancholic",
+        "Calm / Peaceful",
+        "Hopeful / Uplifting",
+        "Mysterious / Eerie"
+    ],
+    "Focus": [
+        "Shallow Focus",
+        "Deep Focus",
+        "Soft Focus"
+    ],
+    "framing": [
+        "Tight Framing",
+        "Loose Framing",
+        "Open Frame",
+        "Closed Frame"
+    ]
+}

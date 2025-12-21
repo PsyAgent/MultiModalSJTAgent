@@ -1,0 +1,1142 @@
+{
+  "N1": {
+    "domain": "Neuroticism",
+    "facet_name": "Worry",
+    "items": {
+      "1": {
+        "item": "I am not a worrier.",
+        "scoring": "-"
+      },
+      "31": {
+        "item": "I am easily frightened",
+        "scoring": "+"
+      },
+      "61": {
+        "item": "I rarely feel fearful or anxious",
+        "scoring": "-"
+      },
+      "91": {
+        "item": "I often feel tense and jittery",
+        "scoring": "+"
+      },
+      "121": {
+        "item": "I'm seldom apprehensive about the future",
+        "scoring": "-"
+      },
+      "151": {
+        "item": "I often worry about things that might go wrong.",
+        "scoring": "+"
+      },
+      "181": {
+        "item": "I have fewer fears than most people",
+        "scoring": "-"
+      },
+      "211": {
+        "item": "Frightening thoughts sometimes come into my head",
+        "scoring": "+"
+      }
+    }
+  },
+  "N2": {
+    "domain": "Neuroticism",
+    "facet_name": "Anger",
+    "items": {
+      "6": {
+        "item": "I often get angry at the way people treat me",
+        "scoring": "+"
+      },
+      "36": {
+        "item": "I'm an even-tempered person",
+        "scoring": "-"
+      },
+      "66": {
+        "item": "I am known as hot-blooded and quick-tempered",
+        "scoring": "+"
+      },
+      "96": {
+        "item": "I am not considered a touchy or temperamental person.",
+        "scoring": "-"
+      },
+      "126": {
+        "item": "I often get disgusted with people I have to deal with",
+        "scoring": "+"
+      },
+      "156": {
+        "item": "It takes a lot to get me mad",
+        "scoring": "-"
+      },
+      "186": {
+        "item": "At times I have felt bitter and resentful",
+        "scoring": "+"
+      },
+      "216": {
+        "item": "Even minor annoyances can be frustrating to me",
+        "scoring": "+"
+      }
+    }
+  },
+  "N3": {
+    "domain": "Neuroticism",
+    "facet_name": "Discouragement",
+    "items": {
+      "11": {
+        "item": "I rarely feel lonely or blue",
+        "scoring": "-"
+      },
+      "41": {
+        "item": "Sometimes I feel completely worthless",
+        "scoring": "+"
+      },
+      "71": {
+        "item": "I am seldom sad or depressed",
+        "scoring": "-"
+      },
+      "101": {
+        "item": "I have sometimes experienced a deep sense of guilt or sinfulness",
+        "scoring": "+"
+      },
+      "131": {
+        "item": "I tend to blame myself when anything goes wrong",
+        "scoring": "+"
+      },
+      "161": {
+        "item": "I have a low opinion of myself",
+        "scoring": "+"
+      },
+      "191": {
+        "item": "Sometimes things look pretty bleak and hopeless to me",
+        "scoring": "+"
+      },
+      "221": {
+        "item": "Too often, when things go wrong, I get discouraged and feel like giving up",
+        "scoring": "+"
+      }
+    }
+  },
+  "N4": {
+    "domain": "Neuroticism",
+    "facet_name": "Self-consciousness",
+    "items": {
+      "16": {
+        "item": "In dealing with other people, I always dread making a social blunder",
+        "scoring": "+"
+      },
+      "46": {
+        "item": "I seldom feel self-conscious when I'm around people",
+        "scoring": "-"
+      },
+      "76": {
+        "item": "At times I have been so ashamed I just wanted to hide",
+        "scoring": "+"
+      },
+      "106": {
+        "item": "It doesn't embarrass me too much if people ridicule and tease me",
+        "scoring": "-"
+      },
+      "136": {
+        "item": "I often feel inferior to others",
+        "scoring": "+"
+      },
+      "166": {
+        "item": "I feel comfortable in the presence of my bosses or other authorities",
+        "scoring": "-"
+      },
+      "196": {
+        "item": "If I have said or done the wrong thing to someone, I can hardly bear to face them again",
+        "scoring": "+"
+      },
+      "226": {
+        "item": "When people I know do foolish things, I get embarrassed for them",
+        "scoring": "+"
+      }
+    }
+  },
+  "N5": {
+    "domain": "Neuroticism",
+    "facet_name": "Impulsivity",
+    "items": {
+      "21": {
+        "item": "I rarely overindulge in anything",
+        "scoring": "-"
+      },
+      "51": {
+        "item": "I have trouble resisting my cravings",
+        "scoring": "+"
+      },
+      "81": {
+        "item": "I have little difficulty resisting temptation",
+        "scoring": "-"
+      },
+      "111": {
+        "item": "When I am having my favorite foods, I tend to eat too much",
+        "scoring": "+"
+      },
+      "141": {
+        "item": "I seldom give in to my impulses",
+        "scoring": "-"
+      },
+      "171": {
+        "item": "I sometimes eat myself sick.",
+        "scoring": "+"
+      },
+      "201": {
+        "item": "Sometimes I do things on impulse that I later regret",
+        "scoring": "+"
+      },
+      "231": {
+        "item": "I am always able to keep my feelings under control",
+        "scoring": "-"
+      }
+    }
+  },
+  "N6": {
+    "domain": "Neuroticism",
+    "facet_name": "Vulnerability",
+    "items": {
+      "26": {
+        "item": "I often feel helpless and want someone else to solve my problems",
+        "scoring": "+"
+      },
+      "56": {
+        "item": "I feel I am capable of coping with most of my problems",
+        "scoring": "-"
+      },
+      "86": {
+        "item": "When I'm under a great deal of stress, sometimes I feel like I'm going to pieces",
+        "scoring": "+"
+      },
+      "116": {
+        "item": "I keep a cool head in emergencies",
+        "scoring": "-"
+      },
+      "146": {
+        "item": "It's often hard for me to make up my mind.",
+        "scoring": "+"
+      },
+      "176": {
+        "item": "I can handle myself pretty well in a crisis",
+        "scoring": "-"
+      },
+      "206": {
+        "item": "When everything seems to be going wrong, I can still make good decisions",
+        "scoring": "-"
+      },
+      "236": {
+        "item": "I'm pretty stable emotionally",
+        "scoring": "-"
+      }
+    }
+  },
+  "E1": {
+    "domain": "Extraversion",
+    "facet_name": "Warmth",
+    "items": {
+      "2": {
+        "item": "I really like most people I meet",
+        "scoring": "+"
+      },
+      "32": {
+        "item": "I don't get much pleasure from chatting with people",
+        "scoring": "-"
+      },
+      "62": {
+        "item": "I'm known as a warm and friendly person",
+        "scoring": "+"
+      },
+      "92": {
+        "item": "Many people think of me as somewhat cold and distant",
+        "scoring": "-"
+      },
+      "122": {
+        "item": "I really enjoy talking to people",
+        "scoring": "+"
+      },
+      "152": {
+        "item": "I find it easy to smile and be outgoing with strangers.",
+        "scoring": "+"
+      },
+      "182": {
+        "item": "I have strong emotional attachments to my friends",
+        "scoring": "+"
+      },
+      "212": {
+        "item": "I take a personal interest in the people I work with",
+        "scoring": "+"
+      }
+    }
+  },
+  "E2": {
+    "domain": "Extraversion",
+    "facet_name": "Gregariousness",
+    "items": {
+      "7": {
+        "item": "I shy away from crowds of people.",
+        "scoring": "-"
+      },
+      "37": {
+        "item": "I like to have a lot of people around me",
+        "scoring": "+"
+      },
+      "67": {
+        "item": "I usually prefer to do things alone",
+        "scoring": "-"
+      },
+      "97": {
+        "item": "I really feel the need for other people if I am by myself for long.",
+        "scoring": "+"
+      },
+      "127": {
+        "item": "I prefer jobs that let me work alone without being bothered by other people",
+        "scoring": "-"
+      },
+      "157": {
+        "item": "I'd rather vacation at a popular beach than an isolated cabin in the woods.",
+        "scoring": "+"
+      },
+      "187": {
+        "item": "Social gatherings are usually boring to me",
+        "scoring": "-"
+      },
+      "217": {
+        "item": "I enjoy parties with lots of people",
+        "scoring": "+"
+      }
+    }
+  },
+  "E3": {
+    "domain": "Extraversion",
+    "facet_name": "Assertiveness",
+    "items": {
+      "12": {
+        "item": "I am dominant, forceful, and assertive",
+        "scoring": "+"
+      },
+      "42": {
+        "item": "I sometimes fail to assert myself as much as I should",
+        "scoring": "-"
+      },
+      "72": {
+        "item": "I have often been a leader of groups I have belonged to",
+        "scoring": "+"
+      },
+      "102": {
+        "item": "In meetings, I usually let others do the talking",
+        "scoring": "-"
+      },
+      "132": {
+        "item": "Other people often look to me to make decisions",
+        "scoring": "+"
+      },
+      "162": {
+        "item": "I would rather go my own way than be a leader of others",
+        "scoring": "-"
+      },
+      "192": {
+        "item": "In conversations, I tend to do most of the talking",
+        "scoring": "+"
+      },
+      "222": {
+        "item": "I don't find it easy to take charge of a situation",
+        "scoring": "-"
+      }
+    }
+  },
+  "E4": {
+    "domain": "Extraversion",
+    "facet_name": "Activity",
+    "items": {
+      "17": {
+        "item": "I have a leisurely style in work and play",
+        "scoring": "-"
+      },
+      "47": {
+        "item": "When I do things, I do them vigorously",
+        "scoring": "+"
+      },
+      "77": {
+        "item": "My work is likely to be slow but steady",
+        "scoring": "-"
+      },
+      "107": {
+        "item": "I often feel as if I'm bursting with energy",
+        "scoring": "+"
+      },
+      "137": {
+        "item": "I'm not as quick and lively as other people",
+        "scoring": "-"
+      },
+      "167": {
+        "item": "I usually seem to be in a hurry",
+        "scoring": "+"
+      },
+      "197": {
+        "item": "My life is fast-paced",
+        "scoring": "+"
+      },
+      "227": {
+        "item": "I am a very active person",
+        "scoring": "+"
+      }
+    }
+  },
+  "E5": {
+    "domain": "Extraversion",
+    "facet_name": "Excitement-seeking",
+    "items": {
+      "22": {
+        "item": "I often crave excitement",
+        "scoring": "+"
+      },
+      "52": {
+        "item": "I wouldn't enjoy vacationing in Las Vegas",
+        "scoring": "-"
+      },
+      "82": {
+        "item": "I have sometimes done things just for \"kicks\" or thrills",
+        "scoring": "+"
+      },
+      "112": {
+        "item": "I tend to avoid movies that are shocking or scary",
+        "scoring": "-"
+      },
+      "142": {
+        "item": "I like to be where the action is",
+        "scoring": "+"
+      },
+      "172": {
+        "item": "I love the excitement of roller coasters",
+        "scoring": "+"
+      },
+      "202": {
+        "item": "I'm attracted to bright colors and flashy styles",
+        "scoring": "+"
+      },
+      "232": {
+        "item": "I like being part of the crowd at sporting events",
+        "scoring": "+"
+      }
+    }
+  },
+  "E6": {
+    "domain": "Extraversion",
+    "facet_name": "Positive Emotions",
+    "items": {
+      "27": {
+        "item": "I have never literally jumped for joy",
+        "scoring": "-"
+      },
+      "57": {
+        "item": "I have sometimes experienced intense joy or ecstasy",
+        "scoring": "+"
+      },
+      "87": {
+        "item": "I am not a cheerful optimist",
+        "scoring": "-"
+      },
+      "117": {
+        "item": "Sometimes I bubble with happiness",
+        "scoring": "+"
+      },
+      "147": {
+        "item": "I don't consider myself especially \"light-hearted\".",
+        "scoring": "-"
+      },
+      "177": {
+        "item": "I am a cheerful, high-spirited person.",
+        "scoring": "+"
+      },
+      "207": {
+        "item": "I rarely use words like \"fantastic!\" or \"sensational!\" to describe my experiences",
+        "scoring": "-"
+      },
+      "237": {
+        "item": "I laugh easily",
+        "scoring": "+"
+      }
+    }
+  },
+  "O1": {
+    "domain": "Openness",
+    "facet_name": "Fantasy",
+    "items": {
+      "3": {
+        "item": "I have a very active imagination",
+        "scoring": "+"
+      },
+      "33": {
+        "item": "I try to keep all my thoughts directed along realistic lines and avoid flights of fancy",
+        "scoring": "-"
+      },
+      "63": {
+        "item": "I have an active fantasy life",
+        "scoring": "+"
+      },
+      "93": {
+        "item": "I don't like to waste my time daydreaming",
+        "scoring": "-"
+      },
+      "123": {
+        "item": "I enjoy concentrating on a fantasy or daydream and exploring all its possibilities, letting it grow and develop",
+        "scoring": "+"
+      },
+      "153": {
+        "item": "If I feel my mind starting to drift off into daydreams, I usually get busy and start concentrating on some work or activity instead",
+        "scoring": "-"
+      },
+      "183": {
+        "item": "As a child I rarely enjoyed games of make believe",
+        "scoring": "-"
+      },
+      "213": {
+        "item": "I would have difficulty just letting my mind wander without control or guidance",
+        "scoring": "-"
+      }
+    }
+  },
+  "O2": {
+    "domain": "Openness",
+    "facet_name": "Aesthetics",
+    "items": {
+      "8": {
+        "item": "Aesthetic and artistic concerns aren't very important to me",
+        "scoring": "-"
+      },
+      "38": {
+        "item": "I am sometimes completely absorbed in music I am listening to",
+        "scoring": "+"
+      },
+      "68": {
+        "item": "Watching ballet or modern dance bores me",
+        "scoring": "-"
+      },
+      "98": {
+        "item": "I am intrigued by the patterns I find in art and nature",
+        "scoring": "+"
+      },
+      "128": {
+        "item": "Poetry has little or no effect on me",
+        "scoring": "-"
+      },
+      "158": {
+        "item": "Certain kinds of music have an endless fascination for me",
+        "scoring": "+"
+      },
+      "188": {
+        "item": "Sometimes when I am reading poetry or looking at a work of art, I feel a chill or wave of excitement",
+        "scoring": "+"
+      },
+      "218": {
+        "item": "I enjoy reading poetry that emphasizes feelings and images more than story lines",
+        "scoring": "+"
+      }
+    }
+  },
+  "O3": {
+    "domain": "Openness",
+    "facet_name": "Feelings",
+    "items": {
+      "13": {
+        "item": "Without strong emotions, life would be uninteresting to me",
+        "scoring": "+"
+      },
+      "43": {
+        "item": "I rarely experience strong emotions",
+        "scoring": "-"
+      },
+      "73": {
+        "item": "How I feel about things is important to me",
+        "scoring": "+"
+      },
+      "103": {
+        "item": "I seldom pay much attention to my feelings of the moment",
+        "scoring": "-"
+      },
+      "133": {
+        "item": "I experience a wide range of emotions or feelings",
+        "scoring": "+"
+      },
+      "163": {
+        "item": "I seldom notice the moods or feelings that different environments produce",
+        "scoring": "-"
+      },
+      "193": {
+        "item": "I find it easy to empathize-to feel myself what others are feeling",
+        "scoring": "+"
+      },
+      "223": {
+        "item": "Odd things-like certain scents or the names of distant places-can evoke strong moods in me",
+        "scoring": "+"
+      }
+    }
+  },
+  "O4": {
+    "domain": "Openness",
+    "facet_name": "Actions",
+    "items": {
+      "18": {
+        "item": "I'm pretty set in my ways",
+        "scoring": "-"
+      },
+      "48": {
+        "item": "I think it's interesting to learn and develop new hobbies",
+        "scoring": "+"
+      },
+      "78": {
+        "item": "Once I find the right way to do something, I stick to it",
+        "scoring": "-"
+      },
+      "108": {
+        "item": "I often try new and foreign foods",
+        "scoring": "+"
+      },
+      "138": {
+        "item": "I prefer to spend my time in familiar surroundings",
+        "scoring": "-"
+      },
+      "168": {
+        "item": "Sometimes I make changes around the house just to try something different",
+        "scoring": "+"
+      },
+      "198": {
+        "item": "On a vacation, I prefer going back to a tried and true spot",
+        "scoring": "-"
+      },
+      "228": {
+        "item": "I follow the same route when I go someplace",
+        "scoring": "-"
+      }
+    }
+  },
+  "O5": {
+    "domain": "Openness",
+    "facet_name": "Ideas",
+    "items": {
+      "23": {
+        "item": "I often enjoy playing with theories or abstract ideas",
+        "scoring": "+"
+      },
+      "53": {
+        "item": "I find philosophical arguments boring",
+        "scoring": "-"
+      },
+      "83": {
+        "item": "I enjoy solving problems or puzzles",
+        "scoring": "+"
+      },
+      "113": {
+        "item": "I sometimes lose interest when people talk about very abstract, theoretical matters",
+        "scoring": "-"
+      },
+      "143": {
+        "item": "I enjoy working on \"mind-twister\"-type puzzles",
+        "scoring": "+"
+      },
+      "173": {
+        "item": "I have little interest in speculating on the nature of the universe or the human condition",
+        "scoring": "-"
+      },
+      "203": {
+        "item": "I have a lot of intellectual curiosity",
+        "scoring": "+"
+      },
+      "233": {
+        "item": "I have a wide range of intellectual interests",
+        "scoring": "+"
+      }
+    }
+  },
+  "O6": {
+    "domain": "Openness",
+    "facet_name": "Values",
+    "items": {
+      "28": {
+        "item": "I believe letting students hear controversial speakers can only confuse and mislead them",
+        "scoring": "-"
+      },
+      "58": {
+        "item": "I believe that laws and social policies should change to reflect the needs of a changing world",
+        "scoring": "+"
+      },
+      "88": {
+        "item": "I believe we should look to our religious authorities for decisions on moral issues",
+        "scoring": "-"
+      },
+      "118": {
+        "item": "I believe that the different ideas of right and wrong that people in other societies have may be valid for them",
+        "scoring": "+"
+      },
+      "148": {
+        "item": "I believe that loyalty to one's ideals and principles is more important than \"open- mindedness\".",
+        "scoring": "-"
+      },
+      "178": {
+        "item": "I consider myself broad-minded and tolerant of other people's lifestyles",
+        "scoring": "+"
+      },
+      "208": {
+        "item": "I think that if people don't know what they believe in by the time they're 25, there's something wrong with them",
+        "scoring": "-"
+      },
+      "238": {
+        "item": "I believe that the \"new morality\" of permissiveness is no morality at all",
+        "scoring": "-"
+      }
+    }
+  },
+  "A1": {
+    "domain": "Agreeableness",
+    "facet_name": "Trust",
+    "items": {
+      "4": {
+        "item": "I tend to be cynical and skeptical of others' intentions",
+        "scoring": "-"
+      },
+      "34": {
+        "item": "I believe that most people are basically well-intentioned",
+        "scoring": "+"
+      },
+      "64": {
+        "item": "I believe that most people will take advantage of you if you let them",
+        "scoring": "-"
+      },
+      "94": {
+        "item": "I think most of the people I deal with are honest and trustworthy",
+        "scoring": "+"
+      },
+      "124": {
+        "item": "I'm suspicious when someone does something nice for me",
+        "scoring": "-"
+      },
+      "154": {
+        "item": "My first reaction is to trust people",
+        "scoring": "+"
+      },
+      "184": {
+        "item": "I tend to assume the best about people",
+        "scoring": "+"
+      },
+      "214": {
+        "item": "I have a good deal of faith in human nature",
+        "scoring": "+"
+      }
+    }
+  },
+  "A2": {
+    "domain": "Agreeableness",
+    "facet_name": "Straightforwardness",
+    "items": {
+      "9": {
+        "item": "I'm not crafty or sly",
+        "scoring": "+"
+      },
+      "39": {
+        "item": "If necessary, I am willing to manipulate people to get what I want",
+        "scoring": "-"
+      },
+      "69": {
+        "item": "I couldn't deceive anyone even if I wanted to",
+        "scoring": "+"
+      },
+      "99": {
+        "item": "Being perfectly honest is a bad way to do business",
+        "scoring": "-"
+      },
+      "129": {
+        "item": "I would hate to be thought of as a hypocrite",
+        "scoring": "+"
+      },
+      "159": {
+        "item": "Sometimes I trick people into doing what I want.",
+        "scoring": "-"
+      },
+      "189": {
+        "item": "At times I bully or flatter people into doing what I want them to",
+        "scoring": "-"
+      },
+      "219": {
+        "item": "I pride myself on my shrewdness in handling people",
+        "scoring": "-"
+      }
+    }
+  },
+  "A3": {
+    "domain": "Agreeableness",
+    "facet_name": "Altruism",
+    "items": {
+      "14": {
+        "item": "Some people think I'm selfish and egotistical",
+        "scoring": "-"
+      },
+      "44": {
+        "item": "I try to be courteous to everyone I meet",
+        "scoring": "+"
+      },
+      "74": {
+        "item": "Some people think of me as cold and calculating",
+        "scoring": "-"
+      },
+      "104": {
+        "item": "I generally try to be thoughtful and considerate",
+        "scoring": "+"
+      },
+      "134": {
+        "item": "I'm not known for my generosity.",
+        "scoring": "-"
+      },
+      "164": {
+        "item": "Most people I know like me",
+        "scoring": "+"
+      },
+      "194": {
+        "item": "I think of myself as a charitable person",
+        "scoring": "+"
+      },
+      "224": {
+        "item": "I go out of my way to help others if I can",
+        "scoring": "+"
+      }
+    }
+  },
+  "A4": {
+    "domain": "Agreeableness",
+    "facet_name": "Compliance",
+    "items": {
+      "19": {
+        "item": "I would rather cooperate with others than compete with them",
+        "scoring": "+"
+      },
+      "49": {
+        "item": "I can be sarcastic and cutting when I need to be",
+        "scoring": "-"
+      },
+      "79": {
+        "item": "I hesitate to express my anger even when it's justified",
+        "scoring": "+"
+      },
+      "109": {
+        "item": "If I don't like people, I let them know it",
+        "scoring": "-"
+      },
+      "139": {
+        "item": "When I've been insulted, I just try to forgive and forget",
+        "scoring": "+"
+      },
+      "169": {
+        "item": "If someone starts a fight, I'm ready to fight back.",
+        "scoring": "-"
+      },
+      "199": {
+        "item": "I'm hard-headed and stubborn",
+        "scoring": "-"
+      },
+      "229": {
+        "item": "I often get into arguments with my family and co-workers",
+        "scoring": "-"
+      }
+    }
+  },
+  "A5": {
+    "domain": "Agreeableness",
+    "facet_name": "Modesty",
+    "items": {
+      "24": {
+        "item": "I don't mind bragging about my talents and accomplishments",
+        "scoring": "+"
+      },
+      "54": {
+        "item": "I'd rather not talk about myself and my achievements",
+        "scoring": "+"
+      },
+      "84": {
+        "item": "I'm better than most people, and I know it.",
+        "scoring": "-"
+      },
+      "114": {
+        "item": "I try to be humble",
+        "scoring": "+"
+      },
+      "144": {
+        "item": "I have a very high opinion of myself.",
+        "scoring": "-"
+      },
+      "174": {
+        "item": "I feel that I am no better than others, no matter what their condition",
+        "scoring": "+"
+      },
+      "204": {
+        "item": "I would rather praise others than be praised myself",
+        "scoring": "+"
+      },
+      "234": {
+        "item": "I'm a superior person",
+        "scoring": "-"
+      }
+    }
+  },
+  "A6": {
+    "domain": "Agreeableness",
+    "facet_name": "Tender-Mindedness",
+    "items": {
+      "29": {
+        "item": "Political leaders need to be more aware of the human side of their policies",
+        "scoring": "+"
+      },
+      "59": {
+        "item": "I'm hard-headed and tough-minded in my attitudes",
+        "scoring": "-"
+      },
+      "89": {
+        "item": "We can never do too much for the poor and elderly",
+        "scoring": "+"
+      },
+      "119": {
+        "item": "I have no sympathy for beggars",
+        "scoring": "-"
+      },
+      "149": {
+        "item": "Human need should always take priority over economic considerations",
+        "scoring": "+"
+      },
+      "179": {
+        "item": "I believe all human beings are worthy of respect.",
+        "scoring": "+"
+      },
+      "209": {
+        "item": "I have sympathy for others less fortunate than me",
+        "scoring": "+"
+      },
+      "239": {
+        "item": "I would rather be known as \"merciful\" than as “just”",
+        "scoring": "+"
+      }
+    }
+  },
+  "C1": {
+    "domain": "Conscientiousness",
+    "facet_name": "Competence",
+    "items": {
+      "5": {
+        "item": "I'm known for my prudence and common sense",
+        "scoring": "+"
+      },
+      "35": {
+        "item": "I don't take civic duties like voting very seriously",
+        "scoring": "-"
+      },
+      "65": {
+        "item": "I keep myself informed and usually make intelligent decisions",
+        "scoring": "+"
+      },
+      "95": {
+        "item": "I often come into situations without being fully prepared",
+        "scoring": "-"
+      },
+      "125": {
+        "item": "I pride myself on my sound judgment",
+        "scoring": "+"
+      },
+      "155": {
+        "item": "I don't seem to be completely successful at anything",
+        "scoring": "-"
+      },
+      "185": {
+        "item": "I'm a very competent person",
+        "scoring": "+"
+      },
+      "215": {
+        "item": "I am efficient and effective at my work",
+        "scoring": "+"
+      }
+    }
+  },
+  "C2": {
+    "domain": "Conscientiousness",
+    "facet_name": "Order",
+    "items": {
+      "10": {
+        "item": "I would rather keep my options open than plan everything in advance",
+        "scoring": "-"
+      },
+      "40": {
+        "item": "I keep my belongings neat and clean",
+        "scoring": "+"
+      },
+      "70": {
+        "item": "I am not a very methodical person",
+        "scoring": "-"
+      },
+      "100": {
+        "item": "I like to keep everything in its place so I know just where it is",
+        "scoring": "+"
+      },
+      "130": {
+        "item": "I never seem to be able to get organized",
+        "scoring": "-"
+      },
+      "160": {
+        "item": "I tend to be somewhat fastidious or exacting",
+        "scoring": "+"
+      },
+      "190": {
+        "item": "I'm not compulsive about cleaning",
+        "scoring": "-"
+      },
+      "220": {
+        "item": "I spend a lot of time looking for things I've misplaced",
+        "scoring": "-"
+      }
+    }
+  },
+  "C3": {
+    "domain": "Conscientiousness",
+    "facet_name": "Dutifulness",
+    "items": {
+      "15": {
+        "item": "I try to perform all the tasks assigned to me conscientiously",
+        "scoring": "+"
+      },
+      "45": {
+        "item": "Sometimes I'm not as dependable or reliable as I should be",
+        "scoring": "-"
+      },
+      "75": {
+        "item": "I pay my debts promptly and in full",
+        "scoring": "+"
+      },
+      "105": {
+        "item": "Sometimes I cheat when I play solitaire",
+        "scoring": "-"
+      },
+      "135": {
+        "item": "When I make a commitment, I can always be counted on to follow through",
+        "scoring": "+"
+      },
+      "165": {
+        "item": "I adhere strictly to my ethical principles",
+        "scoring": "+"
+      },
+      "195": {
+        "item": "I try to do jobs carefully, so they won't have to he done again.",
+        "scoring": "+"
+      },
+      "225": {
+        "item": "I'd really have to be sick before I'd miss a day of work",
+        "scoring": "+"
+      }
+    }
+  },
+  "C4": {
+    "domain": "Conscientiousness",
+    "facet_name": "Achievement Striving",
+    "items": {
+      "20": {
+        "item": "I am easy-going and lackadaisical",
+        "scoring": "-"
+      },
+      "50": {
+        "item": "I have a clear set of goals and work toward them in an orderly fashion",
+        "scoring": "+"
+      },
+      "80": {
+        "item": "When I start a self-improvement program, I usually let it slide after a few days",
+        "scoring": "-"
+      },
+      "110": {
+        "item": "I work hard to accomplish my goals",
+        "scoring": "+"
+      },
+      "140": {
+        "item": "I don't feel like I'm driven to get ahead",
+        "scoring": "-"
+      },
+      "170": {
+        "item": "I strive to achieve all I can",
+        "scoring": "+"
+      },
+      "200": {
+        "item": "I strive for excellence in everything I do",
+        "scoring": "+"
+      },
+      "230": {
+        "item": "I'm something of a \"workaholic\"",
+        "scoring": "+"
+      }
+    }
+  },
+  "C5": {
+    "domain": "Conscientiousness",
+    "facet_name": "Self-Discipline",
+    "items": {
+      "25": {
+        "item": "I'm pretty good about pacing myself so as to get things done on time",
+        "scoring": "+"
+      },
+      "55": {
+        "item": "I waste a lot of time before settling down to work",
+        "scoring": "-"
+      },
+      "85": {
+        "item": "I am a productive person who always gets the job done.",
+        "scoring": "+"
+      },
+      "115": {
+        "item": "I have trouble making myself do what I should",
+        "scoring": "-"
+      },
+      "145": {
+        "item": "Once I start a project, I almost always finish it",
+        "scoring": "+"
+      },
+      "175": {
+        "item": "When a project gets too difficult, I'm inclined to start a new one.",
+        "scoring": "-"
+      },
+      "205": {
+        "item": "There are so many little jobs that need to be done that I sometimes just ignore them all",
+        "scoring": "-"
+      },
+      "235": {
+        "item": "I have a lot of self-discipline",
+        "scoring": "+"
+      }
+    }
+  },
+  "C6": {
+    "domain": "Conscientiousness",
+    "facet_name": "Deliberation",
+    "items": {
+      "30": {
+        "item": "Over the years I've done some pretty stupid things",
+        "scoring": "-"
+      },
+      "60": {
+        "item": "I think things through before coming to a decision",
+        "scoring": "+"
+      },
+      "90": {
+        "item": "Occasionally I act first and think later",
+        "scoring": "-"
+      },
+      "120": {
+        "item": "I always consider the consequences before I take action",
+        "scoring": "+"
+      },
+      "150": {
+        "item": "I often do things on the spur of the moment.",
+        "scoring": "-"
+      },
+      "180": {
+        "item": "I rarely make hasty decisions",
+        "scoring": "+"
+      },
+      "210": {
+        "item": "I plan ahead carefully when I go on a trip",
+        "scoring": "+"
+      },
+      "240": {
+        "item": "I think twice before I answer a question.",
+        "scoring": "+"
+      }
+    }
+  }
+}
