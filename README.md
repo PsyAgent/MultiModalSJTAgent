@@ -69,4 +69,5 @@ curl -X POST http://localhost:4399/api/generate/video \
 ---
 
 **技术栈**: Flask · LangChain · LangGraph · OpenCV · InsightFace · MoviePy
+
 **GitHub**: https://github.com/PsyAgent | **Issues**: https://github.com/PsyAgent/MultiModalSJTAgent/issues
