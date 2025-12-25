@@ -191,22 +191,19 @@ def generate_image():
         basename = f"SJT_{trait_id}_{item_id}"
         result = img_agent.run(
             run_bubble=run_bubble,
-            outdir=outdir,
+            outdir=str(outdir),
             out_basename=basename
         )
 
-        # Find generated image files
+        # Extract image files from result
         image_files = []
-        for ext in ['.png', '.jpg', '.jpeg']:
-            img_path = outdir / f"{basename}{ext}"
-            if img_path.exists():
-                image_files.append(f"{basename}{ext}")
-
-        # Also check for numbered files (e.g., SJT_N1_1_0.png, SJT_N1_1_1.png)
-        for file in outdir.glob(f"{basename}_*.png"):
-            image_files.append(file.name)
-        for file in outdir.glob(f"{basename}_*.jpg"):
-            image_files.append(file.name)
+        
+        # Get the situation image from result
+        if result and 'situation' in result:
+            situation_path = Path(result['situation'])
+            if situation_path.exists():
+                # Extract just the filename relative to outdir
+                image_files.append(situation_path.name)
 
         return jsonify({
             'success': True,

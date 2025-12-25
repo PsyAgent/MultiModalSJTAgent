@@ -297,8 +297,10 @@ class PicSJTAgent:
         for desc, step_func in pbar:
             pbar.set_postfix_str(f'{desc}')
             step_func()
+        if out_basename is not None:
+            self.output_fname = out_basename
         if save:
-            self.save(overwrite=save_overwrite)
+            self.save(overwrite=save_overwrite, output_dir=outdir)
         if return_details:
             return {
                 'G': self.G,
@@ -314,8 +316,6 @@ class PicSJTAgent:
             }
         else:
             self.annotations['bubbled_sequence'].save(op.join(outdir, f"{self.output_fname}_situation_seq.png"))
-            if out_basename is not None:
-                self.output_fname = out_basename
             return {
                 'situation': op.join(outdir, f"{self.output_fname}_situation_seq.png"),
                 'options': self.original_situ.get('options', []),
