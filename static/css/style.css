@@ -126,7 +126,7 @@ body {
 /* Main Content */
 .main-content {
     min-height: calc(100vh - 200px);
-    padding: 60px 0;
+    padding: 30px 0;
 }
 
 /* Hero Section */
@@ -159,28 +159,28 @@ body {
 
 /* Page Header */
 .page-header {
-    text-align: center;
-    padding: 80px 0 50px;
-    margin-bottom: 60px;
+    text-align: left;
+    padding: 20px 0 30px;
+    margin-bottom: 30px;
+    border-bottom: 1px solid var(--border-color);
 }
 
 .page-header h2 {
-    font-size: 56px;
-    line-height: 1.07143;
+    font-size: 32px;
+    line-height: 1.2;
     font-weight: 600;
     letter-spacing: -0.005em;
-    margin: 0 0 16px;
+    margin: 0 0 6px;
     color: var(--dark-color);
 }
 
 .page-header p {
-    font-size: 24px;
-    line-height: 1.33;
+    font-size: 15px;
+    line-height: 1.4;
     font-weight: 400;
-    letter-spacing: 0.009em;
+    letter-spacing: -0.01em;
     color: var(--gray-color);
-    margin: 0 auto 12px;
-    max-width: 980px;
+    margin: 0;
 }
 
 .page-header .info-note {

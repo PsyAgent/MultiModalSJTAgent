@@ -92,6 +92,29 @@ def video_sjt():
     return render_template('video_sjt.html', traits=available_traits)
 
 
+@app.route('/quiz')
+def quiz():
+    """Quiz display page for generated content"""
+    import json
+    generated_dir = Path("./generated")
+    
+    sjt_data = {}
+    for json_file in ['sjt_txt.json', 'sjt_img.json', 'sjt_vid.json']:
+        file_path = generated_dir / json_file
+        if file_path.exists():
+            with open(file_path, 'r', encoding='utf-8') as f:
+                sjt_type = json_file.replace('sjt_', '').replace('.json', '')
+                sjt_data[sjt_type] = json.load(f)
+    
+    return render_template('quiz.html', sjt_data=sjt_data)
+
+
+@app.route('/generated/<path:filename>')
+def serve_generated_file(filename):
+    """Serve files from the generated directory"""
+    return send_from_directory('./generated', filename)
+
+
 @app.route('/api/generate/text', methods=['POST'])
 def generate_text():
     """Generate text SJT"""

@@ -1,0 +1,341 @@
+{% extends "base.html" %}
+
+{% block title %}生成结果 - SJT Agent{% endblock %}
+
+{% block content %}
+<div class="page-header">
+    <h2>📋 生成结果</h2>
+    <p>查看已生成的情境判断测试题目</p>
+</div>
+
+<div class="quiz-container">
+    <div class="quiz-controls">
+        <div class="form-group">
+            <label for="quiz-type">测验类型:</label>
+            <select id="quiz-type" class="form-control">
+                <option value="">-- 选择测验类型 --</option>
+                {% if sjt_data.txt %}
+                <option value="txt">文字测验</option>
+                {% endif %}
+                {% if sjt_data.img %}
+                <option value="img">图片测验</option>
+                {% endif %}
+                {% if sjt_data.vid %}
+                <option value="vid">视频测验</option>
+                {% endif %}
+            </select>
+        </div>
+
+        <div class="form-group">
+            <label for="trait-select">选择特质:</label>
+            <select id="trait-select" class="form-control" disabled>
+                <option value="">-- 先选择测验类型 --</option>
+            </select>
+        </div>
+    </div>
+
+    <div class="quiz-content" id="quiz-content" style="display: none;">
+        <div class="trait-header">
+            <h3><span id="trait-name"></span></h3>
+        </div>
+        <div id="questions-container"></div>
+    </div>
+
+    <div class="empty-message" id="empty-message">
+        <p>请选择测验类型和特质</p>
+    </div>
+</div>
+
+<style>
+.quiz-container {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+.quiz-controls {
+    background: white;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    margin-bottom: 20px;
+}
+
+.quiz-controls .form-group {
+    margin-bottom: 15px;
+}
+
+.quiz-controls label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: 600;
+    color: #333;
+}
+
+.quiz-controls select {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 14px;
+}
+
+.trait-header {
+    background: white;
+    padding: 20px 30px;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    margin-bottom: 20px;
+    border-left: 5px solid #4CAF50;
+}
+
+.trait-header h3 {
+    margin: 0;
+    color: #333;
+    font-size: 24px;
+}
+
+.question-card {
+    background: white;
+    padding: 30px;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    margin-bottom: 20px;
+}
+
+.question-header {
+    border-bottom: 2px solid #4CAF50;
+    padding-bottom: 10px;
+    margin-bottom: 20px;
+}
+
+.question-header h3 {
+    margin: 0;
+    color: #333;
+}
+
+.situation-section {
+    margin-bottom: 30px;
+}
+
+.situation-section h4 {
+    color: #555;
+    margin-bottom: 15px;
+}
+
+.situation-text {
+    background: #f8f9fa;
+    padding: 20px;
+    border-radius: 6px;
+    line-height: 1.6;
+    color: #333;
+}
+
+.situation-media {
+    margin-top: 15px;
+    text-align: center;
+}
+
+.situation-media img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 6px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+.situation-media video {
+    max-width: 100%;
+    height: auto;
+    border-radius: 6px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+.options-section h4 {
+    color: #555;
+    margin-bottom: 15px;
+}
+
+.option-item {
+    background: #f8f9fa;
+    padding: 15px;
+    margin-bottom: 10px;
+    border-radius: 6px;
+    border: 2px solid transparent;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.option-item:hover {
+    background: #e9ecef;
+    border-color: #4CAF50;
+}
+
+.option-item.selected {
+    background: #d4edda;
+    border-color: #4CAF50;
+}
+
+.option-label {
+    font-weight: 600;
+    color: #4CAF50;
+    margin-right: 10px;
+}
+
+.option-text {
+    color: #333;
+}
+
+
+.empty-message {
+    text-align: center;
+    padding: 60px 20px;
+    color: #999;
+    font-size: 18px;
+}
+</style>
+
+<script>
+const sjtData = {{ sjt_data | tojson | safe }};
+const traitNames = {
+    'O': '开放性 (Openness)',
+    'C': '尽责性 (Conscientiousness)',
+    'E': '外向性 (Extraversion)',
+    'A': '宜人性 (Agreeableness)',
+    'N': '神经质 (Neuroticism)'
+};
+let currentType = '';
+let currentTrait = '';
+
+document.getElementById('quiz-type').addEventListener('change', function() {
+    currentType = this.value;
+    const traitSelect = document.getElementById('trait-select');
+    
+    if (currentType) {
+        traitSelect.disabled = false;
+        traitSelect.innerHTML = '<option value="">-- 选择特质 --</option>';
+        
+        const traits = new Set();
+        Object.keys(sjtData[currentType]).forEach(key => {
+            const trait = key.charAt(0);
+            traits.add(trait);
+        });
+        
+        Array.from(traits).sort().forEach(trait => {
+            const option = document.createElement('option');
+            option.value = trait;
+            option.textContent = traitNames[trait] || trait;
+            traitSelect.appendChild(option);
+        });
+    } else {
+        traitSelect.disabled = true;
+        traitSelect.innerHTML = '<option value="">-- 先选择测验类型 --</option>';
+        document.getElementById('quiz-content').style.display = 'none';
+        document.getElementById('empty-message').style.display = 'block';
+    }
+});
+
+document.getElementById('trait-select').addEventListener('change', function() {
+    currentTrait = this.value;
+    if (currentTrait !== '') {
+        displayTraitQuestions();
+        document.getElementById('quiz-content').style.display = 'block';
+        document.getElementById('empty-message').style.display = 'none';
+    } else {
+        document.getElementById('quiz-content').style.display = 'none';
+        document.getElementById('empty-message').style.display = 'block';
+    }
+});
+
+function displayTraitQuestions() {
+    document.getElementById('trait-name').textContent = traitNames[currentTrait] || currentTrait;
+    
+    const container = document.getElementById('questions-container');
+    container.innerHTML = '';
+    
+    const questions = Object.entries(sjtData[currentType])
+        .filter(([key, _]) => key.startsWith(currentTrait + '_'))
+        .sort(([a], [b]) => {
+            const numA = parseInt(a.split('_')[1]);
+            const numB = parseInt(b.split('_')[1]);
+            return numA - numB;
+        });
+    
+    questions.forEach(([questionKey, questionData]) => {
+        const questionCard = document.createElement('div');
+        questionCard.className = 'question-card';
+        
+        const header = document.createElement('div');
+        header.className = 'question-header';
+        header.innerHTML = `<h3>题目 ${questionKey}</h3>`;
+        questionCard.appendChild(header);
+        
+        const situationSection = document.createElement('div');
+        situationSection.className = 'situation-section';
+        situationSection.innerHTML = '<h4>情境描述:</h4>';
+        
+        const situationContent = document.createElement('div');
+        
+        if (currentType === 'txt') {
+            const textDiv = document.createElement('div');
+            textDiv.className = 'situation-text';
+            textDiv.textContent = questionData.situation;
+            situationContent.appendChild(textDiv);
+        } else if (currentType === 'img') {
+            const textDiv = document.createElement('div');
+            textDiv.className = 'situation-text';
+            textDiv.textContent = '请观察下图中的情境:';
+            situationContent.appendChild(textDiv);
+            
+            const mediaDiv = document.createElement('div');
+            mediaDiv.className = 'situation-media';
+            const img = document.createElement('img');
+            img.src = '/generated/' + questionData.situation;
+            img.alt = '情境图片';
+            mediaDiv.appendChild(img);
+            situationContent.appendChild(mediaDiv);
+        } else if (currentType === 'vid') {
+            const textDiv = document.createElement('div');
+            textDiv.className = 'situation-text';
+            textDiv.textContent = '请观看下面的情境视频:';
+            situationContent.appendChild(textDiv);
+            
+            const mediaDiv = document.createElement('div');
+            mediaDiv.className = 'situation-media';
+            const video = document.createElement('video');
+            video.src = '/generated/' + questionData.situation;
+            video.controls = true;
+            video.style.maxWidth = '100%';
+            mediaDiv.appendChild(video);
+            situationContent.appendChild(mediaDiv);
+        }
+        
+        situationSection.appendChild(situationContent);
+        questionCard.appendChild(situationSection);
+        
+        const optionsSection = document.createElement('div');
+        optionsSection.className = 'options-section';
+        optionsSection.innerHTML = '<h4>请选择你的回答:</h4>';
+        
+        const optionsContent = document.createElement('div');
+        Object.entries(questionData.options).forEach(([key, value]) => {
+            const optionDiv = document.createElement('div');
+            optionDiv.className = 'option-item';
+            optionDiv.innerHTML = `
+                <span class="option-label">${key}.</span>
+                <span class="option-text">${value}</span>
+            `;
+            optionDiv.addEventListener('click', function() {
+                this.parentElement.querySelectorAll('.option-item').forEach(el => el.classList.remove('selected'));
+                this.classList.add('selected');
+            });
+            optionsContent.appendChild(optionDiv);
+        });
+        
+        optionsSection.appendChild(optionsContent);
+        questionCard.appendChild(optionsSection);
+        
+        container.appendChild(questionCard);
+    });
+}
+</script>
+{% endblock %}
