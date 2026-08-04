@@ -1,83 +1,83 @@
 import os
-import json
 import requests
 import time
 from typing import Optional, Dict, Any
 from datetime import datetime
 
+from dotenv import load_dotenv
 
-VIDEO_CREATE_URL = "https://www.dmxapi.cn/v1/video_generation"
-VIDEO_QUERY_URL = "https://www.dmxapi.cn/v1/query/video_generation"
-FILES_RETRIEVE_URL = "https://www.dmxapi.cn/v1/files/retrieve"
-DOWNLOAD_URL = FILES_RETRIEVE_URL
-api_key = os.getenv("MINIMAX_API_KEY")
+from ...config import CONFIG
+
+load_dotenv()
+
+# DMXAPI 已迁移到 OpenAI 风格的视频接口：
+#   创建: POST {base_url}/videos
+#   查询: GET  {base_url}/videos/{task_id}   -> status/progress, 完成后 metadata.url 为下载链接
+#   下载: GET  {base_url}/videos/{task_id}/content
+# 旧的 /v1/video_generation、/v1/query/video_generation、/v1/files/retrieve 已下线（404）。
+_VIDEO_CFG = CONFIG.get('video', {})
+BASE_URL = str(CONFIG.get('base_url', 'https://www.dmxapi.cn/v1')).rstrip('/')
+VIDEO_MODEL = _VIDEO_CFG.get('video_model', 'MiniMax-Hailuo-02')
+VIDEO_DURATION = int(_VIDEO_CFG.get('duration', 10))
+VIDEO_RESOLUTION = _VIDEO_CFG.get('resolution', '768P')
+
+VIDEO_CREATE_URL = f"{BASE_URL}/videos"
+VIDEO_QUERY_URL = BASE_URL + "/videos/{}"
+VIDEO_CONTENT_URL = BASE_URL + "/videos/{}/content"
+
+api_key = os.getenv("OPENAI_API_KEY") or os.getenv("MINIMAX_API_KEY")
 headers = {"Authorization": f"Bearer {api_key}"}
 
 
-def create_video_task(prompt: str, *, model: str = "MiniMax-Hailuo-02", duration: int = 10, resolution: str = "768P") -> Optional[str]:
-    payload =json.dumps ({
-        "model": model,
+def create_video_task(
+    prompt: str,
+    *,
+    model: str | None = None,
+    duration: int | None = None,
+    resolution: str | None = None,
+) -> Optional[str]:
+    payload = {
+        "model": model or VIDEO_MODEL,
         "prompt": prompt,
-        "duration": duration,
-        "resolution": resolution,
-    })
-    headers = {"Authorization": f"Bearer {api_key}", "Content-Type": "application/json"}
-    resp = requests.request("POST", VIDEO_CREATE_URL, headers=headers, data=payload)
+        "duration": duration if duration is not None else VIDEO_DURATION,
+        "resolution": resolution or VIDEO_RESOLUTION,
+    }
+    resp = requests.post(VIDEO_CREATE_URL, headers=headers, json=payload)
     if resp.status_code != 200:
         print("创建失败:", resp.status_code, resp.text)
         return None
     resp_json = resp.json()
-    task_id = resp_json.get("task_id")
+    task_id = resp_json.get("task_id") or resp_json.get("id")
     print("创建成功 task_id:", task_id)
     return task_id
 
 
 def query_video_task(task_id: str) -> Optional[Dict[str, Any]]:
-    url = f"{VIDEO_QUERY_URL}?task_id={task_id}"
-    resp = requests.get(url, headers=headers)
+    resp = requests.get(VIDEO_QUERY_URL.format(task_id), headers=headers)
     if resp.status_code != 200:
         print("查询失败:", resp.status_code, resp.text)
         return None
     return resp.json()
 
 
-def retrieve_video_file(file_id: str, task_id: str) -> Optional[Dict[str, Any]]:
-    url = f"{FILES_RETRIEVE_URL}?file_id={file_id}&task_id={task_id}"
-    resp = requests.get(url, headers=headers)
-    if resp.status_code != 200:
-        print("检索失败:", resp.status_code, resp.text)
-        return None
-    return resp.json()
-
-
-def fetch_video(file_id: str, output_dir: str = "results/video", task_id: str | None = None):
-    """根据 file_id(可携带 task_id) 从 DMX files/retrieve 获取下载链接并保存。"""
+def download_video(task_id: str, info: Dict[str, Any], output_dir: str) -> Optional[str]:
+    """任务完成后下载视频：优先用查询结果里的下载链接，否则走 /content 接口。"""
     os.makedirs(output_dir, exist_ok=True)
-    params = {"file_id": file_id}
-    if task_id:
-        params["task_id"] = task_id
-    resp = requests.get(DOWNLOAD_URL, headers=headers, params=params)
-    resp.raise_for_status()
-    data = resp.json()
-    # 兼容多种返回结构
-    download_url = (
-        (data.get("file") or {}).get("download_url")
-        or data.get("download_url")
-        or (data.get("data") or {}).get("download_url")
-        or data.get("url")
-        or (data.get("data") or {}).get("url")
-    )
-    if not download_url:
-        raise RuntimeError(f"未在检索结果中找到下载链接: {data}")
-
     timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
-    filename = f"hailuo_video_{timestamp}.mp4"
-    filepath = os.path.join(output_dir, filename)
+    filepath = os.path.join(output_dir, f"hailuo_video_{timestamp}.mp4")
 
-    vr = requests.get(download_url)
-    vr.raise_for_status()
+    download_url = (
+        (info.get("metadata") or {}).get("url")
+        or info.get("download_url")
+        or info.get("url")
+    )
+    if download_url:
+        resp = requests.get(download_url)
+    else:
+        resp = requests.get(VIDEO_CONTENT_URL.format(task_id), headers=headers)
+    resp.raise_for_status()
     with open(filepath, "wb") as f:
-        f.write(vr.content)
+        f.write(resp.content)
     print(f"视频已成功保存至 {filepath}")
     return filepath
 
@@ -127,43 +127,42 @@ def _ensure_next_env_subdir(base_dir: str) -> str:
 def run_hailuo_pipeline(
     prompt: str,
     *,
-    duration: int = 10,
-    resolution: str = "768P",
+    model: str | None = None,
+    duration: int | None = None,
+    resolution: str | None = None,
     poll_interval: int = 8,
     max_polls: int = 100,
     auto_download: bool = True,
     output_dir: str = "results/video",
     trait: str | None = None,
 ) -> Optional[Dict[str, Any]]:
-    """一键执行：创建→查询→检索（可选自动下载）。返回最终检索结果。"""
-    task_id = create_video_task(prompt, duration=duration, resolution=resolution)
+    """一键执行：创建→轮询→下载（可选）。返回最终查询结果（含保存路径）。"""
+    task_id = create_video_task(prompt, model=model, duration=duration, resolution=resolution)
     if not task_id:
         return None
 
-    file_id: Optional[str] = None
+    info: Optional[Dict[str, Any]] = None
     for i in range(max_polls):
         info = query_video_task(task_id)
         if not info:
             time.sleep(poll_interval)
             continue
-        file_id = info.get("file_id") or (info.get("data") or {}).get("file_id")
-        status = (info.get("status") or (info.get("base_resp") or {}).get("status_msg") or "").lower()
-        print(f"轮询 {i+1}/{max_polls}: status={status}, file_id={file_id}")
-        if file_id:
+        status = (info.get("status") or "").lower()
+        progress = info.get("progress")
+        print(f"轮询 {i+1}/{max_polls}: status={status}, progress={progress}")
+        if status == "completed":
             break
+        if status in ("failed", "cancelled", "error"):
+            print("视频生成失败:", info)
+            return None
         time.sleep(poll_interval)
 
-    if not file_id:
-        print("暂未获得 file_id，请稍后重试。task_id:", task_id)
+    if not info or (info.get("status") or "").lower() != "completed":
+        print("轮询超时，任务未完成。task_id:", task_id)
         return None
 
-    retrieve = retrieve_video_file(file_id, task_id)
-    if not retrieve:
-        return None
-
-    # 可选自动下载
     if auto_download:
-        # 如果提供了 trait，则输出到 agents/results/Video_SJT/<Trait>/<envN>
+        # 如果提供了 trait，则输出到 agents/results/CIBOL_Video_SJT/<Trait>/<envN>
         if trait is not None:
             vsjt_dir = os.path.join(os.path.dirname(os.path.abspath(__file__)), "results", "CIBOL_Video_SJT")
             trait_dir_name = _trait_to_output_subdir(trait)
@@ -174,58 +173,13 @@ def run_hailuo_pipeline(
             base_dir = os.path.join(os.path.dirname(os.path.abspath(__file__)), output_dir)
             os.makedirs(base_dir, exist_ok=True)
             output_dir = base_dir
-        
-        # 优先使用检索结果中的下载链接
-        download_url = (
-            retrieve.get("download_url")
-            or (retrieve.get("data") or {}).get("download_url")
-            or retrieve.get("url")
-            or (retrieve.get("data") or {}).get("url")
-        )
-        if download_url:
-            try:
-                # 确保输出目录存在
-                os.makedirs(output_dir, exist_ok=True)
-                
-                # 生成带时间戳的文件名
-                timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
-                filename = f"hailuo_video_{timestamp}.mp4"
-                filepath = os.path.join(output_dir, filename)
-                
-                r = requests.get(download_url)
-                r.raise_for_status()
-                with open(filepath, "wb") as f:
-                    f.write(r.content)
-                print(f"视频已成功保存至 {filepath}")
-                # 在返回对象中带回保存位置
-                try:
-                    if isinstance(retrieve, dict):
-                        retrieve["saved_video_path"] = filepath
-                        retrieve["saved_dir"] = output_dir
-                except Exception:
-                    pass
-            except Exception as e:
-                print("直接下载失败，尝试通过 fetch_video: ", e)
-                try:
-                    p = fetch_video(file_id, output_dir, task_id)
-                    try:
-                        if isinstance(retrieve, dict) and p:
-                            retrieve["saved_video_path"] = p
-                            retrieve["saved_dir"] = output_dir
-                    except Exception:
-                        pass
-                except Exception as ee:
-                    print("fetch_video 也失败:", ee)
-        else:
-            try:
-                p = fetch_video(file_id, output_dir, task_id)
-                try:
-                    if isinstance(retrieve, dict) and p:
-                        retrieve["saved_video_path"] = p
-                        retrieve["saved_dir"] = output_dir
-                except Exception:
-                    pass
-            except Exception as ee:
-                print("fetch_video 失败:", ee)
 
-    return retrieve
+        try:
+            filepath = download_video(task_id, info, output_dir)
+            if filepath:
+                info["saved_video_path"] = filepath
+                info["saved_dir"] = output_dir
+        except Exception as e:
+            print("视频下载失败:", e)
+
+    return info

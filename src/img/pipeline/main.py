@@ -28,6 +28,7 @@ from .utils import (
 )
 
 from ..annotator import Annotator
+from ..config import IMG_MODEL, LLM_MODEL
 import os.path as op
 from PIL import Image
 from dotenv import load_dotenv
@@ -42,7 +43,7 @@ class PicSJTAgent:
         trait, 
         ref_viz: str | Image.Image = "A portrait photo of an yong man",
         ref_name = 'Ye',
-        model='gpt-5', 
+        model=LLM_MODEL,
         debug=False,
         prompt_dir = op.join(op.dirname(__file__), '..', 'prompts'),
         output_dir = 'output',
@@ -222,7 +223,7 @@ class PicSJTAgent:
         )
         res = self.sb.create(
             list(self.Gs_prompt_polished.values()), 
-            model='gpt-image-1',
+            model=IMG_MODEL,
             verbose=verbose,
             desc='T2I',
             leave=False,

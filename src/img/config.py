@@ -10,10 +10,13 @@ from dotenv import load_dotenv
 from openai import OpenAI
 from wasabi import msg
 
+from ..config import CONFIG
+
 load_dotenv()
 
 SEED = 464365
-LLM_MODEL = 'gpt-5'
+LLM_MODEL = CONFIG['image']['llm_model']
+IMG_MODEL = CONFIG['image']['image_model']
 
 LLM_TEMPERATURE: float | None | None = None
 LLM_TOP_P:  float | None | None = None

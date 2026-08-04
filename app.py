@@ -4,7 +4,12 @@ from src import DataLoader, TxtAgent, ImgAgent, VidAgent
 from src import ref_viz
 from dotenv import load_dotenv
 
-load_dotenv()
+import threading
+import time
+import traceback
+import uuid
+
+load_dotenv(override=True)
 
 app = Flask(__name__)
 
@@ -19,6 +24,114 @@ sjts_data = data_loader.load("PSJT-Mussel", "zh")
 # Output directory
 outdir = Path("./outputs")
 outdir.mkdir(exist_ok=True, parents=True)
+
+
+# ---------------------------------------------------------------------------
+# Background task manager
+#
+# Generation can take minutes. Running it inside the request means the work is
+# tied to the page: navigating away aborts the fetch and the result is lost.
+# Instead every generation runs in a daemon thread and the client polls for it,
+# so switching pages (or reloading) never kills a running job.
+# ---------------------------------------------------------------------------
+
+_tasks = {}
+_tasks_lock = threading.Lock()
+MAX_TASKS = 50
+
+
+def _public_task(task):
+    """Serializable view of a task (drops the internal callable/params)."""
+    return {
+        'task_id': task['task_id'],
+        'kind': task['kind'],
+        'label': task['label'],
+        'status': task['status'],
+        'result': task['result'],
+        'error': task['error'],
+        'created_at': task['created_at'],
+        'finished_at': task['finished_at'],
+    }
+
+
+def _prune_tasks():
+    """Drop the oldest finished tasks once we exceed MAX_TASKS (caller holds lock)."""
+    finished = sorted(
+        (t for t in _tasks.values() if t['status'] != 'running'),
+        key=lambda t: t['created_at'],
+    )
+    while len(_tasks) > MAX_TASKS and finished:
+        del _tasks[finished.pop(0)['task_id']]
+
+
+def _run_task(task_id, fn):
+    try:
+        result = fn()
+        with _tasks_lock:
+            _tasks[task_id].update(
+                status='done', result=result, finished_at=time.time())
+    except Exception as e:
+        traceback.print_exc()
+        with _tasks_lock:
+            _tasks[task_id].update(
+                status='error', error=str(e), finished_at=time.time())
+
+
+def submit_task(kind, label, fn):
+    """Start `fn` in the background and return its task id."""
+    task_id = uuid.uuid4().hex
+    with _tasks_lock:
+        _tasks[task_id] = {
+            'task_id': task_id,
+            'kind': kind,
+            'label': label,
+            'status': 'running',
+            'result': None,
+            'error': None,
+            'created_at': time.time(),
+            'finished_at': None,
+        }
+        _prune_tasks()
+
+    threading.Thread(target=_run_task, args=(task_id, fn), daemon=True).start()
+    return task_id
+
+
+@app.route('/api/task/<task_id>', methods=['GET'])
+def get_task(task_id):
+    """Poll a single generation task."""
+    with _tasks_lock:
+        task = _tasks.get(task_id)
+        if task is None:
+            return jsonify({'error': 'Task not found', 'status': 'missing'}), 404
+        return jsonify(_public_task(task))
+
+
+@app.route('/api/task/<task_id>', methods=['DELETE'])
+def forget_task(task_id):
+    """Forget a finished task so it stops showing up in the running list."""
+    with _tasks_lock:
+        task = _tasks.get(task_id)
+        if task is None:
+            return jsonify({'error': 'Task not found'}), 404
+        if task['status'] == 'running':
+            return jsonify({'error': 'Task is still running'}), 409
+        del _tasks[task_id]
+    return jsonify({'success': True})
+
+
+@app.route('/api/tasks', methods=['GET'])
+def list_tasks():
+    """List known tasks, newest first. `?status=running` filters to active ones."""
+    wanted = request.args.get('status')
+    with _tasks_lock:
+        tasks = [_public_task(t) for t in _tasks.values()
+                 if wanted is None or t['status'] == wanted]
+    tasks.sort(key=lambda t: t['created_at'], reverse=True)
+    # The list view only needs the headline, not the payload.
+    for t in tasks:
+        t.pop('result', None)
+    return jsonify({'tasks': tasks})
 
 
 @app.route('/outputs/<path:filename>')
@@ -117,7 +230,7 @@ def serve_generated_file(filename):
 
 @app.route('/api/generate/text', methods=['POST'])
 def generate_text():
-    """Generate text SJT"""
+    """Kick off text SJT generation in the background"""
     try:
         data = request.json
         trait_id = data.get('trait_id')
@@ -133,59 +246,54 @@ def generate_text():
         trait_meta = neopir_meta[trait_id]
         item_text = neopir[trait_id]['items'][item_id]['item']
 
-        # Initialize agent
-        txt_agent = TxtAgent(
-            situation_theme=situation_theme,
-            target_population=target_population,
-        )
+        def job():
+            # Initialize agent
+            txt_agent = TxtAgent(
+                situation_theme=situation_theme,
+                target_population=target_population,
+            )
 
-        # Generate SJT
-        result = txt_agent.run(
-            trait_name=trait_meta['facet_name'],
-            trait_description=trait_meta['description'],
-            low_score=trait_meta['low_score'],
-            high_score=trait_meta['high_score'],
-            item=item_text,
-            n_item=n_items,
-            outdir=outdir,
-            out_basename=f"SJT_{trait_id}_{item_id}"
-        )
+            # Generate SJT
+            result = txt_agent.run(
+                trait_name=trait_meta['facet_name'],
+                trait_description=trait_meta['description'],
+                low_score=trait_meta['low_score'],
+                high_score=trait_meta['high_score'],
+                item=item_text,
+                n_item=n_items,
+                outdir=outdir,
+                out_basename=f"SJT_{trait_id}_{item_id}"
+            )
 
-        # Log the result structure for debugging
-        print(f"Result type: {type(result)}")
-        print(f"Result keys: {result.keys() if isinstance(result, dict) else 'N/A'}")
-
-        # Handle different result structures
-        if isinstance(result, dict):
-            if 'items' in result:
-                result_data = result['items']
+            # Handle different result structures
+            if isinstance(result, dict):
+                result_data = result.get('items', result)
             else:
-                # If no 'items' key, return the whole result
                 result_data = result
-        else:
-            result_data = result
 
-        # Ensure result_data is a list
-        if not isinstance(result_data, list):
-            result_data = [result_data] if result_data else []
+            # Ensure result_data is a list
+            if not isinstance(result_data, list):
+                result_data = [result_data] if result_data else []
 
-        return jsonify({
-            'success': True,
-            'result': result_data,
-            'output_file': f"SJT_{trait_id}_{item_id}.json"
-        })
+            return {
+                'success': True,
+                'result': result_data,
+                'output_file': f"SJT_{trait_id}_{item_id}.json"
+            }
+
+        task_id = submit_task('text', f"文字题目 {trait_id}-{item_id}", job)
+        return jsonify({'success': True, 'task_id': task_id, 'status': 'running'}), 202
 
     except KeyError as e:
         return jsonify({'error': f'Invalid trait_id or item_id: {str(e)}'}), 400
     except Exception as e:
-        import traceback
         traceback.print_exc()
         return jsonify({'error': str(e)}), 500
 
 
 @app.route('/api/generate/image', methods=['POST'])
 def generate_image():
-    """Generate image SJT"""
+    """Kick off image SJT generation in the background"""
     try:
         data = request.json
         trait_id = data.get('trait_id')
@@ -203,50 +311,54 @@ def generate_image():
         if trait_id not in sjts_data or item_id not in sjts_data[trait_id]:
             return jsonify({'error': 'SJT situation not found for this trait/item'}), 404
 
-        # Initialize agent
-        img_agent = ImgAgent(
-            situ=sjts_data[trait_id][item_id],
-            trait=trait_meta['facet_name'],
-            ref_viz=ref_viz.get(ref_character, ref_viz['male'])
-        )
-
-        # Generate image SJT
         basename = f"SJT_{trait_id}_{item_id}"
-        result = img_agent.run(
-            run_bubble=run_bubble,
-            outdir=str(outdir),
-            out_basename=basename
-        )
 
-        # Extract image files from result
-        image_files = []
-        
-        # Get the situation image from result
-        if result and 'situation' in result:
-            situation_path = Path(result['situation'])
-            if situation_path.exists():
-                # Extract just the filename relative to outdir
-                image_files.append(situation_path.name)
+        def job():
+            # Initialize agent
+            img_agent = ImgAgent(
+                situ=sjts_data[trait_id][item_id],
+                trait=trait_meta['facet_name'],
+                ref_viz=ref_viz.get(ref_character, ref_viz['male'])
+            )
 
-        return jsonify({
-            'success': True,
-            'result': result,
-            'output_file': basename,
-            'image_files': image_files,  # List of generated image files
-            'has_images': len(image_files) > 0
-        })
+            # Generate image SJT
+            result = img_agent.run(
+                run_bubble=run_bubble,
+                outdir=str(outdir),
+                out_basename=basename
+            )
+
+            # Extract image files from result
+            image_files = []
+
+            # Get the situation image from result
+            if result and 'situation' in result:
+                situation_path = Path(result['situation'])
+                if situation_path.exists():
+                    # Extract just the filename relative to outdir
+                    image_files.append(situation_path.name)
+
+            return {
+                'success': True,
+                'result': result,
+                'output_file': basename,
+                'image_files': image_files,  # List of generated image files
+                'has_images': len(image_files) > 0
+            }
+
+        task_id = submit_task('image', f"图片题目 {trait_id}-{item_id}", job)
+        return jsonify({'success': True, 'task_id': task_id, 'status': 'running'}), 202
 
     except KeyError as e:
         return jsonify({'error': f'Invalid trait_id or item_id: {str(e)}'}), 400
     except Exception as e:
-        import traceback
         traceback.print_exc()
         return jsonify({'error': str(e)}), 500
 
 
 @app.route('/api/generate/video', methods=['POST'])
 def generate_video():
-    """Generate video SJT"""
+    """Kick off video SJT generation in the background"""
     try:
         data = request.json
         trait_id = data.get('trait_id')
@@ -262,49 +374,53 @@ def generate_video():
         if trait_id not in sjts_data or item_id not in sjts_data[trait_id]:
             return jsonify({'error': 'SJT situation not found for this trait/item'}), 404
 
-        # Initialize agent
-        vid_agent = VidAgent(
-            situ=sjts_data[trait_id][item_id],
-            trait=trait_meta['facet_name'],
-        )
-
-        # Generate video SJT
         basename = f"SJT_{trait_id}_{item_id}"
-        result = vid_agent.run(
-            outdir=outdir,
-            out_basename=basename
-        )
 
-        # Find generated video files
-        video_files = []
-        for ext in ['.mp4', '.avi', '.mov', '.webm']:
-            vid_path = outdir / f"{basename}{ext}"
-            if vid_path.exists():
-                video_files.append(f"{basename}{ext}")
+        def job():
+            # Initialize agent
+            vid_agent = VidAgent(
+                situ=sjts_data[trait_id][item_id],
+                trait=trait_meta['facet_name'],
+            )
 
-        # Also check for numbered files
-        for file in outdir.glob(f"{basename}_*.mp4"):
-            video_files.append(file.name)
-        for file in outdir.glob(f"{basename}_*.avi"):
-            video_files.append(file.name)
-        for file in outdir.glob(f"{basename}_*.mov"):
-            video_files.append(file.name)
+            # Generate video SJT
+            result = vid_agent.run(
+                outdir=outdir,
+                out_basename=basename
+            )
 
-        return jsonify({
-            'success': True,
-            'result': result,
-            'output_file': basename,
-            'video_files': video_files,  # List of generated video files
-            'has_videos': len(video_files) > 0
-        })
+            # Find generated video files
+            video_files = []
+            for ext in ['.mp4', '.avi', '.mov', '.webm']:
+                vid_path = outdir / f"{basename}{ext}"
+                if vid_path.exists():
+                    video_files.append(f"{basename}{ext}")
+
+            # Also check for numbered files
+            for file in outdir.glob(f"{basename}_*.mp4"):
+                video_files.append(file.name)
+            for file in outdir.glob(f"{basename}_*.avi"):
+                video_files.append(file.name)
+            for file in outdir.glob(f"{basename}_*.mov"):
+                video_files.append(file.name)
+
+            return {
+                'success': True,
+                'result': result,
+                'output_file': basename,
+                'video_files': video_files,  # List of generated video files
+                'has_videos': len(video_files) > 0
+            }
+
+        task_id = submit_task('video', f"视频题目 {trait_id}-{item_id}", job)
+        return jsonify({'success': True, 'task_id': task_id, 'status': 'running'}), 202
 
     except KeyError as e:
         return jsonify({'error': f'Invalid trait_id or item_id: {str(e)}'}), 400
     except Exception as e:
-        import traceback
         traceback.print_exc()
         return jsonify({'error': str(e)}), 500
 
 
 if __name__ == '__main__':
-    app.run(debug=True, host='0.0.0.0', port=4399)
+    app.run(debug=True, host='0.0.0.0', port=4399, threaded=True)

@@ -5,15 +5,25 @@ import os
 from dotenv import load_dotenv
 load_dotenv()
 
-DMX_TTS_URL = "https://www.dmxapi.cn/v1/audio/speech"
+try:
+    from ...config import CONFIG
+except ImportError:
+    # 允许作为独立脚本直接运行（python vioce_autospeed.py）
+    CONFIG = {}
+
+_TTS_CFG = CONFIG.get('tts', {})
+_BASE_URL = str(CONFIG.get('base_url', 'https://www.dmxapi.cn/v1')).rstrip('/')
+DMX_TTS_URL = f"{_BASE_URL}/audio/speech"
+TTS_MODEL = _TTS_CFG.get('model', 'gpt-4o-mini-tts')
+TTS_VOICE = _TTS_CFG.get('voice', 'alloy')
 DMX_API_KEY = os.getenv("OPENAI_API_KEY")
 
 
-def synthesize_voice(text: str, output_path: str = "results/audio/output.mp3", voice: str = "alloy", model: str = "gpt-4o-mini-tts", speed: float = 1.0) -> str:
+def synthesize_voice(text: str, output_path: str = "results/audio/output.mp3", voice: str = TTS_VOICE, model: str = TTS_MODEL, speed: float = 1.0) -> str:
     """将 text 合成为语音并保存到 output_path，返回最终文件路径。"""
     try:
         if not DMX_API_KEY:
-            raise RuntimeError("缺少 MINIMAX_API_KEY 环境变量")
+            raise RuntimeError("缺少 OPENAI_API_KEY 环境变量")
 
         payload = {
             "model": model,

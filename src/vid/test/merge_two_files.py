@@ -16,6 +16,10 @@ class AVMerger:
         video_files = self._get_video_files()
         audio_files = self._get_audio_files()
 
+        if not audio_files:
+            print("No audio files found, skipping merge.")
+            return
+
         if num_files is not None:
             video_files = video_files[:num_files]
             audio_files = audio_files[:num_files]
@@ -63,8 +67,9 @@ class AVMerger:
             if filename.endswith(".mp3"):
                 audio_files.append(os.path.join(self.audio_folder, filename))
         num_audio_files = len(audio_files)
+        if num_audio_files == 0:
+            return []
         num_video_files = len(self._get_video_files())
-        # Repeat audio files to match the number of video files
         repeated_audio_files = audio_files * (num_video_files // num_audio_files) + audio_files[
                                                                                     :num_video_files % num_audio_files]
         return repeated_audio_files

@@ -210,6 +210,103 @@
             generateBtn.disabled = false;
         });
 
+        // Generation runs as a background task, so leaving this page (or
+        // reloading it) does not cancel it — we just resume polling on return.
+        function setGenerating(isGenerating, resumed) {
+            loading.style.display = isGenerating ? 'block' : 'none';
+            generateBtn.disabled = isGenerating || !situationSelect.value;
+            if (isGenerating) {
+                errorMessage.style.display = 'none';
+                resultContent.textContent = resumed
+                    ? '上一次的生成任务仍在后台运行，正在等待结果...'
+                    : '生成中...';
+            }
+        }
+
+        function renderResult(data) {
+            // Display result
+            let resultHTML = `
+                <div class="success-message">✓ 生成成功!</div>
+                <p><strong>输出文件前缀:</strong> ${data.output_file}</p>
+                <p><strong>输出目录:</strong> ./outputs/</p>
+            `;
+
+            // Display generated images
+            if (data.has_images && data.image_files && data.image_files.length > 0) {
+                resultHTML += `
+                    <div class="media-gallery">
+                        <h4>生成的图片:</h4>
+                `;
+
+                data.image_files.forEach((filename, index) => {
+                    resultHTML += `
+                        <div class="media-item">
+                            <p class="media-label">图片 ${index + 1}: ${filename}</p>
+                            <img src="/outputs/${filename}"
+                                 alt="生成的图片 ${index + 1}"
+                                 class="generated-image"
+                                 onclick="window.open('/outputs/${filename}', '_blank')">
+                            <p class="media-hint">点击图片在新窗口中查看大图</p>
+                        </div>
+                    `;
+                });
+
+                resultHTML += `</div>`;
+            } else {
+                resultHTML += `
+                    <div class="warning-box">
+                        <p>⚠️ 未找到生成的图片文件</p>
+                        <p>图片可能仍在生成中，请稍后查看 outputs 目录</p>
+                    </div>
+                `;
+            }
+
+            resultHTML += `
+                <div class="result-info">
+                    <p>详细信息文件:</p>
+                    <ul>
+                        <li>${data.output_file}_details.json</li>
+                    </ul>
+                </div>
+                <details>
+                    <summary>查看详细JSON数据</summary>
+                    <pre>${JSON.stringify(data.result, null, 2)}</pre>
+                </details>
+            `;
+
+            resultContent.innerHTML = resultHTML;
+            clearResultBtn.style.display = 'inline-block';
+        }
+
+        function showError(message) {
+            errorMessage.textContent = `生成失败: ${message}`;
+            errorMessage.style.display = 'block';
+            resultContent.textContent = '生成失败，请查看错误信息';
+            clearResultBtn.style.display = 'inline-block';
+        }
+
+        const runner = SJTTasks.attach({
+            kind: 'image',
+            endpoint: '/api/generate/image',
+            onRunning: (task, isResume) => setGenerating(true, isResume),
+            onDone: (result) => {
+                setGenerating(false);
+                renderResult(result);
+            },
+            onError: (message) => {
+                setGenerating(false);
+                showError(message);
+            },
+            onIdle: () => {
+                // Task no longer known to the server (e.g. it restarted).
+                setGenerating(false);
+                showError('任务已丢失，服务器可能已重启，请重新生成');
+            }
+        });
+
+        // Pick up a task that was started before this page was left/reloaded.
+        runner.resume();
+
         // Generate button click
         generateBtn.addEventListener('click', async function() {
             const traitId = traitSelect.value;
@@ -227,93 +324,19 @@
                 return;
             }
 
-            // Show loading
-            loading.style.display = 'block';
-            errorMessage.style.display = 'none';
-            resultContent.textContent = '生成中...';
-            generateBtn.disabled = true;
+            setGenerating(true);
 
             try {
-                const response = await fetch('/api/generate/image', {
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json',
-                    },
-                    body: JSON.stringify({
-                        trait_id: traitId,
-                        item_id: sitId,
-                        ref_character: refCharacter,
-                        run_bubble: runBubble
-                    })
+                await runner.start({
+                    trait_id: traitId,
+                    item_id: sitId,
+                    ref_character: refCharacter,
+                    run_bubble: runBubble
                 });
-
-                const data = await response.json();
-
-                if (data.success) {
-                    // Display result
-                    let resultHTML = `
-                        <div class="success-message">✓ 生成成功!</div>
-                        <p><strong>输出文件前缀:</strong> ${data.output_file}</p>
-                        <p><strong>输出目录:</strong> ./outputs/</p>
-                    `;
-
-                    // Display generated images
-                    if (data.has_images && data.image_files && data.image_files.length > 0) {
-                        resultHTML += `
-                            <div class="media-gallery">
-                                <h4>生成的图片:</h4>
-                        `;
-
-                        data.image_files.forEach((filename, index) => {
-                            resultHTML += `
-                                <div class="media-item">
-                                    <p class="media-label">图片 ${index + 1}: ${filename}</p>
-                                    <img src="/outputs/${filename}"
-                                         alt="生成的图片 ${index + 1}"
-                                         class="generated-image"
-                                         onclick="window.open('/outputs/${filename}', '_blank')">
-                                    <p class="media-hint">点击图片在新窗口中查看大图</p>
-                                </div>
-                            `;
-                        });
-
-                        resultHTML += `</div>`;
-                    } else {
-                        resultHTML += `
-                            <div class="warning-box">
-                                <p>⚠️ 未找到生成的图片文件</p>
-                                <p>图片可能仍在生成中，请稍后查看 outputs 目录</p>
-                            </div>
-                        `;
-                    }
-
-                    resultHTML += `
-                        <div class="result-info">
-                            <p>详细信息文件:</p>
-                            <ul>
-                                <li>${data.output_file}_details.json</li>
-                            </ul>
-                        </div>
-                        <details>
-                            <summary>查看详细JSON数据</summary>
-                            <pre>${JSON.stringify(data.result, null, 2)}</pre>
-                        </details>
-                    `;
-
-                    resultContent.innerHTML = resultHTML;
-                    clearResultBtn.style.display = 'inline-block';
-                } else {
-                    throw new Error(data.error || '生成失败');
-                }
             } catch (error) {
                 console.error('Error:', error);
-                errorMessage.textContent = `生成失败: ${error.message}`;
-                errorMessage.style.display = 'block';
-                resultContent.textContent = '生成失败，请查看错误信息';
-                clearResultBtn.style.display = 'inline-block';
-            } finally {
-                loading.style.display = 'none';
-                generateBtn.disabled = false;
+                setGenerating(false);
+                showError(error.message);
             }
         });
     });

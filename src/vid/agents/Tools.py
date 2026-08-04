@@ -5,12 +5,13 @@ import os
 from datetime import datetime
 from langchain_core.messages import HumanMessage, AIMessage, ToolMessage
 from .prompts import generate_video_prompt as VIDEO_PROMPT_SYSTEM_TEXT
+from ...config import CONFIG
 import re
 
 load_dotenv()
 
 # LLM（供 cues 提取与反思工具使用）
-tool_model = ChatOpenAI(model="gpt-4o", temperature=0.4)
+tool_model = ChatOpenAI(model=CONFIG.get('video', {}).get('agent_model', 'gpt-4o'), temperature=0.4)
 
 def get_cues(text: str) -> str:
     """使用 LLM 作为工具，从输入中提取线索（cues）。返回 JSON（见系统提示）。"""

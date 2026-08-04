@@ -14,6 +14,13 @@ from langgraph_swarm import create_handoff_tool, create_swarm
 from langgraph.checkpoint.memory import InMemorySaver
 from langchain_openai import ChatOpenAI
 
+from ..config import CONFIG
+
+_VIDEO_CFG = CONFIG.get('video', {})
+VID_AGENT_MODEL = _VIDEO_CFG.get('agent_model', 'gpt-4o')
+VID_DURATION = int(_VIDEO_CFG.get('duration', 10))
+VID_RESOLUTION = _VIDEO_CFG.get('resolution', '768P')
+
 class VidSJTAgent:
     def __init__(self, trait, situ):
         self.trait = trait
@@ -22,9 +29,9 @@ class VidSJTAgent:
     def run(
         self,
         character_seed_json=None,
-        duration=10,
-        resolution="768P",
-        model_name="gpt-4o",
+        duration=VID_DURATION,
+        resolution=VID_RESOLUTION,
+        model_name=VID_AGENT_MODEL,
         outdir=None,
         out_basename=None,
     ):
@@ -45,9 +52,9 @@ def api_generate_video_sjt(
         character_seed_json=None, 
         outdir=None,
         out_basename=None,
-        duration=10, 
-        resolution="768P", 
-        model_name="gpt-4o"
+        duration=VID_DURATION,
+        resolution=VID_RESOLUTION,
+        model_name=VID_AGENT_MODEL
         ):
     """
     核心API：生成视频SJT

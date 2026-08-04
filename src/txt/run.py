@@ -1,7 +1,10 @@
 import asyncio
 from .workflow.main import SJTAgent
+from ..config import CONFIG
 from typing import Optional
 from tqdm.auto import tqdm
+
+TXT_MODEL = CONFIG['text']['model']
 
 
 class SJTRunner:
@@ -118,7 +121,7 @@ class SJTRunner:
         items: dict | None = None, 
         confs: dict | None = None, 
         n_item: int = 3, 
-        model: str = 'gpt-5-mini',
+        model: str = TXT_MODEL,
         save_results: Optional[bool] = False,
         results_dir: str | None = None,
         detailed_fname: str = 'results_detailed',
@@ -181,7 +184,7 @@ class SJTRunner:
         items: dict,
         confs: dict,
         n_item: int = 3,
-        model: str = 'gpt-5-mini',
+        model: str = TXT_MODEL,
         trait_concurrency: Optional[int] = None,
         show_progress: bool = True,
         progress_callback: Optional[callable] = None,
@@ -278,7 +281,7 @@ class SJTRunner:
         items: dict | None = None,
         confs: dict | None = None,
         n_item: int = 3,
-        model: str = 'gpt-5-mini',
+        model: str = TXT_MODEL,
         trait_concurrency: Optional[int] = None,
         show_progress: bool = True,
         progress_callback: Optional[callable] = None,

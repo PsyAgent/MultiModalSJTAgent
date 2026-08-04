@@ -177,6 +177,97 @@
             }
         });
 
+        // Generation runs as a background task, so leaving this page (or
+        // reloading it) does not cancel it — we just resume polling on return.
+        function setGenerating(isGenerating, resumed) {
+            loading.style.display = isGenerating ? 'block' : 'none';
+            generateBtn.disabled = isGenerating || !itemSelect.value;
+            if (isGenerating) {
+                errorMessage.style.display = 'none';
+                resultContent.textContent = resumed
+                    ? '上一次的生成任务仍在后台运行，正在等待结果...'
+                    : '生成中...';
+            }
+        }
+
+        function renderResult(data) {
+            // Check if result is an array
+            let resultItems = data.result;
+            if (!Array.isArray(resultItems)) {
+                console.log('Result is not an array, type:', typeof resultItems);
+                // Try to handle different data structures
+                if (typeof resultItems === 'object' && resultItems !== null) {
+                    // If it's an object, try to extract items
+                    if (resultItems.items && Array.isArray(resultItems.items)) {
+                        resultItems = resultItems.items;
+                    } else {
+                        // Convert single object to array
+                        resultItems = [resultItems];
+                    }
+                } else {
+                    resultItems = [];
+                }
+            }
+
+            // Display result
+            let resultHTML = `
+                <div class="success-message">✓ 生成成功!</div>
+                <p><strong>输出文件:</strong> ${data.output_file}</p>
+            `;
+
+            if (resultItems.length > 0) {
+                resultHTML += `<div class="result-items">
+                    ${resultItems.map((item, index) => `
+                        <div class="result-item">
+                            <h4>题目 ${index + 1}</h4>
+                            <p><strong>情境:</strong> ${item.situation || item.stem || item.scenario || '无'}</p>
+                            ${item.options ? `
+                                <p><strong>选项:</strong></p>
+                                <ul>
+                                    ${(Array.isArray(item.options) ? item.options : Object.values(item.options)).map(opt => `<li>${typeof opt === 'object' ? opt.text || opt.content || JSON.stringify(opt) : opt}</li>`).join('')}
+                                </ul>
+                            ` : '<p><strong>选项:</strong> 无选项</p>'}
+                        </div>
+                    `).join('')}
+                </div>`;
+            } else {
+                resultHTML += '<p class="warning-box">生成结果为空</p>';
+            }
+
+            resultHTML += `<pre>${JSON.stringify(data.result, null, 2)}</pre>`;
+            resultContent.innerHTML = resultHTML;
+            clearResultBtn.style.display = 'inline-block';
+        }
+
+        function showError(message) {
+            errorMessage.textContent = `生成失败: ${message}`;
+            errorMessage.style.display = 'block';
+            resultContent.textContent = '生成失败，请查看错误信息';
+            clearResultBtn.style.display = 'inline-block';
+        }
+
+        const runner = SJTTasks.attach({
+            kind: 'text',
+            endpoint: '/api/generate/text',
+            onRunning: (task, isResume) => setGenerating(true, isResume),
+            onDone: (result) => {
+                setGenerating(false);
+                renderResult(result);
+            },
+            onError: (message) => {
+                setGenerating(false);
+                showError(message);
+            },
+            onIdle: () => {
+                // Task no longer known to the server (e.g. it restarted).
+                setGenerating(false);
+                showError('任务已丢失，服务器可能已重启，请重新生成');
+            }
+        });
+
+        // Pick up a task that was started before this page was left/reloaded.
+        runner.resume();
+
         // Generate button click
         generateBtn.addEventListener('click', async function() {
             const traitId = traitSelect.value;
@@ -190,90 +281,20 @@
                 return;
             }
 
-            // Show loading
-            loading.style.display = 'block';
-            errorMessage.style.display = 'none';
-            resultContent.textContent = '生成中...';
-            generateBtn.disabled = true;
+            setGenerating(true);
 
             try {
-                const response = await fetch('/api/generate/text', {
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json',
-                    },
-                    body: JSON.stringify({
-                        trait_id: traitId,
-                        item_id: itemId,
-                        situation_theme: situationTheme,
-                        target_population: targetPopulation,
-                        n_items: nItems
-                    })
+                await runner.start({
+                    trait_id: traitId,
+                    item_id: itemId,
+                    situation_theme: situationTheme,
+                    target_population: targetPopulation,
+                    n_items: nItems
                 });
-
-                const data = await response.json();
-
-                console.log('API Response:', data);
-
-                if (data.success) {
-                    // Check if result is an array
-                    let resultItems = data.result;
-                    if (!Array.isArray(resultItems)) {
-                        console.log('Result is not an array, type:', typeof resultItems);
-                        // Try to handle different data structures
-                        if (typeof resultItems === 'object' && resultItems !== null) {
-                            // If it's an object, try to extract items
-                            if (resultItems.items && Array.isArray(resultItems.items)) {
-                                resultItems = resultItems.items;
-                            } else {
-                                // Convert single object to array
-                                resultItems = [resultItems];
-                            }
-                        } else {
-                            resultItems = [];
-                        }
-                    }
-
-                    // Display result
-                    let resultHTML = `
-                        <div class="success-message">✓ 生成成功!</div>
-                        <p><strong>输出文件:</strong> ${data.output_file}</p>
-                    `;
-
-                    if (resultItems.length > 0) {
-                        resultHTML += `<div class="result-items">
-                            ${resultItems.map((item, index) => `
-                                <div class="result-item">
-                                    <h4>题目 ${index + 1}</h4>
-                                    <p><strong>情境:</strong> ${item.situation || item.stem || item.scenario || '无'}</p>
-                                    ${item.options ? `
-                                        <p><strong>选项:</strong></p>
-                                        <ul>
-                                            ${(Array.isArray(item.options) ? item.options : Object.values(item.options)).map(opt => `<li>${typeof opt === 'object' ? opt.text || opt.content || JSON.stringify(opt) : opt}</li>`).join('')}
-                                        </ul>
-                                    ` : '<p><strong>选项:</strong> 无选项</p>'}
-                                </div>
-                            `).join('')}
-                        </div>`;
-                    } else {
-                        resultHTML += '<p class="warning-box">生成结果为空</p>';
-                    }
-
-                    resultHTML += `<pre>${JSON.stringify(data.result, null, 2)}</pre>`;
-                    resultContent.innerHTML = resultHTML;
-                    clearResultBtn.style.display = 'inline-block';
-                } else {
-                    throw new Error(data.error || '生成失败');
-                }
             } catch (error) {
                 console.error('Error:', error);
-                errorMessage.textContent = `生成失败: ${error.message}`;
-                errorMessage.style.display = 'block';
-                resultContent.textContent = '生成失败，请查看错误信息';
-                clearResultBtn.style.display = 'inline-block';
-            } finally {
-                loading.style.display = 'none';
-                generateBtn.disabled = false;
+                setGenerating(false);
+                showError(error.message);
             }
         });
     });
