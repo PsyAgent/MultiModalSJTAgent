@@ -29,6 +29,7 @@ from .utils import (
 
 from ..annotator import Annotator
 from ..config import IMG_MODEL, LLM_MODEL
+from ...retry import STEP_ATTEMPTS, retry_call
 import os.path as op
 from PIL import Image
 from dotenv import load_dotenv
@@ -260,6 +261,7 @@ class PicSJTAgent:
         save_overwrite: bool=True,
         run_bubble:bool=True,
         return_details:bool=False,
+        step_attempts:int=STEP_ATTEMPTS,
         ):
         """Fit the model to the situation and trait.
         如果run_bubble为True, 则会调用本地计算资源进行对话气泡的生成（高并行的异步处理中容易崩溃）, 
@@ -281,6 +283,8 @@ class PicSJTAgent:
             If False, skip saving if output already exists (default True)
         run_bubble: bool
             Whether to run bubble generation (default True)
+        step_attempts: int
+            单步失败（多为 LLM 未按结构输出）时的最大尝试次数，默认取 config.yaml 的 retry.step_attempts
         """
         steps = [
             ('Generating situation graph', self.situ_graph),
@@ -297,7 +301,8 @@ class PicSJTAgent:
         pbar = tqdm(steps, disable=not verbose, leave=verbose_leave)
         for desc, step_func in pbar:
             pbar.set_postfix_str(f'{desc}')
-            step_func()
+            # 每一步都直接依赖 LLM，偶发的“不按格式输出”重跑一次通常就好了。
+            retry_call(step_func, attempts=step_attempts, label=desc)
         if out_basename is not None:
             self.output_fname = out_basename
         if save:

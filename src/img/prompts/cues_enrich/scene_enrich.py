@@ -7,7 +7,7 @@ condition_system = """
 
 ## GOAL
 
-Design a scene using explicit visual features—derived solely from a single Knowledge Graph segment—to activate a target Big Five personality trait (Openness, Conscientiousness, Extraversion, Agreeableness, Neuroticism) in the focal character. Output must be a structured JSON describing seven visual attributes aligned to the trait.
+Design a scene using explicit visual features—derived solely from the given `situation` and `scene`—to activate a target Big Five personality trait (Openness, Conscientiousness, Extraversion, Agreeableness, Neuroticism) in the focal character. Output must be a structured JSON describing seven visual attributes aligned to the trait.
 
 ## BACKGROUND
 
@@ -36,15 +36,14 @@ Design a scene using explicit visual features—derived solely from a single Kno
 ## INPUT
 
 - **situation**: Text description of the scene context.
-- **Knowledge Graph**: A single segment’s structured graph (list of node-edge tuples). Design must rely solely on this segment’s graph—do not reference other segments.
-- **scene**: Identifier for the scene (e.g., "tram").
+- **scene**: Identifier for the scene (e.g., "tram"). This is a plain scene name, not a graph.
 - **character**: The focal character whose trait is being activated.
-- **trait**: Target Big Five trait (Openness, Conscientiousness, Extraversion, Agreeableness, Neuroticism).
+- **trait**: Target Big Five trait (Openness, Conscientiousness, Extraversion, Agreeableness, Neuroticism). It may be given as a domain plus a NEO-PI-R facet (e.g. "O (Openness) / 开放性 —— 子维度 O6：价值观"); in that case activate the named Big Five domain, informed by the facet.
 
 ## WORKFLOW
 
-1. **Parse Input**: Validate `situation`, `Knowledge Graph`, `scene`, `character`, and `trait`.
-2. **Graph Analysis**: Examine all nodes and edges in the graph to extract explicit visual elements.
+1. **Parse Input**: Read `situation`, `scene`, `character`, and `trait`.
+2. **Situation Analysis**: Extract the explicit visual elements of `scene` implied by `situation`.
 3. **Attribute Selection**: For each attribute (`view`, `composition`, `lighting`, `color Palette`, `Mood/Atmosphere`, `Focus`, `framing`), select the feature from the knowledge base that best aligns with and activates the `trait`. Descriptions must be purely visual—no expressions, gestures, or psychological states.
 4. **Assemble JSON**: Output a JSON object:
 ```json
@@ -68,18 +67,12 @@ Design a scene using explicit visual features—derived solely from a single Kno
 - **Purely Visual**: No mention of facial expressions, body language, or internal states.
 - **Trait Activation**: Every attribute must reinforce the activation atmosphere of the `trait`.
 - **Strict Format**: Output valid JSON; keys and values must exactly match the knowledge base.
+- **Always Answer**: Never return an error object or ask for more input. If something is under-specified (an unfamiliar scene name, a facet-level trait, a terse situation), pick the closest Big Five domain and the most plausible reading, and still output the required JSON.
 
 ## EXAMPLE
 
 **Input**:
 - `situation`: "A crowded tram segment where Ye mistakenly boards the wrong carriage and feels disoriented."
-- `Knowledge Graph`:
-```json
-[
-  ["tram", "overcrowded", "environment"],
-  ["Ye", "misplaced", "carriage"]
-]
-```
 - `scene`: "tram"
 - `character`: "Ye"
 - `trait`: "Neuroticism"

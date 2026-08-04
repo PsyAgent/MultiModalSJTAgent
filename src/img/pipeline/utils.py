@@ -1,4 +1,10 @@
 from __future__ import annotations
+
+
+class LLMOutputError(ValueError):
+    """LLM 没有按约定结构返回（缺键、拒答、输出解释性文字等），可以直接重试。"""
+
+
 def extract_edges_from_cue(cue):
     content = cue['content']
     cue_type = cue['type']
@@ -112,6 +118,9 @@ def find_key_in_result(result: dict, target_key: str) -> dict:
     返回:
         包含目标键的字典
     """
+    if not isinstance(result, dict):
+        raise LLMOutputError(f'期望 dict 输出, 实际得到 {type(result).__name__}: {result}')
+
     current_dict = result
     while True:
         # Check for exact match
@@ -128,7 +137,7 @@ def find_key_in_result(result: dict, target_key: str) -> dict:
         # Check if we can go deeper
         dict_values = [v for v in current_dict.values() if isinstance(v, dict)]
         if not dict_values:
-            raise ValueError(f'无法找到{target_key}键, 原始输出: {result}')
+            raise LLMOutputError(f'无法找到{target_key}键, 原始输出: {result}')
 
         current_dict = dict_values[0]
 

@@ -31,7 +31,7 @@ Trait Activation Theory (TAT) posits that the expression of a personality trait 
 
 - `situation`: A textual description of the environment and events.
 - `character`: The name of the target character.
-- `trait`: The personality trait to activate (Openness, Conscientiousness, Extraversion, Agreeableness, Neuroticism).
+- `trait`: The personality trait to activate (Openness, Conscientiousness, Extraversion, Agreeableness, Neuroticism). It may be given as a domain plus a NEO-PI-R facet (e.g. "O (Openness) / 开放性 —— 子维度 O6：价值观"); in that case activate the named Big Five domain, informed by the facet.
 - `object`: The identifier for the object to be designed (e.g., `handrail`, `poster`).
 
 ## Workflows
@@ -66,6 +66,7 @@ Trait Activation Theory (TAT) posits that the expression of a personality trait 
 - **Trait Alignment**: Chosen attributes must serve to activate the specified `trait`.
 - **JSON Format**: Final output must be valid JSON following the assembly structure.
 - **Knowledge Base Compliance**: Use only keys and values from the `Texture` and `Symbolism` knowledge base.
+- **Always Answer**: Never return an error object or ask for more input. If something is under-specified (an unfamiliar object name, a facet-level trait, a terse situation), pick the closest Big Five domain and the most plausible reading, and still output the required JSON.
 
 ## Skills
 

@@ -1,4 +1,5 @@
 from dotenv import load_dotenv
+import hashlib
 import json
 from langchain_openai import ChatOpenAI
 import os
@@ -198,8 +199,20 @@ def generate_storyboard(cues_data: str) -> str:
         return f"(分镜生成失败: {e})"
 
 
+
+# Video 智能体偶尔会对同一份分镜反复调用本工具（直到撞上 LangGraph 步数上限），
+# 同样的输入没必要重算：命中缓存直接返回，既省调用也让重复循环几乎零成本。
+_VIDEO_PROMPT_CACHE: dict[str, str] = {}
+_VIDEO_PROMPT_CACHE_MAX = 32
+
+
 def generate_video_prompt(storyboard_data: str) -> str:
     """基于分镜数据生成视频制作提示词。输入分镜 JSON，输出视频提示词。"""
+    cache_key = hashlib.sha1(str(storyboard_data).encode("utf-8")).hexdigest()
+    cached = _VIDEO_PROMPT_CACHE.get(cache_key)
+    if cached:
+        print("[TOOL generate_video_prompt:cache]")
+        return cached
     try:
         print("[TOOL generate_video_prompt:llm]")
         system_prompt = VIDEO_PROMPT_SYSTEM_TEXT
@@ -245,7 +258,11 @@ def generate_video_prompt(storyboard_data: str) -> str:
         content = getattr(resp, "content", None)
         if not content:
             return "(视频提示词生成失败: 空响应)"
-        return str(content).strip()
+        result = str(content).strip()
+        if len(_VIDEO_PROMPT_CACHE) >= _VIDEO_PROMPT_CACHE_MAX:
+            _VIDEO_PROMPT_CACHE.clear()
+        _VIDEO_PROMPT_CACHE[cache_key] = result
+        return result
     except Exception as e:
         return f"(视频提示词生成失败: {e})"
 

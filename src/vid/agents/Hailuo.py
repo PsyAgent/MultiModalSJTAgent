@@ -91,17 +91,29 @@ def _trait_to_output_subdir(trait: str) -> str:
         # 示例：按大五人格或自定义标签分类
         "外向性": "Extraversion",
         "外倾性": "Extraversion",
+        "extraversion": "Extraversion",
         "开放": "Openness",
         "开放性": "Openness",
+        "openness": "Openness",
         "责任心": "Conscientiousness",
         "尽责性": "Conscientiousness",
+        "conscientiousness": "Conscientiousness",
         "宜人": "Agreeableness",
         "宜人性": "Agreeableness",
+        "agreeableness": "Agreeableness",
         "神经质": "Neuroticism",
         "情绪不稳定": "Neuroticism",
+        "neuroticism": "Neuroticism",
     }
+    if key in mapping:
+        return mapping[key]
+    # 传进来的往往是「O (Openness) / 开放性 —— 子维度 O6：价值观」这类完整描述，
+    # 精确匹配不到时按子串再找一次。
+    for name, subdir in mapping.items():
+        if name in key:
+            return subdir
     # 默认兜底目录
-    return mapping.get(key, "Misc")
+    return "Misc"
 
 
 def _ensure_next_env_subdir(base_dir: str) -> str:

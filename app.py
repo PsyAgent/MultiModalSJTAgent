@@ -2,6 +2,8 @@ from flask import Flask, render_template, request, jsonify, send_from_directory
 from pathlib import Path
 from src import DataLoader, TxtAgent, ImgAgent, VidAgent
 from src import ref_viz
+from src.retry import RETRY_BACKOFF, RETRY_DELAY, TASK_ATTEMPTS
+from src.traits import format_trait
 from dotenv import load_dotenv
 
 import threading
@@ -51,6 +53,8 @@ def _public_task(task):
         'error': task['error'],
         'created_at': task['created_at'],
         'finished_at': task['finished_at'],
+        'attempt': task.get('attempt', 1),
+        'attempts': task.get('attempts', 1),
     }
 
 
@@ -64,17 +68,35 @@ def _prune_tasks():
         del _tasks[finished.pop(0)['task_id']]
 
 
-def _run_task(task_id, fn):
-    try:
-        result = fn()
-        with _tasks_lock:
-            _tasks[task_id].update(
-                status='done', result=result, finished_at=time.time())
-    except Exception as e:
-        traceback.print_exc()
-        with _tasks_lock:
-            _tasks[task_id].update(
-                status='error', error=str(e), finished_at=time.time())
+def _run_task(task_id, fn, attempts=TASK_ATTEMPTS):
+    """跑一个生成任务；失败自动重来，全部尝试都失败才算错误。
+
+    生成链路上每一步都依赖 LLM，偶发的格式/网关问题重跑一次基本就能过，
+    没必要让用户自己点第二次。
+    """
+    attempts = max(1, int(attempts))
+    wait = RETRY_DELAY
+    for attempt in range(1, attempts + 1):
+        try:
+            result = fn()
+            with _tasks_lock:
+                _tasks[task_id].update(
+                    status='done', result=result, finished_at=time.time())
+            return
+        except Exception as e:
+            traceback.print_exc()
+            if attempt == attempts:
+                with _tasks_lock:
+                    _tasks[task_id].update(
+                        status='error', error=str(e), finished_at=time.time())
+                return
+            with _tasks_lock:
+                label = _tasks.get(task_id, {}).get('label', task_id)
+                if task_id in _tasks:
+                    _tasks[task_id]['attempt'] = attempt + 1
+            print(f"[task] {label} 第 {attempt}/{attempts} 次失败：{e}；{wait:.0f}s 后重试")
+            time.sleep(wait)
+            wait *= RETRY_BACKOFF
 
 
 def submit_task(kind, label, fn):
@@ -90,6 +112,8 @@ def submit_task(kind, label, fn):
             'error': None,
             'created_at': time.time(),
             'finished_at': None,
+            'attempt': 1,
+            'attempts': TASK_ATTEMPTS,
         }
         _prune_tasks()
 
@@ -317,7 +341,9 @@ def generate_image():
             # Initialize agent
             img_agent = ImgAgent(
                 situ=sjts_data[trait_id][item_id],
-                trait=trait_meta['facet_name'],
+                # 提示词以大五维度为框架，只给面名称（如「价值观」）时模型会拒答，
+                # 所以补上所属维度。
+                trait=format_trait(trait_id, trait_meta),
                 ref_viz=ref_viz.get(ref_character, ref_viz['male'])
             )
 
@@ -380,7 +406,8 @@ def generate_video():
             # Initialize agent
             vid_agent = VidAgent(
                 situ=sjts_data[trait_id][item_id],
-                trait=trait_meta['facet_name'],
+                # 同图像流程：反思智能体按大五维度对齐构念，需要维度信息
+                trait=format_trait(trait_id, trait_meta),
             )
 
             # Generate video SJT

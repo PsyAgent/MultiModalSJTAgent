@@ -39,6 +39,13 @@ Response in json.
 the output emotion MUST be one of the following in EMOTIONS:
 'happiness', 'sadness', 'anger', 'fear', 'disgust', 'surprise', 'contempt', 'neutral'
 
+The target trait may be given as a Big Five domain plus a NEO-PI-R facet
+(e.g. "O (Openness) / 开放性 —— 子维度 O6：价值观"); in that case activate the named
+Big Five domain, informed by the facet.
+Never return an error object or ask for more input: if anything is under-specified,
+choose the closest Big Five domain and the most plausible reading, and still output
+the required JSON.
+
 ## OUTPUT
 A JSON dict with the following structure, the only keys are "emotion", and only has two value: "character" and "emotion":
 {

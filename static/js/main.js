@@ -195,7 +195,10 @@ document.addEventListener('DOMContentLoaded', function() {
                 return;
             }
 
-            const names = tasks.map(t => t.label).join('、');
+            // 失败会自动重跑，标出来免得用户以为卡住了
+            const names = tasks.map(t => (
+                t.attempt > 1 ? `${t.label}（重试 ${t.attempt}/${t.attempts}）` : t.label
+            )).join('、');
             banner.innerHTML = `<span class="running-tasks-dot"></span>
                 <span>${tasks.length} 个任务正在后台生成：${names}（可自由切换页面，结果不会丢失）</span>`;
             banner.style.display = 'flex';

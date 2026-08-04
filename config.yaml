@@ -24,8 +24,17 @@ video:
   video_model: MiniMax-Hailuo-02   # 视频生成模型（备选：MiniMax-Hailuo-2.3 / -2.3-Fast）
   duration: 10                     # 时长（秒）
   resolution: 768P
+  recursion_limit: 60              # LangGraph 单次运行的最大步数（默认 25 太小，反思循环容易撞上限）
+  agent_attempts: 2                # 多智能体阶段（不含实际出片）失败后的最大尝试次数
 
 # 旁白语音合成
 tts:
   model: gpt-4o-mini-tts
   voice: alloy
+
+# 失败重试（LLM 偶发不按格式输出 / 网络抖动时自动重来）
+retry:
+  step_attempts: 3   # 流水线内单步（一次 LLM 调用）最多尝试次数
+  task_attempts: 2   # 整题生成失败后最多尝试次数（app 层，含首次）
+  delay: 2           # 首次重试前等待秒数
+  backoff: 2         # 每次重试等待时间的放大倍数

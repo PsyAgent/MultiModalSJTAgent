@@ -1,6 +1,7 @@
 # %%
 from src import DataLoader, TxtAgent, ImgAgent, VidAgent
 from src import ref_viz
+from src.traits import format_trait
 from dotenv import load_dotenv
 from pathlib import Path
 load_dotenv()
@@ -23,15 +24,18 @@ txt_agent = TxtAgent(
     target_population='中国大学生',
 )
 
+# 图像/视频的提示词以大五维度为框架，只给面名称（如「价值观」）时模型会拒答
+trait_label = format_trait(test_trait, neopir_meta[test_trait])
+
 img_agent = ImgAgent(
     situ=sjts_data[test_trait][test_idx],
-    trait = neopir_meta[test_trait]['facet_name'],
+    trait = trait_label,
     ref_viz=ref_viz[ref_cha]
 )
 
 vid_agent = VidAgent(
     situ=sjts_data[test_trait][test_idx],
-    trait = neopir_meta[test_trait]['facet_name'],
+    trait = trait_label,
 )
 # %%
 txt_res = txt_agent.run(

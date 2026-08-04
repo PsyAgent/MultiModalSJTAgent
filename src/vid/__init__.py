@@ -9,17 +9,91 @@ from .agents.prompts import PROMPT_CUE, PROMPT_STORYBOARD, PROMPT_VIDEO
 
 import os
 import json
+import time
+import uuid
+from langgraph.errors import GraphRecursionError
 from langgraph.prebuilt import create_react_agent
 from langgraph_swarm import create_handoff_tool, create_swarm
 from langgraph.checkpoint.memory import InMemorySaver
 from langchain_openai import ChatOpenAI
 
 from ..config import CONFIG
+from ..retry import RETRY_DELAY
 
 _VIDEO_CFG = CONFIG.get('video', {})
 VID_AGENT_MODEL = _VIDEO_CFG.get('agent_model', 'gpt-4o')
 VID_DURATION = int(_VIDEO_CFG.get('duration', 10))
 VID_RESOLUTION = _VIDEO_CFG.get('resolution', '768P')
+# LangGraph 默认 recursion_limit=25，而 swarm 里三个 agent 各自还有反思循环，
+# 正常一次生成就要 20+ 步，稍有反复就会撞上限并整题失败。
+VID_RECURSION_LIMIT = int(_VIDEO_CFG.get('recursion_limit', 60))
+VID_AGENT_ATTEMPTS = int(_VIDEO_CFG.get('agent_attempts', 2))
+
+
+def _extract_video_prompt(messages):
+    """从消息流中取出视频提示词；拿不到就退回用 handoff 里的 storyboard 现算一个。"""
+    if not messages:
+        return None
+
+    video_prompts = next(
+        (m.content for m in messages
+         if getattr(m, "name", "") == "generate_video_prompt" and getattr(m, "content", None)),
+        None
+    )
+    if video_prompts:
+        return video_prompts
+
+    # 回退 1：Storyboard 已经 handoff 给 Video，但 Video 还没来得及产出提示词
+    for _msg in messages:
+        addkw = getattr(_msg, "additional_kwargs", {}) or {}
+        tool_calls = addkw.get("tool_calls") if isinstance(addkw, dict) else None
+        for tc in tool_calls or []:
+            fn = ((tc.get("function") or {}).get("name") if isinstance(tc, dict) else None)
+            if fn != "transfer_to_video":
+                continue
+            try:
+                parsed = json.loads((tc.get("function") or {}).get("arguments"))
+                sb = parsed.get("storyboard_data")
+                if sb:
+                    return generate_video_prompt(sb)
+            except Exception:  # noqa: BLE001 - 回退路径，解析失败就继续找下一个
+                pass
+
+    # 回退 2：连 handoff 都没走到，但分镜已经生成过
+    storyboard = next(
+        (m.content for m in reversed(messages)
+         if getattr(m, "name", "") == "generate_storyboard" and getattr(m, "content", None)),
+        None
+    )
+    if storyboard:
+        return generate_video_prompt(storyboard)
+
+    return None
+
+
+def _run_swarm(app, config, question_content, character_seed, trait=None):
+    """跑一次多智能体流程并取回视频提示词；撞到步数上限时从检查点里捞已有成果。"""
+    # 反思工具会先自行推断待测特质，推断结果与题干不符时就反复重来（步数的主要消耗），
+    # 所以把特质直接写进输入，让反思有明确的对齐标准。
+    stem = f"题目：{question_content}\n特质：{trait}" if trait else question_content
+    inputs = {
+        "messages": [
+            {"role": "user", "content": stem},
+            {"role": "user", "content": f"角色特征JSON: {json.dumps(character_seed, ensure_ascii=False)}"}
+        ]
+    }
+    try:
+        turn = app.invoke(inputs, config)
+        return _extract_video_prompt(turn.get("messages", []))
+    except GraphRecursionError as e:
+        # 步数用尽不代表没有产出：分镜/提示词往往已经生成，只是 agent 没能正常收尾。
+        print(f"[vid] 多智能体流程达到步数上限（{config.get('recursion_limit')}），尝试从中间结果恢复：{e}")
+        try:
+            state = app.get_state(config)
+            messages = (state.values or {}).get("messages", [])
+        except Exception:  # noqa: BLE001
+            messages = []
+        return _extract_video_prompt(messages)
 
 class VidSJTAgent:
     def __init__(self, trait, situ):
@@ -107,47 +181,30 @@ def api_generate_video_sjt(
     video_prompt_agent = create_react_agent(model, [generate_video_prompt, reflect_video_prompt], prompt=PROMPT_VIDEO, name="Video")
 
     workflow = create_swarm([cue_retrieval_agent, storyboard_reason_agent, video_prompt_agent], default_active_agent="Cue")
-    checkpointer = InMemorySaver()
-    app = workflow.compile(checkpointer=checkpointer)
-    config = {"configurable": {"thread_id": "1"}}
 
-    # 4. 执行工作流
-    turn = app.invoke(
-        {
-            "messages": [
-                {"role": "user", "content": question_content},
-                {"role": "user", "content": f"角色特征JSON: {json.dumps(character_seed, ensure_ascii=False)}"}
-            ]
-        },
-        config,
-    )
+    # 4. 执行工作流（失败或空产出时整段重跑，每次都用干净的检查点与 thread_id）
+    video_prompts = None
+    last_exc = None
+    for attempt in range(1, max(1, VID_AGENT_ATTEMPTS) + 1):
+        app = workflow.compile(checkpointer=InMemorySaver())
+        config = {
+            "configurable": {"thread_id": uuid.uuid4().hex},
+            "recursion_limit": VID_RECURSION_LIMIT,
+        }
+        try:
+            video_prompts = _run_swarm(app, config, question_content, character_seed, trait=trait)
+        except Exception as e:  # noqa: BLE001 - 网络/网关抖动等，重跑一次通常就好
+            last_exc = e
+            print(f"[vid] 多智能体流程第 {attempt} 次失败：{e}")
 
-    # 5. 提取视频提示词
-    video_prompts = next(
-        (m.content for m in turn["messages"] if getattr(m, "name", "") == "generate_video_prompt" and getattr(m, "content", None)),
-        None
-    )
-
-    # 回退逻辑
-    if not video_prompts:
-        for _msg in turn["messages"]:
-            addkw = getattr(_msg, "additional_kwargs", {}) or {}
-            tool_calls = addkw.get("tool_calls") if isinstance(addkw, dict) else None
-            if tool_calls:
-                for tc in tool_calls:
-                    fn = ((tc.get("function") or {}).get("name") if isinstance(tc, dict) else None)
-                    if fn == "transfer_to_video":
-                        args = ((tc.get("function") or {}).get("arguments"))
-                        try:
-                            parsed = json.loads(args)
-                            sb = parsed.get("storyboard_data")
-                            if sb:
-                                video_prompts = generate_video_prompt(sb)
-                        except:  # noqa: E722
-                            pass
+        if video_prompts:
+            break
+        if attempt < VID_AGENT_ATTEMPTS:
+            print(f"[vid] 未拿到视频提示词，{RETRY_DELAY:.0f}s 后重跑多智能体流程（第 {attempt + 1} 次）")
+            time.sleep(RETRY_DELAY)
 
     if not video_prompts:
-        raise ValueError("未能生成有效的视频提示词")
+        raise ValueError(f"未能生成有效的视频提示词{f'（最后一次错误：{last_exc}）' if last_exc else ''}")
 
     # 6. 生成视频 (Hailuo)
     hailuo_results = run_hailuo_pipeline(
@@ -158,9 +215,12 @@ def api_generate_video_sjt(
         trait=trait
     )
     
-    saved_dir = hailuo_results.get("saved_dir") if isinstance(hailuo_results, dict) else None
+    if not isinstance(hailuo_results, dict):
+        # 创建失败 / 轮询超时 / 下载失败，具体原因已打印在日志里
+        raise RuntimeError("视频生成失败：出片接口未返回结果（详见日志）")
+    saved_dir = hailuo_results.get("saved_dir")
     if not saved_dir:
-         raise RuntimeError("视频生成失败，未返回保存目录")
+        raise RuntimeError("视频生成失败，未返回保存目录")
 
     # 7. 生成音频 (TTS)
     audio_output_dir = saved_dir
@@ -225,6 +285,9 @@ def api_generate_video_sjt(
             pass
 
     final_video_path = target_path
+    if not final_video_path:
+        # 走到这里说明合成/下载环节没落盘，交给上层重试而不是抛 TypeError
+        raise RuntimeError(f"视频生成失败：{saved_dir} 下没有可用的 mp4 文件")
     if out_basename is not None:
         new_final_path = os.path.join(target_dir, f"{out_basename}.mp4")
         if final_video_path != new_final_path:
